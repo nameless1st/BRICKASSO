@@ -39,10 +39,15 @@ p {
     border-radius: 6px;
 }
 .socials a {
-    margin: 0 10px;
+    margin-top: 1cm;
+    margin-left: 10px;
+    margin-right: 10px;
     color: #000;
     text-decoration: none;
     font-weight: bold;
+    display: inline-block;
+}
+
 }
 footer {
     margin-top: 50px;
