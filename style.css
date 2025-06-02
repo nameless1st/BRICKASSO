@@ -18,30 +18,32 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin: 10px 0;
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: #555;
+    font-size: 1.5em;
+    color: #666;
     margin-bottom: 20px;
 }
 
 p {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 30px;
 }
 
 .button {
     display: inline-block;
-    padding: 12px 24px;
     background-color: #000;
     color: #fff;
+    padding: 14px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -50,24 +52,22 @@ p {
 }
 
 .socials {
-    margin-top: 1cm;
+    margin-top: 30px;
 }
 
 .social-icon {
-    width: 100px;
-    height: 100px;
+    width: 32px;
+    height: 32px;
     margin: 0 10px;
-    vertical-align: middle;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 .social-icon:hover {
     transform: scale(1.1);
-    filter: brightness(1.2);
 }
 
 footer {
-    margin-top: 5cm;
-    font-size: 0.9rem;
+    margin-top: 40px;
+    font-size: 0.9em;
     color: #888;
 }
