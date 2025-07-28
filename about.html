@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Brickasso</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #111;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='%23e0e0e0'/%3E%3C/svg%3E");
+      background-size: 20px 20px;
+    }
+    .about-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 20px;
+      align-items: center;
+      gap: 40px;
+    }
+    .about-photo {
+      flex: 1 1 300px;
+      max-width: 400px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      width: 100%;
+    }
+    .about-text {
+      flex: 2;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #d62828;
+    }
+    @media (max-width: 768px) {
+      .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-text {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="about-wrapper">
+    <img src="albert-about.png" alt="Albert Oprea with LEGO artwork" class="about-photo" />
+    <div class="about-text">
+      <h1>Meet the Artist – Albert Oprea</h1>
+      <p>
+        Albert Oprea is a passionate LEGO artist from Romania who began creating art from bricks at the age of 10. 
+        Inspired by iconic watches like the Rolex Hulk, Daytona, and Pepsi, as well as legendary painters like Picasso, 
+        he brings vibrant works to life with thousands of LEGO pieces.
+      </p>
+      <p>
+        His love for LEGO started at the age of 4 with dozens of original sets. He’d build, unbuild, and mix them, 
+        eventually creating his own art out of the chaos. What began as play has evolved into Brickasso – a project 
+        rooted in creativity, storytelling, and precision.
+      </p>
+      <p>
+        Today, Albert’s creations include LEGO watches, artistic portraits, and iconic cultural tributes such as the Afghan Girl by Steve McCurry. 
+        He continues to push the boundaries of LEGO as a medium of modern artistic expression.
+      </p>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
