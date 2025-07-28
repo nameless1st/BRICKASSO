@@ -52,6 +52,9 @@
       text-align: center;
       border-bottom: 1px solid #eee;
     }
+    #menu-toggle {
+      display: none;
+    }
     .container {
       max-width: 800px;
       margin: 60px auto;
@@ -60,19 +63,12 @@
     }
     h1 {
       font-size: 2em;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     p {
       font-size: 1.1em;
       line-height: 1.6;
       color: #333;
-    }
-    .certificate-box {
-      border: 2px dashed #aaa;
-      padding: 30px;
-      margin-top: 40px;
-      border-radius: 10px;
-      background-color: #fafafa;
     }
     .socials {
       margin-top: 60px;
@@ -93,10 +89,14 @@
       text-align: center;
       padding-bottom: 20px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       nav {
+        display: none;
         flex-direction: column;
         align-items: center;
+      }
+      #menu-toggle:checked + .menu-label + nav {
+        display: flex;
       }
       .menu-label {
         display: block;
@@ -107,7 +107,7 @@
 <body>
   <canvas id="particleCanvas"></canvas>
   <header>
-    <input type="checkbox" id="menu-toggle" style="display:none;">
+    <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="menu-label">☰ Menu</label>
     <nav id="main-menu">
       <a href="index.html">Home</a>
@@ -120,13 +120,15 @@
 
   <div class="container">
     <h1>Certificate of Authenticity</h1>
-    <p>Every Brickasso artwork is accompanied by an official certificate of authenticity, ensuring it is a unique piece crafted with genuine LEGO bricks by Albert Oprea.</p>
-    <div class="certificate-box">
-      <h2>Brickasso Certificate of Authenticity</h2>
-      <p>This document certifies that the accompanying LEGO mosaic artwork is an original piece created by Albert Oprea using genuine LEGO elements.</p>
-      <p>Each artwork is handcrafted, numbered, and one-of-a-kind.</p>
-      <p>© Brickasso 2025</p>
-    </div>
+    <p>
+      Each Brickasso artwork is an original LEGO creation handcrafted by Albert Oprea.
+      <br /><br />
+      All pieces are made using only genuine LEGO bricks and assembled with artistic precision.
+      <br /><br />
+      Upon request, each buyer receives a custom Certificate of Authenticity signed and dated by the artist.
+      <br /><br />
+      For special edition artworks or private commissions, the certificate may include detailed information such as: title, brick count, creation time, and unique identifiers.
+    </p>
 
     <div class="socials">
       <a href="https://x.com/Brickasso_art" target="_blank">
@@ -141,6 +143,31 @@
     </footer>
   </div>
 
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('main-menu');
+    const menuLabel = document.querySelector('.menu-label');
+
+    function checkWindowSize() {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+        menuLabel.style.display = 'block';
+      } else {
+        menu.style.display = 'flex';
+        menuLabel.style.display = 'none';
+        toggle.checked = false;
+      }
+    }
+
+    toggle.addEventListener('change', () => {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+      }
+    });
+
+    window.addEventListener('resize', checkWindowSize);
+    window.addEventListener('load', checkWindowSize);
+  </script>
   <script>
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -177,16 +204,28 @@
         ctx.fill();
       }
       update() {
-        if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-        if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+        if (this.x > canvas.width || this.x < 0) {
+          this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.directionY = -this.directionY;
+        }
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
         if (distance < mouse.radius + this.size) {
-          if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 10;
-          if (mouse.x > this.x && this.x > this.size * 10) this.x -= 10;
-          if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 10;
-          if (mouse.y > this.y && this.y > this.size * 10) this.y -= 10;
+          if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+            this.x += 10;
+          }
+          if (mouse.x > this.x && this.x > this.size * 10) {
+            this.x -= 10;
+          }
+          if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+            this.y += 10;
+          }
+          if (mouse.y > this.y && this.y > this.size * 10) {
+            this.y -= 10;
+          }
         }
         this.x += this.directionX;
         this.y += this.directionY;
