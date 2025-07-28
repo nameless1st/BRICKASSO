@@ -127,65 +127,30 @@
       <a href="contact.html">Contact</a>
     </nav>
     <script>
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('main-menu');
-      const menuLabel = document.querySelector('.menu-label');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('main-menu');
+    const menuLabel = document.querySelector('.menu-label');
 
-      function checkWindowSize() {
-        if (window.innerWidth <= 600) {
-          menu.style.display = toggle.checked ? 'flex' : 'none';
-          menuLabel.style.display = 'block';
-        } else {
-          menu.style.display = 'flex';
-          menuLabel.style.display = 'none';
-        }
+    function checkWindowSize() {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+        menuLabel.style.display = 'block';
+      } else {
+        menu.style.display = 'flex';
+        menuLabel.style.display = 'none';
+        toggle.checked = false;
       }
+    }
 
-      toggle.addEventListener('change', () => {
-        if (window.innerWidth <= 600) {
-          menu.style.display = toggle.checked ? 'flex' : 'none';
-        }
-      });
+    toggle.addEventListener('change', () => {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+      }
+    });
 
-      window.addEventListener('resize', checkWindowSize);
-      window.addEventListener('load', checkWindowSize);
-    </script>
-  </header>
-
-  <div class="about-wrapper">
-    <img src="albert-about.png" alt="Albert Oprea with LEGO artwork" class="about-photo" />
-    <div class="about-text">
-      <h1>Meet the Artist – Albert Oprea</h1>
-      <p>
-        Albert Oprea is a passionate LEGO artist from Romania who began creating art from bricks at the age of 10. 
-        Inspired by iconic watches like the Rolex Hulk, Daytona, and Pepsi, as well as legendary painters like Picasso, 
-        he brings vibrant works to life with thousands of LEGO pieces.
-      </p>
-      <p>
-        His love for LEGO started at the age of 4 with dozens of original sets. He’d build, unbuild, and mix them, 
-        eventually creating his own art out of the chaos. What began as play has evolved into Brickasso – a project 
-        rooted in creativity, storytelling, and precision.
-      </p>
-      <p>
-        Today, Albert’s creations include LEGO watches, artistic portraits, and iconic cultural tributes such as the Afghan Girl by Steve McCurry. 
-        He continues to push the boundaries of LEGO as a medium of modern artistic expression.
-      </p>
-    </div>
-  </div>
-
-  <div class="socials">
-    <a href="https://x.com/Brickasso_art" target="_blank">
-      <img src="x-logo.png" alt="X Logo" class="social-icon" />
-    </a>
-    <a href="https://www.instagram.com/brickasso.art" target="_blank">
-      <img src="instagram-logo.png" alt="Instagram Logo" class="social-icon" />
-    </a>
-  </div>
-
-  <footer>
-    © Brickasso 2025 – Original LEGO Art by Albert Oprea
-  </footer>
-
+    window.addEventListener('resize', checkWindowSize);
+    window.addEventListener('load', checkWindowSize);
+  </script>
   <script>
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -259,7 +224,7 @@
         let y = Math.random() * (canvas.height - size * 2) + size;
         let directionX = (Math.random() * 1.5) - 0.75;
         let directionY = (Math.random() * 1.5) - 0.75;
-        let color = 'rgba(0,0,0,0.5)';
+        let color = 'rgba(0,0,0,0.25)';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
     }
@@ -277,7 +242,7 @@
         for (let b = a; b < particlesArray.length; b++) {
           let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-            opacityValue = 0.5 - (distance / 40000);
+            opacityValue = 0.25 - (distance / 40000);
             ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
             ctx.lineWidth = 1;
             ctx.beginPath();
