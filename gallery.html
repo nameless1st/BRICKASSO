@@ -52,6 +52,9 @@
       text-align: center;
       border-bottom: 1px solid #eee;
     }
+    #menu-toggle {
+      display: none;
+    }
     .container {
       max-width: 1200px;
       margin: 60px auto;
@@ -88,6 +91,7 @@
     .socials {
       margin-top: 60px;
       text-align: center;
+      margin-bottom: 40px;
     }
     .social-icon {
       width: 128px;
@@ -98,16 +102,19 @@
       transform: scale(1.2);
     }
     footer {
-      margin-top: 40px;
       font-size: 0.9em;
       color: #aaa;
       text-align: center;
       padding-bottom: 20px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       nav {
+        display: none;
         flex-direction: column;
         align-items: center;
+      }
+      #menu-toggle:checked + .menu-label + nav {
+        display: flex;
       }
       .menu-label {
         display: block;
@@ -118,10 +125,8 @@
 <body>
   <canvas id="particleCanvas"></canvas>
   <header>
-    <input type="checkbox" id="menu-toggle" style="display:none;">
-    <label for="menu-toggle" class="menu-label">
-      ☰ Menu
-    </label>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-label">☰ Menu</label>
     <nav id="main-menu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -165,6 +170,31 @@
     </footer>
   </div>
 
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('main-menu');
+    const menuLabel = document.querySelector('.menu-label');
+
+    function checkWindowSize() {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+        menuLabel.style.display = 'block';
+      } else {
+        menu.style.display = 'flex';
+        menuLabel.style.display = 'none';
+        toggle.checked = false;
+      }
+    }
+
+    toggle.addEventListener('change', () => {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+      }
+    });
+
+    window.addEventListener('resize', checkWindowSize);
+    window.addEventListener('load', checkWindowSize);
+  </script>
   <script>
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -238,7 +268,7 @@
         let y = Math.random() * (canvas.height - size * 2) + size;
         let directionX = (Math.random() * 1.5) - 0.75;
         let directionY = (Math.random() * 1.5) - 0.75;
-        let color = 'rgba(0,0,0,0.5)';
+        let color = 'rgba(0,0,0,0.25)';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
     }
@@ -256,7 +286,7 @@
         for (let b = a; b < particlesArray.length; b++) {
           let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-            opacityValue = 0.5 - (distance / 40000);
+            opacityValue = 0.25 - (distance / 40000);
             ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
             ctx.lineWidth = 1;
             ctx.beginPath();
