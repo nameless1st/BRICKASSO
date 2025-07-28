@@ -18,19 +18,21 @@
     header {
       background: #fff;
       border-bottom: 1px solid #eee;
-      padding: 20px;
+      padding: 15px;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
     nav a {
-      margin: 0 15px;
+      margin: 10px;
       text-decoration: none;
       color: #000;
       font-weight: bold;
       transition: color 0.3s;
+      font-size: 1em;
     }
     nav a:hover {
       color: #d62828;
@@ -38,25 +40,19 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 40px 20px;
       text-align: center;
     }
     .logo {
-      max-width: 300px;
+      width: 90%;
+      max-width: 320px;
       margin-bottom: 20px;
     }
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
+      font-size: 2em;
+      margin-bottom: 0.5em;
       opacity: 0;
       animation: fadeInUp 1s ease forwards;
-    }
-    h2 {
-      font-size: 1.5em;
-      color: #555;
-      margin-bottom: 1em;
-      opacity: 0;
-      animation: fadeInUp 1s ease 0.3s forwards;
     }
     @keyframes fadeInUp {
       from {
@@ -69,9 +65,10 @@
       }
     }
     p {
-      font-size: 1.1em;
+      font-size: 1em;
       line-height: 1.6;
       color: #333;
+      padding: 0 10px;
     }
     .socials {
       margin-top: 30px;
@@ -89,6 +86,19 @@
       font-size: 0.9em;
       color: #aaa;
     }
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 0.95em;
+        margin: 8px 10px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+      .social-icon {
+        width: 48px;
+        margin: 0 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -103,7 +113,7 @@
   </header>
 
   <div class="container" id="home">
-    <img src="brickasso-logo.png" alt="Brickasso Logo" class="logo" />
+    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo" />
     <h1>Brickasso – Original LEGO Art</h1>
         <p>
       Welcome to the world of Brickasso – where iconic art meets LEGO bricks.<br />
@@ -125,5 +135,7 @@
       © Brickasso 2025 – Original LEGO Art by Albert Oprea
     </footer>
     </div>
+
+  
 </body>
 </html>
