@@ -15,6 +15,39 @@
       background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='%23e0e0e0'/%3E%3C/svg%3E");
       background-size: 20px 20px;
     }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      margin: 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 1em;
+    }
+    nav a:hover {
+      color: #d62828;
+    }
+    .menu-label {
+      display: none;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: #fff;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
     .about-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -44,15 +77,9 @@
       color: #333;
       margin-bottom: 20px;
     }
-    a.back-link {
-      display: inline-block;
-      margin-top: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #d62828;
-    }
     .socials {
-      margin-top: 50px;
+      margin-top: 30px;
+      margin-bottom: 10px;
       text-align: center;
     }
     .social-icon {
@@ -64,7 +91,7 @@
       transform: scale(1.2);
     }
     footer {
-      margin-top: 40px;
+      margin-top: 10px;
       font-size: 0.9em;
       color: #aaa;
       text-align: center;
@@ -82,6 +109,44 @@
   </style>
 </head>
 <body>
+  <header>
+    <input type="checkbox" id="menu-toggle" style="display:none;">
+    <label for="menu-toggle" class="menu-label">
+      ☰ Menu
+    </label>
+    <nav id="main-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#certificate">Certificate</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('main-menu');
+      const menuLabel = document.querySelector('.menu-label');
+
+      function checkWindowSize() {
+        if (window.innerWidth <= 600) {
+          menu.style.display = toggle.checked ? 'flex' : 'none';
+          menuLabel.style.display = 'block';
+        } else {
+          menu.style.display = 'flex';
+          menuLabel.style.display = 'none';
+        }
+      }
+
+      toggle.addEventListener('change', () => {
+        if (window.innerWidth <= 600) {
+          menu.style.display = toggle.checked ? 'flex' : 'none';
+        }
+      });
+
+      window.addEventListener('resize', checkWindowSize);
+      window.addEventListener('load', checkWindowSize);
+    </script>
+  </header>
+
   <div class="about-wrapper">
     <img src="albert-about.png" alt="Albert Oprea with LEGO artwork" class="about-photo" />
     <div class="about-text">
@@ -100,7 +165,6 @@
         Today, Albert’s creations include LEGO watches, artistic portraits, and iconic cultural tributes such as the Afghan Girl by Steve McCurry. 
         He continues to push the boundaries of LEGO as a medium of modern artistic expression.
       </p>
-      <a href="index.html" class="back-link">← Back to Home</a>
     </div>
   </div>
 
