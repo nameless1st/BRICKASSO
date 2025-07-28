@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brickasso – Contact</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
       background-color: #fff;
       color: #111;
     }
@@ -18,11 +19,13 @@
       left: 0;
       z-index: -1;
     }
-    header, nav {
+    header {
       background: #fff;
       border-bottom: 1px solid #eee;
       padding: 15px;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav {
       display: flex;
@@ -35,52 +38,91 @@
       color: #000;
       font-weight: bold;
       transition: color 0.3s;
+      font-size: 1em;
     }
     nav a:hover {
       color: #d62828;
     }
+    .menu-label {
+      display: none;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: #fff;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    #menu-toggle {
+      display: none;
+    }
     .container {
-      max-width: 600px;
-      margin: 80px auto;
+      max-width: 700px;
+      margin: 60px auto;
       padding: 20px;
       text-align: center;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 15px;
+      margin-top: 30px;
     }
     input, textarea {
       padding: 12px;
-      font-size: 1em;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1em;
     }
     button {
-      background: #000;
-      color: #fff;
+      background-color: #000;
+      color: white;
       padding: 12px;
       border: none;
-      font-weight: bold;
       border-radius: 6px;
+      font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s;
     }
     button:hover {
-      background: #d62828;
+      background-color: #d62828;
+    }
+    .socials {
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+    .social-icon {
+      width: 128px;
+      margin: 0 16px;
+      transition: transform 0.2s;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
     }
     footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #aaa;
       font-size: 0.9em;
+      color: #aaa;
+      text-align: center;
       padding-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      #menu-toggle:checked + .menu-label + nav {
+        display: flex;
+      }
+      .menu-label {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
   <canvas id="particleCanvas"></canvas>
   <header>
-    <input type="checkbox" id="menu-toggle" style="display:none;">
+    <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="menu-label">☰ Menu</label>
     <nav id="main-menu">
       <a href="index.html">Home</a>
@@ -90,21 +132,52 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-
   <div class="container">
     <h1>Contact Brickasso</h1>
-    <form action="https://formspree.io/f/your-id-here" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+    <p>If you'd like to inquire about a custom LEGO artwork or collaboration, feel free to send a message below.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <div class="socials">
+      <a href="https://x.com/Brickasso_art" target="_blank">
+        <img src="x-logo.png" alt="X Logo" class="social-icon" />
+      </a>
+      <a href="https://www.instagram.com/brickasso.art" target="_blank">
+        <img src="instagram-logo.png" alt="Instagram Logo" class="social-icon" />
+      </a>
+    </div>
+    <footer>
+      © Brickasso 2025 – Original LEGO Art by Albert Oprea
+    </footer>
   </div>
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('main-menu');
+    const menuLabel = document.querySelector('.menu-label');
 
-  <footer>
-    © Brickasso 2025 – Original LEGO Art by Albert Oprea
-  </footer>
+    function checkWindowSize() {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+        menuLabel.style.display = 'block';
+      } else {
+        menu.style.display = 'flex';
+        menuLabel.style.display = 'none';
+        toggle.checked = false;
+      }
+    }
 
+    toggle.addEventListener('change', () => {
+      if (window.innerWidth <= 600) {
+        menu.style.display = toggle.checked ? 'flex' : 'none';
+      }
+    });
+
+    window.addEventListener('resize', checkWindowSize);
+    window.addEventListener('load', checkWindowSize);
+  </script>
   <script>
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -116,58 +189,84 @@
       canvas.height = window.innerHeight;
       init();
     });
-    const mouse = { x: null, y: null, radius: 100 };
-    window.addEventListener('mousemove', e => {
-      mouse.x = e.x;
-      mouse.y = e.y;
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 100
+    };
+    window.addEventListener('mousemove', (event) => {
+      mouse.x = event.x;
+      mouse.y = event.y;
     });
     class Particle {
-      constructor(x, y, dx, dy, size, color) {
+      constructor(x, y, directionX, directionY, size, color) {
         this.x = x;
         this.y = y;
-        this.dx = dx;
-        this.dy = dy;
+        this.directionX = directionX;
+        this.directionY = directionY;
         this.size = size;
         this.color = color;
       }
       draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
         ctx.fill();
       }
       update() {
-        if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
-        if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+        if (this.x > canvas.width || this.x < 0) this.directionX *= -1;
+        if (this.y > canvas.height || this.y < 0) this.directionY *= -1;
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         if (distance < mouse.radius + this.size) {
-          this.x += dx > 0 ? -10 : 10;
-          this.y += dy > 0 ? -10 : 10;
+          if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 10;
+          if (mouse.x > this.x && this.x > this.size * 10) this.x -= 10;
+          if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 10;
+          if (mouse.y > this.y && this.y > this.size * 10) this.y -= 10;
         }
-        this.x += this.dx;
-        this.y += this.dy;
+        this.x += this.directionX;
+        this.y += this.directionY;
         this.draw();
       }
     }
     function init() {
       particlesArray = [];
-      const number = (canvas.width * canvas.height) / 9000;
-      for (let i = 0; i < number; i++) {
+      const numberOfParticles = (canvas.height * canvas.width) / 9000;
+      for (let i = 0; i < numberOfParticles; i++) {
         const size = Math.random() * 3 + 1;
         const x = Math.random() * (canvas.width - size * 2) + size;
         const y = Math.random() * (canvas.height - size * 2) + size;
-        const dx = (Math.random() * 1.5) - 0.75;
-        const dy = (Math.random() * 1.5) - 0.75;
+        const directionX = (Math.random() * 1.5) - 0.75;
+        const directionY = (Math.random() * 1.5) - 0.75;
         const color = 'rgba(0,0,0,0.25)';
-        particlesArray.push(new Particle(x, y, dx, dy, size, color));
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
       }
     }
     function animate() {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => p.update());
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+      connect();
+    }
+    function connect() {
+      let opacityValue = 1;
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          const distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+          if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+            opacityValue = 0.25 - (distance / 40000);
+            ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
     }
     init();
     animate();
