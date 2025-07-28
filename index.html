@@ -39,6 +39,15 @@
     nav a:hover {
       color: #d62828;
     }
+    .menu-label {
+      display: none;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: #fff;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -90,31 +99,15 @@
       text-align: center;
       padding-bottom: 20px;
     }
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
-      nav a {
-        font-size: 1em;
-        margin: 10px 0;
-      }
-      h1 {
-        font-size: 1.5em;
-      }
-      .social-icon {
-        width: 128px;
-        margin: 10px;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
     <input type="checkbox" id="menu-toggle" style="display:none;">
-    <label for="menu-toggle" style="display:block; cursor:pointer; font-weight:bold; padding:10px 20px; background:#fff; text-align:center; border-bottom:1px solid #eee;">
+    <label for="menu-toggle" class="menu-label">
       ☰ Menu
     </label>
-    <nav id="mobile-menu">
+    <nav id="main-menu">
       <a href="#home">Home</a>
       <a href="about.html">About</a>
       <a href="#gallery">Gallery</a>
@@ -123,14 +116,27 @@
     </nav>
     <script>
       const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      toggle.addEventListener('change', () => {
-        if (toggle.checked) {
-          menu.style.display = 'flex';
+      const menu = document.getElementById('main-menu');
+      const menuLabel = document.querySelector('.menu-label');
+
+      function checkWindowSize() {
+        if (window.innerWidth <= 600) {
+          menu.style.display = toggle.checked ? 'flex' : 'none';
+          menuLabel.style.display = 'block';
         } else {
-          menu.style.display = 'none';
+          menu.style.display = 'flex';
+          menuLabel.style.display = 'none';
+        }
+      }
+
+      toggle.addEventListener('change', () => {
+        if (window.innerWidth <= 600) {
+          menu.style.display = toggle.checked ? 'flex' : 'none';
         }
       });
+
+      window.addEventListener('resize', checkWindowSize);
+      window.addEventListener('load', checkWindowSize);
     </script>
   </header>
 
