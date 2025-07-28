@@ -103,13 +103,29 @@
 </head>
 <body>
   <header>
-    <nav>
+    <input type="checkbox" id="menu-toggle" style="display:none;">
+    <label for="menu-toggle" style="display:block; cursor:pointer; font-weight:bold; padding:10px 20px; background:#fff; text-align:center; border-bottom:1px solid #eee;">
+      ☰ Menu
+    </label>
+    <nav style="display:none; flex-direction:column; background:#fff; text-align:center;" id="mobile-menu">
+
       <a href="#home">Home</a>
       <a href="about.html">About</a>
       <a href="#gallery">Gallery</a>
       <a href="#certificate">Certificate</a>
       <a href="#contact">Contact</a>
     </nav>
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+          menu.style.display = 'flex';
+        } else {
+          menu.style.display = 'none';
+        }
+      });
+    </script>
   </header>
 
   <div class="container" id="home">
@@ -123,13 +139,22 @@
     </p>
 
     <div class="socials">
-      <a href="https://x.com/Brickasso_art" target="_blank">
-        <img src="x-logo.png" alt="X Logo" class="social-icon" />
-      </a>
+  <a href="https://x.com/Brickasso_art" target="_blank">
+    <img src="x-logo.png" alt="X Logo" class="social-icon" />
+  </a>
+  <a href="https://www.instagram.com/brickasso.art" target="_blank">
+    <img src="instagram-logo.png" alt="Instagram Logo" class="social-icon" />
+  </a>
+</div>
+    </div>
+    <div style="text-align: center;">
       <a href="https://www.instagram.com/brickasso.art" target="_blank">
         <img src="instagram-logo.png" alt="Instagram Logo" class="social-icon" />
       </a>
+      <div style="margin-top: 8px; font-weight: bold; font-size: 1em;">Follow on Instagram</div>
     </div>
+  </div>
+</div>
 
     <footer>
       © Brickasso 2025 – Original LEGO Art by Albert Oprea
