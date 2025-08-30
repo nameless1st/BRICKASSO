@@ -4,12 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About – Brickasso</title>
-  <meta name="description" content="The story behind Brickasso: LEGO Art by Albert Oprea. From first bricks to signed works like The White Horse (01)." />
-  <meta property="og:title" content="About – Brickasso LEGO Art" />
-  <meta property="og:description" content="Learn about Albert Oprea, the young artist behind Brickasso, and the vision that turned thousands of LEGO pieces into art." />
-  <meta property="og:image" content="brickasso-logo.png" />
-  <meta property="og:url" content="https://brickasso.art/about.html" />
-  <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
     body {
@@ -23,7 +17,6 @@
       color: #111;
     }
 
-    /* HEADER – identic cu index & gallery */
     header {
       padding: 10px 20px;
       display: flex;
@@ -35,41 +28,28 @@
       z-index: 1000;
       border-bottom: 1px solid #ddd;
     }
-
     .logo { height: 50px; }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
+    .menu-toggle { display: none; font-size: 1em; font-weight: bold; background: none; border: none; cursor: pointer; }
     nav { display: flex; }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
+    nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
     nav a:hover { color: #d62828; }
 
-    /* ABOUT SECTION – același “voal” alb ca .hero */
+    /* doar partea de sus este “voal” alb – ca pe index */
     .about-section {
-      padding: 100px 20px 60px;
-      background-color: rgba(255, 255, 255, 0.75);
+      padding: 60px 2cm 60px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.75) 0,
+        rgba(255,255,255,0.75) 1000vh,
+        rgba(255,255,255,0) 100vh
+      );
     }
 
     .about-section h1 {
       text-align: center;
-      font-size: 3em;
+      font-size: 2.8em;
       font-weight: 600;
-      margin: 0 0 40px 0;
+      margin-bottom: 50px;
     }
 
     .about-wrapper {
@@ -77,7 +57,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 40px;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -94,7 +74,6 @@
       line-height: 1.8;
     }
 
-    /* FOOTER – identic cu index & gallery */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -102,74 +81,37 @@
       font-size: 0.9em;
       color: #666;
     }
-
     .social-icons-footer { margin-bottom: 10px; }
-
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons-footer img {
-      height: 64px;
-      width: auto;
-      vertical-align: middle;
-    }
-
+    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* RESPONSIVE – identic cu index & gallery */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.2em;
-      }
-
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
+      .menu-toggle { display: block; font-size: 1.2em; }
       nav {
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        text-align: center;
-        z-index: 999;
+        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
+        background-color: rgba(255, 255, 255, 0.95); padding: 20px; text-align: center; z-index: 999;
       }
-
       nav.active { display: flex; }
 
+      /* voal mai mic pe mobil (prima impresie rămâne ca pe index) */
       .about-section {
-        padding: 60px 20px 40px;
+        padding: 40px 20px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.75) 0,
+          rgba(255,255,255,0.75) 45vh,
+          rgba(255,255,255,0) 45vh
+        );
       }
 
-      .about-section h1 {
-        font-size: 2em;
-        margin-bottom: 30px;
-      }
-
-      .about-wrapper {
-        flex-direction: column;
-        max-width: 700px;
-      }
-
-      .about-image, .about-text {
-        width: 100%;
-      }
-
+      .about-section h1 { font-size: 2em; margin-bottom: 30px; }
+      .about-wrapper { flex-direction: column; }
+      .about-image, .about-text { width: 100%; }
       .about-text { font-size: 1.05em; }
 
       .social-icons-footer img { height: 48px; }
-
       footer { padding: 40px 20px; }
     }
   </style>
