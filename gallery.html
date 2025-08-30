@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery – Brickasso</title>
   <meta name="description" content="Discover Brickasso's LEGO Art gallery: watches, portraits, and creative masterpieces by Albert Oprea." />
+  <meta property="og:title" content="Gallery – Brickasso LEGO Art" />
+  <meta property="og:description" content="Explore Brickasso's LEGO Art gallery: unique watches, portraits, and masterpieces built from thousands of LEGO bricks." />
+  <meta property="og:image" content="brickasso-logo.png" />
+  <meta property="og:url" content="https://brickasso.art/gallery.html" />
   <link rel="icon" type="image/png" href="brickasso-icon.png" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
   <style>
     body {
       margin: 0;
@@ -20,7 +24,7 @@
     }
 
     header {
-      padding: 20px 40px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -32,7 +36,16 @@
     }
 
     .logo {
-      height: 60px;
+      height: 50px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
     nav {
@@ -51,15 +64,6 @@
       color: #d62828;
     }
 
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
     .hero {
       text-align: center;
       padding: 100px 20px 60px;
@@ -73,7 +77,7 @@
     }
 
     .hero p {
-      font-size: 1.4em;
+      font-size: 1.3em;
       color: #444;
       margin-top: 20px;
     }
@@ -106,14 +110,26 @@
       transform: scale(1.2);
     }
 
+    /* Responsive mobile menu */
     @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.2em;
+      }
+
       nav {
         display: none;
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        top: 80px;
-        left: 0;
+        top: 70px;
+        right: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.95);
         padding: 20px;
@@ -123,14 +139,6 @@
 
       nav.active {
         display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .logo {
-        height: 50px;
       }
 
       .hero {
@@ -171,7 +179,7 @@
 
   <section class="hero">
     <h1>Gallery</h1>
-    <p>Coming soon... A full collection of LEGO masterpieces.</p>
+    <p>Coming soon... A full collection of LEGO® masterpieces.</p>
   </section>
 
   <footer>
