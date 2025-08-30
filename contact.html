@@ -12,6 +12,7 @@
   <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
+    /* ===== BASE ===== */
     body {
       margin: 0;
       padding: 0;
@@ -23,22 +24,20 @@
       color: #111;
     }
 
-    /* HEADER — identic cu index.html */
+    /* ===== HEADER — IDENTIC CU index.html (cu override-uri de siguranță) ===== */
     header {
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #ddd;
+      padding: 10px 20px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+      border-bottom: 1px solid #ddd !important;
     }
 
-    .logo {
-      height: 50px;
-    }
+    .logo { height: 50px !important; }
 
     .menu-toggle {
       display: none;
@@ -47,25 +46,25 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: #000; /* sigur vizibil */
     }
 
     nav {
-      display: flex;
+      display: flex;            /* desktop: vizibil */
+      background: transparent;  /* ca în index */
     }
 
     nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
+      margin-left: 20px !important;
+      text-decoration: none !important;
+      color: #000 !important;
+      font-weight: 600 !important;
+      transition: color 0.3s !important;
     }
 
-    nav a:hover {
-      color: #d62828;
-    }
+    nav a:hover { color: #d62828 !important; }
 
-    /* CONTACT SECTION (voal alb, ca .hero) */
+    /* ===== CONTACT SECTION (voal alb, ca .hero din index) ===== */
     .contact-section {
       text-align: center;
       padding: 100px 20px 60px;
@@ -84,10 +83,7 @@
       text-align: left;
     }
 
-    form {
-      display: grid;
-      gap: 16px;
-    }
+    form { display: grid; gap: 16px; }
 
     input, textarea {
       padding: 12px;
@@ -96,6 +92,7 @@
       border-radius: 8px;
       font-family: inherit;
       background: #fff;
+      color: #111;
     }
 
     button {
@@ -108,12 +105,9 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+    button:hover { background: #d62828; }
 
-    button:hover {
-      background: #d62828;
-    }
-
-    /* Mesaj de status sub formular */
+    /* Mesaj status */
     #formStatus {
       margin-top: 15px;
       padding: 12px;
@@ -134,7 +128,7 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* FOOTER — identic */
+    /* ===== FOOTER — IDENTIC ===== */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -143,73 +137,48 @@
       color: #666;
     }
 
-    .social-icons-footer {
-      margin-bottom: 10px;
-    }
+    .social-icons-footer { margin-bottom: 10px; }
+    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
+    .social-icons-footer a:hover { transform: scale(1.2); }
 
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons-footer img {
-      height: 64px;
-      width: auto;
-      vertical-align: middle;
-    }
-
-    .social-icons-footer a:hover {
-      transform: scale(1.2);
-    }
-
-    /* Responsive mobile menu — identic cu index.html */
+    /* ===== MOBILE — IDENTIC CU index.html ===== */
     @media (max-width: 768px) {
       header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
       }
 
       .menu-toggle {
-        display: block;
+        display: block;        /* pe mobil apare butonul */
         font-size: 1.2em;
+        color: #000;
       }
 
+      /* Meniul mobil e ascuns by default */
       nav {
-        display: none;
+        display: none;         /* ascuns */
         flex-direction: column;
         gap: 15px;
         position: absolute;
         top: 70px;
         right: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.95) !important;
         padding: 20px;
         text-align: center;
         z-index: 999;
       }
 
-      nav.active {
-        display: flex;
-      }
+      /* când capătă clasa .active devine vizibil (exact ca în index) */
+      nav.active { display: flex !important; }
 
-      .contact-section {
-        padding: 60px 20px 40px;
-      }
+      .contact-section { padding: 60px 20px 40px; }
+      .contact-section h1 { font-size: 1.7em; margin-bottom: 20px; }
 
-      .contact-section h1 {
-        font-size: 1.7em;
-        margin-bottom: 20px;
-      }
-
-      .social-icons-footer img {
-        height: 48px;
-      }
-
-      footer {
-        padding: 40px 20px;
-      }
+      .social-icons-footer img { height: 48px; }
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -234,7 +203,6 @@
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
 
-        <!-- câmpuri ascunse utile -->
         <input type="hidden" name="_subject" value="New message from brickasso.art" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
