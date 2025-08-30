@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Brickasso</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-image: url('archi-big-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #111;
+    }
+
+    header {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d62828;
+    }
+
+    .about-section {
+      padding: 60px 2cm;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .about-section h1 {
+      text-align: center;
+      font-size: 2.8em;
+      font-weight: 600;
+      margin-bottom: 50px;
+    }
+
+    .about-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .about-image {
+      width: 45%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-text {
+      width: 55%;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 100px;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .social-icons-footer {
+      margin-bottom: 10px;
+    }
+
+    .social-icons-footer a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons-footer img {
+      height: 64px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .social-icons-footer a:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.2em;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .about-wrapper {
+        flex-direction: column;
+      }
+
+      .about-image, .about-text {
+        width: 100%;
+      }
+
+      .about-section {
+        padding: 40px 20px;
+      }
+
+      .about-section h1 {
+        font-size: 2em;
+        margin-bottom: 30px;
+      }
+
+      .about-text {
+        font-size: 1.05em;
+      }
+
+      .social-icons-footer img {
+        height: 48px;
+      }
+
+      footer {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <h1>About the Artist</h1>
+    <div class="about-wrapper">
+      <img src="albert-and-horse.jpg" alt="Albert and the White Horse" class="about-image">
+      <div class="about-text">
+        <p>I’m Albert Oprea — I was 10 years old when I launched this website in 2025. Maybe one day I’ll come back and update this line. But the story behind Brickasso stays the same.</p>
+        <p>I started building LEGO® sets when I was just 4 years old. After assembling and disassembling hundreds of sets, I was left with bags full of bricks. Instead of throwing them away, I began creating something new — from my own imagination.</p>
+        <p>Inspired by my parents’ passion for watches, I built my first LEGO mosaic of a Rolex. From there, one brick led to another… one image led to a new idea… and a small hobby turned into something much greater.</p>
+        <p>I’ve recreated iconic watches like the Rolex Hulk, Pepsi, and Daytona, as well as powerful portraits like The Girl in the Mirror — each of them built from thousands of LEGO tiles.</p>
+        <p>But The White Horse is special. It’s the first official painting signed with number 01 — the first true Brickasso.</p>
+        <p>Beyond LEGO, I’m also passionate about music — I play the piano — and I’m curious about science, space, and how the world works. I love learning new things in school, especially math, physics, and chemistry. Every idea I have, every project I build, is part of the same mission: to create, understand, and express.</p>
+        <p>Brickasso is not just a nickname. It’s my way of showing that even as a kid, you can build something meaningful — with passion, patience, and imagination.</p>
+        <p>And this is just the beginning.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-icons-footer">
+      <a href="https://instagram.com/brickasso.art" target="_blank">
+        <img src="instagram-logo.png" alt="Instagram">
+      </a>
+      <a href="https://x.com/brickasso_art" target="_blank">
+        <img src="x-logo.png" alt="X (Twitter)">
+      </a>
+    </div>
+    © Brickasso 2025 – Original LEGO Art by Albert Oprea
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
