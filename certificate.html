@@ -61,6 +61,7 @@
 
     /* SECTION – același “voal” alb */
     .certificate-section {
+      position: relative; /* pentru poziționare absolută a sigiliului */
       padding: 100px 20px 60px;
       background-color: rgba(255, 255, 255, 0.75);
       text-align: center;
@@ -80,9 +81,10 @@
     }
 
     .sigiliu {
-      display: block;
+      position: absolute;
+      top: 35%;     /* la ~35% din secțiune */
+      right: 8%;    /* spre partea dreaptă */
       height: 120px;
-      margin: 40px auto 0;
     }
 
     /* FOOTER – identic */
@@ -110,7 +112,7 @@
 
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* RESPONSIVE – identic */
+    /* RESPONSIVE – pe mobil sigiliul revine centrat */
     @media (max-width: 768px) {
       header {
         flex-direction: row;
@@ -153,8 +155,13 @@
         padding: 0 10px;
       }
 
-      .social-icons-footer img { height: 48px; }
+      .sigiliu {
+        position: static;
+        display: block;
+        margin: 30px auto 0;
+      }
 
+      .social-icons-footer img { height: 48px; }
       footer { padding: 40px 20px; }
     }
   </style>
