@@ -12,15 +12,6 @@
   <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
-    :root {
-      --menu-bg: rgba(255, 255, 255, 0.95);
-      --menu-link: #000;
-      --menu-link-active: #d62828; /* identic cu hover-ul */
-    }
-
-    /* elimină highlight-ul colorat la tap pe mobile (poate apărea roșu) */
-    * { -webkit-tap-highlight-color: transparent; }
-
     body {
       margin: 0;
       padding: 0;
@@ -32,7 +23,6 @@
       color: #111;
     }
 
-    /* HEADER — identic cu index.html */
     header {
       padding: 10px 20px;
       display: flex;
@@ -44,143 +34,66 @@
       z-index: 1000;
       border-bottom: 1px solid #ddd;
     }
-
     .logo { height: 50px; }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #000;
-    }
-    .menu-toggle:focus,
-    .menu-toggle:active { color: #000; background: transparent; outline: none; }
-
-    nav { display: flex; background: transparent; }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+    .menu-toggle { display: none; font-size: 1em; font-weight: bold; background: none; border: none; cursor: pointer; }
+    nav { display: flex; }
+    nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
     nav a:hover { color: #d62828; }
 
-    /* CONTACT SECTION (voal alb, ca .hero) */
+    /* voal alb doar pe partea de sus */
     .contact-section {
-      text-align: center;
       padding: 100px 20px 60px;
-      background-color: rgba(255, 255, 255, 0.75);
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.75) 0,
+        rgba(255,255,255,0.75) 0vh,
+        rgba(255,255,255,0) 0vh
+      );
+      text-align: center;
     }
 
     .contact-section h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin: 0 0 30px 0;
       font-weight: 600;
     }
 
     .contact-wrapper { max-width: 700px; margin: 0 auto; text-align: left; }
-
     form { display: grid; gap: 16px; }
-
-    input, textarea {
-      padding: 12px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: inherit;
-      background: #fff;
-      color: #111;
-    }
-
-    button {
-      background: #000;
-      color: #fff;
-      padding: 14px 20px;
-      border: none;
-      font-weight: bold;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+    input, textarea { padding: 12px; font-size: 1em; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; background: #fff; }
+    button { background: #000; color: #fff; padding: 14px 20px; border: none; font-weight: bold; border-radius: 10px; cursor: pointer; transition: background 0.3s; }
     button:hover { background: #d62828; }
 
-    /* Mesaj status */
-    #formStatus {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.95em;
-      display: none;
-    }
-    #formStatus.success {
-      display: block;
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-    #formStatus.error {
-      display: block;
-      background-color: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
+    #formStatus { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.95em; display: none; }
+    #formStatus.success { display: block; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    #formStatus.error { display: block; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
-    /* FOOTER — identic */
-    footer {
-      margin-top: 100px;
-      padding: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-    }
-
+    footer { margin-top: 100px; padding: 30px; text-align: center; font-size: 0.9em; color: #666; }
     .social-icons-footer { margin-bottom: 10px; }
     .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* MOBILE — identic cu index + forțăm nav.active să NU mai ia stiluri roșii din altă parte */
     @media (max-width: 768px) {
       header { flex-direction: row; justify-content: space-between; align-items: center; }
-
       .menu-toggle { display: block; font-size: 1.2em; }
-
       nav {
-        display: none;              /* ascuns implicit */
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background-color: var(--menu-bg) !important; /* fixăm fundalul */
-        padding: 20px;
-        text-align: center;
-        z-index: 999;
+        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
+        background-color: rgba(255, 255, 255, 0.95); padding: 20px; text-align: center; z-index: 999;
+      }
+      nav.active { display: flex; }
+
+      .contact-section {
+        padding: 60px 20px 40px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.75) 0,
+          rgba(255,255,255,0.75) 45vh,
+          rgba(255,255,255,0) 45vh
+        );
       }
 
-      /* AICI e cheia: când nav devine .active, îi fixăm explicit culorile */
-      header nav.active {
-        display: flex !important;
-        background-color: var(--menu-bg) !important;
-        color: var(--menu-link) !important;
-      }
-      header nav.active a {
-        color: var(--menu-link) !important;
-      }
-      header nav.active a:active,
-      header nav.active a:hover {
-        color: var(--menu-link-active) !important;
-      }
-
-      .contact-section { padding: 60px 20px 40px; }
-      .contact-section h1 { font-size: 1.7em; margin-bottom: 20px; }
-
+      .contact-section h1 { font-size: 2em; margin-bottom: 20px; }
       .social-icons-footer img { height: 48px; }
       footer { padding: 40px 20px; }
     }
@@ -233,7 +146,7 @@
       document.getElementById("mobile-menu").classList.toggle("active");
     }
 
-    // Submit cu mesaj inline (fără redirect)
+    // submit cu mesaj inline
     const form = document.getElementById('contactForm');
     const statusEl = document.getElementById('formStatus');
     const btn = document.getElementById('sendBtn');
