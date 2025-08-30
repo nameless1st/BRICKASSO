@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery – Brickasso</title>
+  <meta name="description" content="Discover Brickasso's LEGO Art gallery: watches, portraits, and creative masterpieces by Albert Oprea." />
+  <link rel="icon" type="image/png" href="brickasso-icon.png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-image: url('archi-big-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #111;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d62828;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 1.4em;
+      color: #444;
+      margin-top: 20px;
+    }
+
+    footer {
+      margin-top: 100px;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .social-icons-footer {
+      margin-bottom: 10px;
+    }
+
+    .social-icons-footer a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons-footer img {
+      height: 64px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .social-icons-footer a:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo {
+        height: 50px;
+      }
+
+      .hero {
+        padding: 60px 20px 40px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero p {
+        font-size: 1.1em;
+        padding: 0 10px;
+      }
+
+      .social-icons-footer img {
+        height: 48px;
+      }
+
+      footer {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Gallery</h1>
+    <p>Coming soon... A full collection of LEGO masterpieces.</p>
+  </section>
+
+  <footer>
+    <div class="social-icons-footer">
+      <a href="https://instagram.com/brickasso.art" target="_blank">
+        <img src="instagram-logo.png" alt="Instagram">
+      </a>
+      <a href="https://x.com/brickasso_art" target="_blank">
+        <img src="x-logo.png" alt="X (Twitter)">
+      </a>
+    </div>
+    © Brickasso 2025 – Original LEGO Art by Albert Oprea
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
