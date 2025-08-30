@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +39,10 @@
       height: 60px;
     }
 
+    nav {
+      display: flex;
+    }
+
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -50,6 +53,15 @@
 
     nav a:hover {
       color: #d62828;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
     .hero {
@@ -113,67 +125,79 @@
     .social-icons-footer a:hover {
       transform: scale(1.2);
     }
-    
-@media (max-width: 768px) {
-  header {
-    position: static !important; /* sau remove 'fixed' dacă e JS-based */
-  }
 
-  .logo {
-    height: 48px;
-    margin-bottom: 10px;
-  }
+    /* Responsive mobile menu */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
+      nav.active {
+        display: flex;
+      }
 
-  nav a {
-    margin: 0;
-    padding: 5px 0;
-  }
+      .menu-toggle {
+        display: block;
+      }
 
-  .hero {
-    padding: 60px 20px 40px;
-  }
+      .logo {
+        height: 50px;
+      }
 
-  .hero h1 {
-    font-size: 1.7em;
-    margin-bottom: 20px;
-  }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-  .hero p {
-    font-size: 1.05em;
-    padding: 0 10px;
-  }
+      .hero {
+        padding: 60px 20px 40px;
+      }
 
-  .cta {
-    padding: 12px 24px;
-    font-size: 1em;
-  }
+      .hero h1 {
+        font-size: 1.7em;
+        margin-bottom: 20px;
+      }
 
-  .social-icons-footer img {
-    height: 48px;
-  }
+      .hero p {
+        font-size: 1.05em;
+        padding: 0 10px;
+      }
 
-  footer {
-    padding: 40px 20px;
-  }
-}
+      .cta {
+        padding: 12px 24px;
+        font-size: 1em;
+      }
+
+      .social-icons-footer img {
+        height: 48px;
+      }
+
+      footer {
+        padding: 40px 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="about.html">About</a>
-      <a href="certificate.html">Certificate</a>
-      <a href="contact.html">Contact</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
     </nav>
   </header>
 
@@ -198,5 +222,11 @@
     </div>
     © Brickasso 2025 &ndash; Original LEGO Art by Albert Oprea
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
