@@ -12,7 +12,15 @@
   <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
-    /* ===== BASE ===== */
+    :root {
+      --menu-bg: rgba(255, 255, 255, 0.95);
+      --menu-link: #000;
+      --menu-link-active: #d62828; /* identic cu hover-ul */
+    }
+
+    /* elimină highlight-ul colorat la tap pe mobile (poate apărea roșu) */
+    * { -webkit-tap-highlight-color: transparent; }
+
     body {
       margin: 0;
       padding: 0;
@@ -24,20 +32,20 @@
       color: #111;
     }
 
-    /* ===== HEADER — IDENTIC CU index.html (cu override-uri de siguranță) ===== */
+    /* HEADER — identic cu index.html */
     header {
-      padding: 10px 20px !important;
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      background-color: rgba(255, 255, 255, 0.8) !important;
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 1000 !important;
-      border-bottom: 1px solid #ddd !important;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
     }
 
-    .logo { height: 50px !important; }
+    .logo { height: 50px; }
 
     .menu-toggle {
       display: none;
@@ -46,25 +54,23 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #000; /* sigur vizibil */
+      color: #000;
     }
+    .menu-toggle:focus,
+    .menu-toggle:active { color: #000; background: transparent; outline: none; }
 
-    nav {
-      display: flex;            /* desktop: vizibil */
-      background: transparent;  /* ca în index */
-    }
+    nav { display: flex; background: transparent; }
 
     nav a {
-      margin-left: 20px !important;
-      text-decoration: none !important;
-      color: #000 !important;
-      font-weight: 600 !important;
-      transition: color 0.3s !important;
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
     }
+    nav a:hover { color: #d62828; }
 
-    nav a:hover { color: #d62828 !important; }
-
-    /* ===== CONTACT SECTION (voal alb, ca .hero din index) ===== */
+    /* CONTACT SECTION (voal alb, ca .hero) */
     .contact-section {
       text-align: center;
       padding: 100px 20px 60px;
@@ -77,11 +83,7 @@
       font-weight: 600;
     }
 
-    .contact-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: left;
-    }
+    .contact-wrapper { max-width: 700px; margin: 0 auto; text-align: left; }
 
     form { display: grid; gap: 16px; }
 
@@ -128,7 +130,7 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* ===== FOOTER — IDENTIC ===== */
+    /* FOOTER — identic */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -142,37 +144,39 @@
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* ===== MOBILE — IDENTIC CU index.html ===== */
+    /* MOBILE — identic cu index + forțăm nav.active să NU mai ia stiluri roșii din altă parte */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-      }
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
 
-      .menu-toggle {
-        display: block;        /* pe mobil apare butonul */
-        font-size: 1.2em;
-        color: #000;
-      }
+      .menu-toggle { display: block; font-size: 1.2em; }
 
-      /* Meniul mobil e ascuns by default */
       nav {
-        display: none;         /* ascuns */
+        display: none;              /* ascuns implicit */
         flex-direction: column;
         gap: 15px;
         position: absolute;
         top: 70px;
         right: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.95) !important;
+        background-color: var(--menu-bg) !important; /* fixăm fundalul */
         padding: 20px;
         text-align: center;
         z-index: 999;
       }
 
-      /* când capătă clasa .active devine vizibil (exact ca în index) */
-      nav.active { display: flex !important; }
+      /* AICI e cheia: când nav devine .active, îi fixăm explicit culorile */
+      header nav.active {
+        display: flex !important;
+        background-color: var(--menu-bg) !important;
+        color: var(--menu-link) !important;
+      }
+      header nav.active a {
+        color: var(--menu-link) !important;
+      }
+      header nav.active a:active,
+      header nav.active a:hover {
+        color: var(--menu-link-active) !important;
+      }
 
       .contact-section { padding: 60px 20px 40px; }
       .contact-section h1 { font-size: 1.7em; margin-bottom: 20px; }
