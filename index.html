@@ -24,7 +24,7 @@
     }
 
     header {
-      padding: 20px 40px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -36,7 +36,16 @@
     }
 
     .logo {
-      height: 60px;
+      height: 50px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
     nav {
@@ -53,15 +62,6 @@
 
     nav a:hover {
       color: #d62828;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
     }
 
     .hero {
@@ -128,13 +128,24 @@
 
     /* Responsive mobile menu */
     @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.2em;
+      }
+
       nav {
         display: none;
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        top: 80px;
-        left: 0;
+        top: 70px;
+        right: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.95);
         padding: 20px;
@@ -144,19 +155,6 @@
 
       nav.active {
         display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .logo {
-        height: 50px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
       }
 
       .hero {
