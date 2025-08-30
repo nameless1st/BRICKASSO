@@ -23,7 +23,6 @@
       color: #111;
     }
 
-    /* HEADER */
     header {
       padding: 10px 20px;
       display: flex;
@@ -48,7 +47,6 @@
     }
 
     nav { display: flex; }
-
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -56,10 +54,8 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-
     nav a:hover { color: #d62828; }
 
-    /* SECTION */
     .contact-section {
       padding: 100px 20px 60px;
       background-color: rgba(255, 255, 255, 0.75);
@@ -78,10 +74,7 @@
       text-align: left;
     }
 
-    form {
-      display: grid;
-      gap: 16px;
-    }
+    form { display: grid; gap: 16px; }
 
     input, textarea {
       padding: 12px;
@@ -102,10 +95,29 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     button:hover { background: #d62828; }
 
-    /* FOOTER */
+    /* mesaj de status */
+    #formStatus {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95em;
+      display: none;
+    }
+    #formStatus.success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    #formStatus.error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -115,61 +127,21 @@
     }
 
     .social-icons-footer { margin-bottom: 10px; }
-
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons-footer img {
-      height: 64px;
-      width: auto;
-      vertical-align: middle;
-    }
-
+    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.2em;
-      }
-
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
+      .menu-toggle { display: block; font-size: 1.2em; }
       nav {
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        text-align: center;
-        z-index: 999;
+        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
+        background-color: rgba(255, 255, 255, 0.95); padding: 20px; text-align: center; z-index: 999;
       }
-
       nav.active { display: flex; }
-
-      .contact-section {
-        padding: 60px 20px 40px;
-      }
-
-      .contact-section h1 {
-        font-size: 2em;
-        margin-bottom: 20px;
-      }
-
+      .contact-section { padding: 60px 20px 40px; }
+      .contact-section h1 { font-size: 2em; margin-bottom: 20px; }
       .social-icons-footer img { height: 48px; }
-
       footer { padding: 40px 20px; }
     }
   </style>
@@ -190,17 +162,16 @@
   <section class="contact-section">
     <h1>Contact Brickasso</h1>
     <div class="contact-wrapper">
-      <form action="https://formspree.io/f/xpwjdaaw" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/xpwjdaaw" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
         
-        <!-- hidden fields -->
         <input type="hidden" name="_subject" value="New message from brickasso.art" />
-        <input type="hidden" name="_redirect" value="https://brickasso.art/thank-you.html" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-        <button type="submit">Send Message</button>
+        <button type="submit" id="sendBtn">Send Message</button>
+        <p id="formStatus"></p>
       </form>
     </div>
   </section>
@@ -221,6 +192,40 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("active");
     }
+
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    const btn = document.getElementById('sendBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.className = '';
+      statusEl.textContent = 'Sending...';
+      statusEl.style.display = 'block';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (res.ok) {
+          statusEl.className = 'success';
+          statusEl.textContent = '✅ Thank you! Your message has been sent.';
+          form.reset();
+        } else {
+          statusEl.className = 'error';
+          statusEl.textContent = '⚠️ Something went wrong. Please try again.';
+        }
+      } catch (err) {
+        statusEl.className = 'error';
+        statusEl.textContent = '⚠️ Network error. Please try again.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
