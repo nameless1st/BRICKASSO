@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificate – Brickasso</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-image: url('archi-big-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #111;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d62828;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1em;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .section {
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+
+    .section h1 {
+      font-size: 2.6em;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .section p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .social-icons-footer {
+      margin-bottom: 10px;
+    }
+
+    .social-icons-footer a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons-footer img {
+      height: 64px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .social-icons-footer a:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo {
+        height: 50px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section h1 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1.05em;
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
+      <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Certificate of Authenticity</h1>
+    <p>
+      Each Brickasso artwork is a one-of-a-kind creation, meticulously handcrafted by Albert Oprea using only original LEGO® bricks.
+    </p>
+    <p>
+      To guarantee the uniqueness and provenance of every piece, collectors receive an official Certificate of Authenticity — individually signed, numbered, and verified by the artist himself.
+    </p>
+    <p><strong>The certificate includes:</strong></p>
+    <p>
+      • Title of the work<br>
+      • Total brick count<br>
+      • Hours of creation<br>
+      • Signature and date<br>
+      • Unique identifier with QR code validation
+    </p>
+    <p>
+      For special commissions and limited editions, the certificate may also include exclusive insights about the creative process and hidden design elements.
+    </p>
+    <p>
+      Each certificate is printed on premium archival-grade paper and accompanied by a digitally verifiable record — ensuring authenticity for generations to come.
+    </p>
+    <p style="font-style: italic; color: #555; margin-top: 40px;">
+      "Every brick tells a story — and every certificate preserves it."<br>
+      — Albert Oprea
+    </p>
+  </section>
+
+  <footer>
+    <div class="social-icons-footer">
+      <a href="https://instagram.com/brickasso.art" target="_blank">
+        <img src="instagram-logo.png" alt="Instagram">
+      </a>
+      <a href="https://x.com/brickasso_art" target="_blank">
+        <img src="x-logo.png" alt="X (Twitter)">
+      </a>
+    </div>
+    © Brickasso 2025 – Original LEGO Art by Albert Oprea
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
