@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificate – Brickasso</title>
+  <meta name="description" content="Certificate of Authenticity for Brickasso artworks by Albert Oprea. Signed, numbered, and QR-verified." />
+  <meta property="og:title" content="Certificate of Authenticity – Brickasso" />
+  <meta property="og:description" content="Each Brickasso piece comes with a signed, numbered Certificate of Authenticity and QR validation." />
+  <meta property="og:image" content="brickasso-logo.png" />
+  <meta property="og:url" content="https://brickasso.art/certificate.html" />
+  <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
   <style>
     body {
@@ -17,8 +23,9 @@
       color: #111;
     }
 
+    /* HEADER – identic cu index / gallery / about */
     header {
-      padding: 20px 40px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -29,25 +36,7 @@
       border-bottom: 1px solid #ddd;
     }
 
-    .logo {
-      height: 60px;
-    }
-
-    nav {
-      display: flex;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #d62828;
-    }
+    .logo { height: 50px; }
 
     .menu-toggle {
       display: none;
@@ -58,36 +47,54 @@
       cursor: pointer;
     }
 
-    .section {
-      background-color: rgba(255, 255, 255, 0.75);
+    nav { display: flex; }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: #d62828; }
+
+    /* SECTION – același “voal” alb */
+    .certificate-section {
       padding: 100px 20px 60px;
+      background-color: rgba(255, 255, 255, 0.75);
       text-align: center;
     }
 
-    .section h1 {
-      font-size: 2.6em;
-      margin-bottom: 30px;
+    .certificate-section h1 {
+      font-size: 3em;
+      margin: 0 0 30px 0;
       font-weight: 600;
     }
 
-    .section p {
-      font-size: 1.2em;
+    .certificate-section p {
+      font-size: 1.3em;
       line-height: 1.8;
       max-width: 800px;
       margin: 0 auto 20px;
     }
 
+    .sigiliu {
+      display: block;
+      height: 120px;
+      margin: 40px auto 0;
+    }
+
+    /* FOOTER – identic */
     footer {
-      margin-top: 80px;
+      margin-top: 100px;
       padding: 30px;
       text-align: center;
       font-size: 0.9em;
       color: #666;
     }
 
-    .social-icons-footer {
-      margin-bottom: 10px;
-    }
+    .social-icons-footer { margin-bottom: 10px; }
 
     .social-icons-footer a {
       margin: 0 15px;
@@ -101,18 +108,28 @@
       vertical-align: middle;
     }
 
-    .social-icons-footer a:hover {
-      transform: scale(1.2);
-    }
+    .social-icons-footer a:hover { transform: scale(1.2); }
 
+    /* RESPONSIVE – identic */
     @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.2em;
+      }
+
       nav {
         display: none;
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        top: 80px;
-        left: 0;
+        top: 70px;
+        right: 0;
         width: 100%;
         background-color: rgba(255, 255, 255, 0.95);
         padding: 20px;
@@ -120,31 +137,25 @@
         z-index: 999;
       }
 
-      nav.active {
-        display: flex;
+      nav.active { display: flex; }
+
+      .certificate-section {
+        padding: 60px 20px 40px;
       }
 
-      .menu-toggle {
-        display: block;
-      }
-
-      .logo {
-        height: 50px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .section h1 {
+      .certificate-section h1 {
         font-size: 2em;
+        margin-bottom: 20px;
       }
 
-      .section p {
+      .certificate-section p {
         font-size: 1.05em;
         padding: 0 10px;
       }
+
+      .social-icons-footer img { height: 48px; }
+
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -161,13 +172,16 @@
     </nav>
   </header>
 
-  <section class="section">
+  <section class="certificate-section">
     <h1>Certificate of Authenticity</h1>
     <p>
-      Each Brickasso artwork is a one-of-a-kind creation, meticulously handcrafted by Albert Oprea using only original LEGO® bricks.
+      Each Brickasso artwork is a one-of-a-kind creation, meticulously handcrafted by
+      Albert Oprea using only original LEGO® bricks.
     </p>
     <p>
-      To guarantee the uniqueness and provenance of every piece, collectors receive an official Certificate of Authenticity — individually signed, numbered, and verified by the artist himself.
+      To guarantee the uniqueness and provenance of every piece, collectors receive an
+      official Certificate of Authenticity — individually signed, numbered, and verified by
+      the artist himself.
     </p>
     <p><strong>The certificate includes:</strong></p>
     <p>
@@ -178,15 +192,18 @@
       • Unique identifier with QR code validation
     </p>
     <p>
-      For special commissions and limited editions, the certificate may also include exclusive insights about the creative process and hidden design elements.
+      For special commissions and limited editions, the certificate may also include
+      exclusive insights about the creative process and hidden design elements.
     </p>
     <p>
-      Each certificate is printed on premium archival-grade paper and accompanied by a digitally verifiable record — ensuring authenticity for generations to come.
+      Each certificate is printed on premium archival-grade paper and accompanied by a
+      digitally verifiable record — ensuring authenticity for generations to come.
     </p>
     <p style="font-style: italic; color: #555; margin-top: 40px;">
       "Every brick tells a story — and every certificate preserves it."<br>
       — Albert Oprea
     </p>
+    <img src="sigiliu.gif" alt="Brickasso Seal" class="sigiliu">
   </section>
 
   <footer>
