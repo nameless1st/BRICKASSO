@@ -23,7 +23,6 @@
       color: #111;
     }
 
-    /* HEADER – identic */
     header {
       padding: 10px 20px;
       display: flex;
@@ -35,112 +34,68 @@
       z-index: 1000;
       border-bottom: 1px solid #ddd;
     }
-
     .logo { height: 50px; }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
+    .menu-toggle { display: none; font-size: 1em; font-weight: bold; background: none; border: none; cursor: pointer; }
     nav { display: flex; }
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+    nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
     nav a:hover { color: #d62828; }
 
-    /* SECTION */
+    /* voal doar pe partea de sus */
     .certificate-section {
       position: relative;
       padding: 100px 20px 60px;
-      background-color: rgba(255, 255, 255, 0.75);
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.75) 0,
+        rgba(255,255,255,0.75) 120vh,
+        rgba(255,255,255,0) 120vh
+      );
       text-align: center;
     }
 
-    .certificate-section h1 {
-      font-size: 3em;
-      margin: 0 0 30px 0;
-      font-weight: 600;
-    }
-
-    .certificate-section p {
-      font-size: 1.3em;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto 20px;
-    }
+    .certificate-section h1 { font-size: 3em; margin: 0 0 30px 0; font-weight: 600; }
+    .certificate-section p { font-size: 1.3em; line-height: 1.8; max-width: 800px; margin: 0 auto 20px; }
 
     .sigiliu {
       position: absolute;
       top: 35%;
-      right: 10%;
-      height: 240px;            /* dublu față de 120px */
-      transform: rotate(25deg); /* rotit spre stânga */
+      right: 8%;
+      height: 240px;
+      transform: rotate(-25deg);
     }
 
-    /* FOOTER */
     footer {
-      margin-top: 100px;
-      padding: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
+      margin-top: 100px; padding: 30px; text-align: center; font-size: 0.9em; color: #666;
     }
-
     .social-icons-footer { margin-bottom: 10px; }
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .social-icons-footer img {
-      height: 64px;
-      width: auto;
-      vertical-align: middle;
-    }
+    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
       .menu-toggle { display: block; font-size: 1.2em; }
       nav {
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        text-align: center;
-        z-index: 999;
+        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
+        background-color: rgba(255,255,255,0.95); padding: 20px; text-align: center; z-index: 999;
       }
       nav.active { display: flex; }
 
-      .certificate-section { padding: 60px 20px 40px; }
+      .certificate-section {
+        padding: 60px 20px 40px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.75) 0,
+          rgba(255,255,255,0.75) 45vh,
+          rgba(255,255,255,0) 45vh
+        );
+      }
+
       .certificate-section h1 { font-size: 2em; margin-bottom: 20px; }
       .certificate-section p { font-size: 1.05em; padding: 0 10px; }
 
       .sigiliu {
-        position: static;
-        display: block;
-        margin: 30px auto 0;
-        transform: none;
-        height: 160px; /* mai mic pe mobil */
+        position: static; display: block; margin: 30px auto 0; transform: none; height: 160px;
       }
 
       .social-icons-footer img { height: 48px; }
