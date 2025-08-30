@@ -23,6 +23,7 @@
       color: #111;
     }
 
+    /* HEADER */
     header {
       padding: 10px 20px;
       display: flex;
@@ -47,6 +48,7 @@
     }
 
     nav { display: flex; }
+
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -56,6 +58,7 @@
     }
     nav a:hover { color: #d62828; }
 
+    /* CONTACT SECTION */
     .contact-section {
       padding: 100px 20px 60px;
       background-color: rgba(255, 255, 255, 0.75);
@@ -97,7 +100,6 @@
     }
     button:hover { background: #d62828; }
 
-    /* mesaj de status */
     #formStatus {
       margin-top: 15px;
       padding: 12px;
@@ -118,6 +120,7 @@
       border: 1px solid #f5c6cb;
     }
 
+    /* FOOTER */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -131,16 +134,38 @@
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      header { flex-direction: row; justify-content: space-between; align-items: center; }
-      .menu-toggle { display: block; font-size: 1.2em; }
-      nav {
-        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
-        background-color: rgba(255, 255, 255, 0.95); padding: 20px; text-align: center; z-index: 999;
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
+
+      .menu-toggle {
+        display: block;
+        font-size: 1.2em;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
+      }
+
       nav.active { display: flex; }
+
       .contact-section { padding: 60px 20px 40px; }
       .contact-section h1 { font-size: 2em; margin-bottom: 20px; }
+
       .social-icons-footer img { height: 48px; }
       footer { padding: 40px 20px; }
     }
