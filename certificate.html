@@ -23,7 +23,7 @@
       color: #111;
     }
 
-    /* HEADER – identic cu index / gallery / about */
+    /* HEADER – identic */
     header {
       padding: 10px 20px;
       display: flex;
@@ -48,7 +48,6 @@
     }
 
     nav { display: flex; }
-
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -56,12 +55,11 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-
     nav a:hover { color: #d62828; }
 
-    /* SECTION – același “voal” alb */
+    /* SECTION */
     .certificate-section {
-      position: relative; /* pentru poziționare absolută a sigiliului */
+      position: relative;
       padding: 100px 20px 60px;
       background-color: rgba(255, 255, 255, 0.75);
       text-align: center;
@@ -82,12 +80,13 @@
 
     .sigiliu {
       position: absolute;
-      top: 35%;     /* la ~35% din secțiune */
-      right: 8%;    /* spre partea dreaptă */
-      height: 120px;
+      top: 35%;
+      right: 8%;
+      height: 240px;            /* dublu față de 120px */
+      transform: rotate(-25deg); /* rotit spre stânga */
     }
 
-    /* FOOTER – identic */
+    /* FOOTER */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -97,34 +96,26 @@
     }
 
     .social-icons-footer { margin-bottom: 10px; }
-
     .social-icons-footer a {
       margin: 0 15px;
       display: inline-block;
       transition: transform 0.3s ease;
     }
-
     .social-icons-footer img {
       height: 64px;
       width: auto;
       vertical-align: middle;
     }
-
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* RESPONSIVE – pe mobil sigiliul revine centrat */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       header {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.2em;
-      }
-
+      .menu-toggle { display: block; font-size: 1.2em; }
       nav {
         display: none;
         flex-direction: column;
@@ -138,27 +129,18 @@
         text-align: center;
         z-index: 999;
       }
-
       nav.active { display: flex; }
 
-      .certificate-section {
-        padding: 60px 20px 40px;
-      }
-
-      .certificate-section h1 {
-        font-size: 2em;
-        margin-bottom: 20px;
-      }
-
-      .certificate-section p {
-        font-size: 1.05em;
-        padding: 0 10px;
-      }
+      .certificate-section { padding: 60px 20px 40px; }
+      .certificate-section h1 { font-size: 2em; margin-bottom: 20px; }
+      .certificate-section p { font-size: 1.05em; padding: 0 10px; }
 
       .sigiliu {
         position: static;
         display: block;
         margin: 30px auto 0;
+        transform: none;
+        height: 160px; /* mai mic pe mobil */
       }
 
       .social-icons-footer img { height: 48px; }
