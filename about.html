@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About – Brickasso</title>
+  <meta name="description" content="The story behind Brickasso: LEGO Art by Albert Oprea. From first bricks to signed works like The White Horse (01)." />
+  <meta property="og:title" content="About – Brickasso LEGO Art" />
+  <meta property="og:description" content="Learn about Albert Oprea, the young artist behind Brickasso, and the vision that turned thousands of LEGO pieces into art." />
+  <meta property="og:image" content="brickasso-logo.png" />
+  <meta property="og:url" content="https://brickasso.art/about.html" />
+  <link rel="icon" type="image/png" href="brickasso-icon.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
   <style>
     body {
@@ -17,6 +23,7 @@
       color: #111;
     }
 
+    /* HEADER – identic cu index & gallery */
     header {
       padding: 10px 20px;
       display: flex;
@@ -29,9 +36,7 @@
       border-bottom: 1px solid #ddd;
     }
 
-    .logo {
-      height: 50px;
-    }
+    .logo { height: 50px; }
 
     .menu-toggle {
       display: none;
@@ -42,9 +47,7 @@
       cursor: pointer;
     }
 
-    nav {
-      display: flex;
-    }
+    nav { display: flex; }
 
     nav a {
       margin-left: 20px;
@@ -54,20 +57,19 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #d62828;
-    }
+    nav a:hover { color: #d62828; }
 
+    /* ABOUT SECTION – același “voal” alb ca .hero */
     .about-section {
-      padding: 60px 2cm;
+      padding: 100px 20px 60px;
       background-color: rgba(255, 255, 255, 0.75);
     }
 
     .about-section h1 {
       text-align: center;
-      font-size: 2.8em;
+      font-size: 3em;
       font-weight: 600;
-      margin-bottom: 50px;
+      margin: 0 0 40px 0;
     }
 
     .about-wrapper {
@@ -75,7 +77,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 40px;
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -92,6 +94,7 @@
       line-height: 1.8;
     }
 
+    /* FOOTER – identic cu index & gallery */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -100,9 +103,7 @@
       color: #666;
     }
 
-    .social-icons-footer {
-      margin-bottom: 10px;
-    }
+    .social-icons-footer { margin-bottom: 10px; }
 
     .social-icons-footer a {
       margin: 0 15px;
@@ -116,10 +117,9 @@
       vertical-align: middle;
     }
 
-    .social-icons-footer a:hover {
-      transform: scale(1.2);
-    }
+    .social-icons-footer a:hover { transform: scale(1.2); }
 
+    /* RESPONSIVE – identic cu index & gallery */
     @media (max-width: 768px) {
       header {
         flex-direction: row;
@@ -146,20 +146,10 @@
         z-index: 999;
       }
 
-      nav.active {
-        display: flex;
-      }
-
-      .about-wrapper {
-        flex-direction: column;
-      }
-
-      .about-image, .about-text {
-        width: 100%;
-      }
+      nav.active { display: flex; }
 
       .about-section {
-        padding: 40px 20px;
+        padding: 60px 20px 40px;
       }
 
       .about-section h1 {
@@ -167,17 +157,20 @@
         margin-bottom: 30px;
       }
 
-      .about-text {
-        font-size: 1.05em;
+      .about-wrapper {
+        flex-direction: column;
+        max-width: 700px;
       }
 
-      .social-icons-footer img {
-        height: 48px;
+      .about-image, .about-text {
+        width: 100%;
       }
 
-      footer {
-        padding: 40px 20px;
-      }
+      .about-text { font-size: 1.05em; }
+
+      .social-icons-footer img { height: 48px; }
+
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
