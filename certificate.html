@@ -34,6 +34,29 @@
     ]
   }
   </script>
+
+  <!-- WebSite schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Brickasso",
+    "url": "https://brickasso.art",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brickasso",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://brickasso.art/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.google.com/search?q=site%3Abrickasso.art+{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
     body {
       margin: 0;
       padding: 0;
