@@ -2,61 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificate – Brickasso</title>
-  <meta name="description" content="Certificate of Authenticity for Brickasso artworks by Albert Oprea. Signed, numbered, and QR-verified." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certificate of Authenticity – Brickasso</title>
 
-  <!-- Canonical & Open Graph -->
-  <link rel="canonical" href="https://brickasso.art/certificate.html">
+  <!-- SEO / Sharing -->
+  <meta name="description" content="Certificate of Authenticity for Brickasso artworks by Albert Oprea. Signed, numbered, and QR-verified." />
+  <link rel="canonical" href="https://brickasso.art/certificate.html" />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Certificate of Authenticity – Brickasso" />
-  <meta property="og:description" content="Each Brickasso piece comes with a signed, numbered Certificate of Authenticity and QR validation." />
+  <meta property="og:description" content="Each Brickasso piece comes with a signed, numbered certificate and verification code." />
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/certificate.html" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
-  <link rel="icon" href="/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+  <!-- Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
 
-  <!-- Organization schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Brickasso",
-    "url": "https://brickasso.art",
-    "logo": "https://brickasso.art/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/brickasso.art",
-      "https://www.tiktok.com/@brickasso.art"
-    ]
-  }
-  </script>
-
-  <!-- WebSite schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Brickasso",
-    "url": "https://brickasso.art",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Brickasso",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://brickasso.art/logo.png"
-      }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.google.com/search?q=site%3Abrickasso.art+{search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+  <style>
+    /* Base */
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 0;
@@ -68,6 +36,7 @@
       color: #111;
     }
 
+    /* Header (same across site) */
     header {
       padding: 10px 20px;
       display: flex;
@@ -80,12 +49,24 @@
       border-bottom: 1px solid #ddd;
     }
     .logo { height: 50px; }
-    .menu-toggle { display: none; font-size: 1em; font-weight: bold; background: none; border: none; cursor: pointer; }
+    .menu-toggle {
+      display: none;
+      font-size: 1.2em;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
     nav { display: flex; }
-    nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
     nav a:hover { color: #d62828; }
 
-    /* voal doar pe partea de sus */
+    /* Content */
     .certificate-section {
       position: relative;
       padding: 100px 20px 60px;
@@ -97,10 +78,17 @@
       );
       text-align: center;
     }
-
-    .certificate-section h1 { font-size: 3em; margin: 0 0 30px 0; font-weight: 600; }
-    .certificate-section p { font-size: 1.3em; line-height: 1.8; max-width: 800px; margin: 0 auto 20px; }
-
+    .certificate-section h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .certificate-section p {
+      font-size: 1.3em;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
     .sigiliu {
       position: absolute;
       top: 35%;
@@ -109,20 +97,38 @@
       transform: rotate(-25deg);
     }
 
+    /* Footer */
     footer {
-      margin-top: 100px; padding: 30px; text-align: center; font-size: 0.9em; color: #666;
+      margin-top: 100px;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
     }
     .social-icons-footer { margin-bottom: 10px; }
-    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer a {
+      margin: 0 15px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
+    /* Mobile */
     @media (max-width: 768px) {
-      header { flex-direction: row; justify-content: space-between; align-items: center; }
-      .menu-toggle { display: block; font-size: 1.2em; }
+      .menu-toggle { display: block; }
       nav {
-        display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
-        background-color: rgba(255,255,255,0.95); padding: 20px; text-align: center; z-index: 999;
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
       }
       nav.active { display: flex; }
 
@@ -135,14 +141,15 @@
           rgba(255,255,255,0) 45vh
         );
       }
-
       .certificate-section h1 { font-size: 2em; margin-bottom: 20px; }
       .certificate-section p { font-size: 1.05em; padding: 0 10px; }
-
       .sigiliu {
-        position: static; display: block; margin: 30px auto 0; transform: none; height: 160px;
+        position: static;
+        display: block;
+        margin: 30px auto 0;
+        transform: none;
+        height: 160px;
       }
-
       .social-icons-footer img { height: 48px; }
       footer { padding: 40px 20px; }
     }
@@ -150,7 +157,7 @@
 </head>
 <body>
   <header>
-    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo" />
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <nav id="mobile-menu">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -168,49 +175,35 @@
       Albert Oprea using only original LEGO® bricks.
     </p>
     <p>
-      To guarantee the uniqueness and provenance of every piece, collectors receive an
-      official Certificate of Authenticity — individually signed, numbered, and verified by
-      the artist himself.
+      Collectors receive an official Certificate of Authenticity — individually signed, numbered,
+      and verified via a private code printed on the certificate.
     </p>
     <p><strong>The certificate includes:</strong></p>
     <p>
-      • Title of the work<br>
-      • Total brick count<br>
-      • Hours of creation<br>
-      • Signature and date<br>
-      • Unique identifier with QR code validation
-    </p>
-    <p>
-      For special commissions and limited editions, the certificate may also include
-      exclusive insights about the creative process and hidden design elements.
-    </p>
-    <p>
-      Each certificate is printed on premium archival-grade paper and accompanied by a
-      digitally verifiable record — ensuring authenticity for generations to come.
+      • Title of the work<br/>
+      • Total brick count<br/>
+      • Hours of creation<br/>
+      • Signature and date<br/>
+      • Unique registry number and verification code
     </p>
     <p style="font-style: italic; color: #555; margin-top: 40px;">
-      "Every brick tells a story — and every certificate preserves it."<br>
+      "Every brick tells a story — and every certificate preserves it."<br/>
       — Albert Oprea
     </p>
-    <img src="sigiliu.gif" alt="Brickasso Seal" class="sigiliu">
+
+    <img src="sigiliu.gif" alt="Brickasso Seal" class="sigiliu" />
   </section>
 
   <footer>
     <div class="social-icons-footer">
-      <a href="https://instagram.com/brickasso.art" target="_blank">
-        <img src="instagram-logo.png" alt="Instagram">
-      </a>
-      <a href="https://x.com/brickasso_art" target="_blank">
-        <img src="x-logo.png" alt="X (Twitter)">
-      </a>
+      <a href="https://instagram.com/brickasso.art" target="_blank"><img src="instagram-logo.png" alt="Instagram" /></a>
+      <a href="https://x.com/brickasso_art" target="_blank"><img src="x-logo.png" alt="X (Twitter)" /></a>
     </div>
     © Brickasso 2025 – Original LEGO Art by Albert Oprea
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("mobile-menu").classList.toggle("active");
-    }
+    function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
   </script>
 </body>
 </html>
