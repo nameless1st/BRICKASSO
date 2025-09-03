@@ -5,12 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery – Brickasso</title>
   <meta name="description" content="Discover Brickasso's LEGO Art gallery: watches, portraits, and creative masterpieces by Albert Oprea." />
+
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://brickasso.art/gallery.html">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Gallery – Brickasso LEGO Art" />
   <meta property="og:description" content="Explore Brickasso's LEGO Art gallery: unique watches, portraits, and masterpieces built from thousands of LEGO bricks." />
-  <meta property="og:image" content="brickasso-logo.png" />
+  <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/gallery.html" />
-  <link rel="icon" type="image/png" href="brickasso-icon.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gallery – Brickasso LEGO Art">
+  <meta name="twitter:description" content="Explore Brickasso's LEGO Art gallery: unique watches, portraits, and masterpieces built from thousands of LEGO bricks.">
+  <meta name="twitter:image" content="https://brickasso.art/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+
+  <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+
+  <!-- Organization schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Brickasso",
+    "url": "https://brickasso.art",
+    "logo": "https://brickasso.art/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/brickasso.art",
+      "https://www.tiktok.com/@brickasso.art"
+    ]
+  }
+  </script>
+
+  <!-- WebSite schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Brickasso",
+    "url": "https://brickasso.art",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brickasso",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://brickasso.art/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.google.com/search?q=site%3Abrickasso.art+{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -35,9 +89,7 @@
       border-bottom: 1px solid #ddd;
     }
 
-    .logo {
-      height: 50px;
-    }
+    .logo { height: 50px; }
 
     .menu-toggle {
       display: none;
@@ -48,9 +100,7 @@
       cursor: pointer;
     }
 
-    nav {
-      display: flex;
-    }
+    nav { display: flex; }
 
     nav a {
       margin-left: 20px;
@@ -60,68 +110,127 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #d62828;
-    }
+    nav a:hover { color: #d62828; }
 
     .hero {
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 100px 20px 30px;
       background-color: rgba(255, 255, 255, 0.75);
     }
 
     .hero h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin: 0 0 10px 0;
       font-weight: 600;
     }
 
     .hero p {
-      font-size: 1.3em;
+      font-size: 1.2em;
       color: #444;
-      margin-top: 20px;
+      margin: 0 auto 10px;
+      max-width: 800px;
     }
 
+    /* GALLERY GRID */
+    .gallery {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .tile img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+
+    .lb-close, .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 22px;
+      display: grid;
+      place-items: center;
+      transition: background .2s ease;
+    }
+
+    .lb-close { top: 40px; right: 40px; transform: none; }
+    .lb-prev  { left: 30px; }
+    .lb-next  { right: 30px; }
+
+    .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.3); }
+
     footer {
-      margin-top: 100px;
+      margin-top: 40px;
       padding: 30px;
       text-align: center;
       font-size: 0.9em;
       color: #666;
     }
 
-    .social-icons-footer {
-      margin-bottom: 10px;
+    .social-icons-footer { margin-bottom: 10px; }
+    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
+    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
+    .social-icons-footer a:hover { transform: scale(1.2); }
+
+    /* Responsive mobile menu + grid */
+    @media (max-width: 1024px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons-footer img {
-      height: 64px;
-      width: auto;
-      vertical-align: middle;
-    }
-
-    .social-icons-footer a:hover {
-      transform: scale(1.2);
-    }
-
-    /* Responsive mobile menu */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.2em;
-      }
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
+      .menu-toggle { display: block; font-size: 1.2em; }
 
       nav {
         display: none;
@@ -137,30 +246,15 @@
         z-index: 999;
       }
 
-      nav.active {
-        display: flex;
-      }
+      nav.active { display: flex; }
 
-      .hero {
-        padding: 60px 20px 40px;
-      }
+      .hero { padding: 60px 20px 20px; }
+      .hero h1 { font-size: 2em; }
+      .hero p  { font-size: 1.05em; padding: 0 10px; }
 
-      .hero h1 {
-        font-size: 2em;
-      }
-
-      .hero p {
-        font-size: 1.1em;
-        padding: 0 10px;
-      }
-
-      .social-icons-footer img {
-        height: 48px;
-      }
-
-      footer {
-        padding: 40px 20px;
-      }
+      .grid { grid-template-columns: 1fr; gap: 14px; }
+      .social-icons-footer img { height: 48px; }
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -179,8 +273,41 @@
 
   <section class="hero">
     <h1>Gallery</h1>
-    <p>Coming soon... A full collection of LEGO® masterpieces.</p>
+    <p>Selected LEGO® artworks by Albert Oprea.</p>
   </section>
+
+  <section class="gallery">
+    <div class="grid" id="galleryGrid">
+      <!-- Fiecare .tile are data-full pentru imaginea mare (acum folosim același fișier) -->
+      <figure class="tile" data-full="hulk.webp">
+        <img src="hulk.webp" alt="Rolex Hulk – LEGO mosaic by Brickasso" loading="lazy">
+      </figure>
+
+      <figure class="tile" data-full="daytona.webp">
+        <img src="daytona.webp" alt="Rolex Daytona – LEGO mosaic by Brickasso" loading="lazy">
+      </figure>
+
+      <figure class="tile" data-full="pepsi.webp">
+        <img src="pepsi.webp" alt="Rolex Pepsi – LEGO mosaic by Brickasso" loading="lazy">
+      </figure>
+
+      <figure class="tile" data-full="girl-at-the-mirror.webp">
+        <img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – LEGO mosaic by Brickasso" loading="lazy">
+      </figure>
+
+      <figure class="tile" data-full="white-horse.webp">
+        <img src="white-horse.webp" alt="The White Horse – LEGO mosaic by Brickasso" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-prev"  id="lbPrev"  aria-label="Previous">‹</button>
+    <img id="lbImage" src="" alt="">
+    <button class="lb-next"  id="lbNext"  aria-label="Next">›</button>
+  </div>
 
   <footer>
     <div class="social-icons-footer">
@@ -198,6 +325,61 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("active");
     }
+
+    // Lightbox logic
+    const tiles = Array.from(document.querySelectorAll('.tile'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImage');
+    const btnPrev = document.getElementById('lbPrev');
+    const btnNext = document.getElementById('lbNext');
+    const btnClose = document.getElementById('lbClose');
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const src = tiles[currentIndex].dataset.full;
+      const alt = tiles[currentIndex].querySelector('img').alt;
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + tiles.length) % tiles.length;
+      openLightbox(currentIndex);
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % tiles.length;
+      openLightbox(currentIndex);
+    }
+
+    tiles.forEach((tile, i) => {
+      tile.addEventListener('click', () => openLightbox(i));
+    });
+
+    btnClose.addEventListener('click', closeLightbox);
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+    // ESC & arrows
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
   </script>
 </body>
 </html>
