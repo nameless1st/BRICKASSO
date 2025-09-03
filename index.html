@@ -1,12 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brickasso – Original LEGO Art</title>
   <meta name="description" content="Official site of Brickasso – Original LEGO Art by Albert Oprea. Unique 1-of-1 artworks built with thousands of LEGO bricks. Watches, portraits, and masterpieces." />
+
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="https://brickasso.art/">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Brickasso – Original LEGO Art by Albert Oprea" />
   <meta property="og:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea." />
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brickasso – Original LEGO Art by Albert Oprea">
+  <meta name="twitter:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea.">
+  <meta name="twitter:image" content="https://brickasso.art/logo.png">
 
   <!-- Favicon and Apple Touch Icon -->
   <link rel="icon" href="/logo.png" type="image/png">
@@ -27,6 +39,29 @@
       "https://www.instagram.com/brickasso.art",
       "https://www.tiktok.com/@brickasso.art"
     ]
+  }
+  </script>
+
+  <!-- WebSite schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Brickasso",
+    "url": "https://brickasso.art",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brickasso",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://brickasso.art/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.google.com/search?q=site%3Abrickasso.art+{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
