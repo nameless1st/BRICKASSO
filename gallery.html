@@ -18,50 +18,63 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
 
   <style>
-    body { margin:0; padding:0; font-family:'Montserrat',sans-serif;
-      background:url('archi-big-bg.jpg') center/cover fixed; color:#111; }
-    header {
-      padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
-      background-color:rgba(255,255,255,.8); position:sticky; top:0; z-index:1000; border-bottom:1px solid #ddd;
+    body{margin:0;padding:0;font-family:'Montserrat',sans-serif;
+      background:url('archi-big-bg.jpg') center/cover fixed;color:#111}
+    header{padding:10px 20px;display:flex;justify-content:space-between;align-items:center;
+      background-color:rgba(255,255,255,.8);position:sticky;top:0;z-index:1000;border-bottom:1px solid #ddd}
+    .logo{height:50px}
+    .menu-toggle{display:none;font-size:1.2em;background:none;border:none;cursor:pointer}
+    nav{display:flex}
+    nav a{margin-left:20px;text-decoration:none;color:#000;font-weight:600;transition:color .3s}
+    nav a:hover{color:#d62828}
+
+    .hero{text-align:center;padding:100px 20px 30px;background:rgba(255,255,255,.75)}
+    .hero h1{font-size:3em;margin:0 0 10px;font-weight:600}
+    .hero p{font-size:1.2em;color:#444;margin:0 auto 10px;max-width:800px}
+
+    /* galerie 1 pe coloană, redusă pe desktop */
+    .gallery{padding:20px;background:rgba(255,255,255,.75)}
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      max-width:1050px;    /* redus ~25% pe desktop */
+      margin:0 auto;
     }
-    .logo{height:50px;}
-    .menu-toggle{display:none; font-size:1.2em; background:none; border:none; cursor:pointer;}
-    nav{display:flex;}
-    nav a{margin-left:20px; text-decoration:none; color:#000; font-weight:600; transition:color .3s;}
-    nav a:hover{color:#d62828;}
-
-    .hero{text-align:center; padding:100px 20px 30px; background:rgba(255,255,255,.75);}
-    .hero h1{font-size:3em; margin:0 0 10px; font-weight:600;}
-    .hero p{font-size:1.2em; color:#444; margin:0 auto 10px; max-width:800px;}
-
-    .gallery{padding:20px; background:rgba(255,255,255,.75);}
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1400px; margin:0 auto;}
-    .tile{border-radius:12px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.12); overflow:hidden; transition:.25s;}
-    .tile:hover{transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.18);}
-    .tile img{width:100%; display:block;}
+    .tile{
+      border-radius:16px;background:#fff;overflow:hidden;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);transition:transform .2s ease, box-shadow .2s ease
+    }
+    .tile:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
+    .tile img{width:100%;height:auto;display:block}
     .tile figcaption{
-      padding:12px; text-align:center; font-weight:600; color:#000; background:#fff;
+      padding:16px 18px;
+      text-align:center;   /* pe centru */
+      font-weight:700;
+      color:#000;
+      background:#fff;
+      font-size:1.05rem;
     }
-    .tile-link{text-decoration:none; color:inherit;}
-    .tile-link:hover figcaption{color:#d62828;}
+    .tile-link{text-decoration:none;color:inherit}
+    .tile-link:hover figcaption{color:#d62828}
 
-    footer{margin-top:40px; padding:30px; text-align:center; font-size:.9em; color:#666;}
-    .social-icons-footer{margin-bottom:10px;}
-    .social-icons-footer a{margin:0 15px; display:inline-block; transition:transform .3s;}
-    .social-icons-footer img{height:64px;}
-    .social-icons-footer a:hover{transform:scale(1.2);}
+    footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}
+    .social-icons-footer{margin-bottom:10px}
+    .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}
+    .social-icons-footer img{height:64px}
+    .social-icons-footer a:hover{transform:scale(1.2)}
 
-    @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr);} }
+    /* mobil: full width */
     @media(max-width:768px){
-      header{flex-direction:row; justify-content:space-between; align-items:center;}
-      .menu-toggle{display:block;}
-      nav{display:none; flex-direction:column; gap:15px; position:absolute; top:70px; right:0; width:100%;
-          background:rgba(255,255,255,.95); padding:20px; text-align:center; z-index:999;}
-      nav.active{display:flex;}
-      .hero{padding:60px 20px 20px;}
-      .hero h1{font-size:2em;} .hero p{font-size:1.05em; padding:0 10px;}
-      .grid{grid-template-columns:1fr; gap:14px;}
-      .social-icons-footer img{height:48px;} footer{padding:40px 20px;}
+      .menu-toggle{display:block}
+      nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;
+          background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
+      nav.active{display:flex}
+      .hero{padding:60px 20px 20px}
+      .hero h1{font-size:2em}.hero p{font-size:1.05em;padding:0 10px}
+      .grid{max-width:100%;gap:18px}
+      .social-icons-footer img{height:48px}
+      footer{padding:40px 20px}
     }
   </style>
 </head>
@@ -88,35 +101,35 @@
       <a class="tile-link" href="white-horse.html">
         <figure class="tile">
           <img src="white-horse.webp" alt="The White Horse – LEGO mosaic">
-          <figcaption>The White Horse – Details →</figcaption>
+          <figcaption>The White Horse – Details</figcaption>
         </figure>
       </a>
 
       <a class="tile-link" href="pepsi.html">
         <figure class="tile">
           <img src="pepsi.webp" alt="Rolex Pepsi – LEGO mosaic">
-          <figcaption>Rolex Pepsi – Details →</figcaption>
+          <figcaption>Rolex Pepsi – Details</figcaption>
         </figure>
       </a>
       
       <a class="tile-link" href="girl-at-the-mirror.html">
         <figure class="tile">
           <img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – LEGO mosaic">
-          <figcaption>Girl at the Mirror – Details →</figcaption>
+          <figcaption>Girl at the Mirror – Details</figcaption>
         </figure>
       </a>
 
       <a class="tile-link" href="hulk.html">
         <figure class="tile">
           <img src="hulk.webp" alt="Rolex Hulk – LEGO mosaic">
-          <figcaption>Rolex Hulk – Details →</figcaption>
+          <figcaption>Rolex Hulk – Details</figcaption>
         </figure>
       </a>
 
       <a class="tile-link" href="daytona.html">
         <figure class="tile">
           <img src="daytona.webp" alt="Rolex Daytona – LEGO mosaic">
-          <figcaption>Rolex Daytona – Details →</figcaption>
+          <figcaption>Rolex Daytona – Details</figcaption>
         </figure>
       </a>
     </div>
@@ -131,7 +144,7 @@
   </footer>
 
   <script>
-    function toggleMenu(){ document.getElementById("mobile-menu").classList.toggle("active"); }
+    function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
   </script>
 </body>
 </html>
