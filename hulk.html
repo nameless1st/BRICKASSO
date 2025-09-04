@@ -19,18 +19,36 @@
     header{padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.8);position:sticky;top:0;z-index:1000;border-bottom:1px solid #ddd}
     .logo{height:50px}.menu-toggle{display:none;font-size:1.2em;background:none;border:none;cursor:pointer}
     nav{display:flex}nav a{margin-left:20px;text-decoration:none;color:#000;font-weight:600;transition:color .3s}nav a:hover{color:#d62828}
+
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
-    .art img.main{width:100%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}.badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
+
+    /* Galerie artwork */
+    .artwork-gallery{text-align:center}
+    .artwork-gallery .main-img{
+      width:100%;max-width:800px;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
+    }
+    .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+    .thumbnails img{
+      width:120px;cursor:pointer;border-radius:8px;
+      transition:transform .3s; box-shadow:0 3px 8px rgba(0,0,0,.12);
+    }
+    .thumbnails img:hover{transform:scale(1.1)}
+
+    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}
+    .badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
     .specs{list-style:none;padding:0;margin:18px 0 0}.specs li{margin:10px 0}.specs strong{display:inline-block;width:160px}
+
     .back{margin-top:30px;display:inline-block;padding:12px 18px;background:#000;color:#fff;border-radius:10px;text-decoration:none;font-weight:700}.back:hover{background:#d62828}
     footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}.social-icons-footer{margin-bottom:10px}
     .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}.social-icons-footer img{height:64px;width:auto;vertical-align:middle}
     .social-icons-footer a:hover{transform:scale(1.2)}
-    @media(max-width:900px){.art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
+    @media(max-width:900px){
+      .art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
+      .thumbnails img{width:90px}
     }
   </style>
 </head>
@@ -49,23 +67,38 @@
 
   <main class="wrap">
     <div class="art">
-      <img class="main" src="hulk.webp" alt="Rolex Hulk – LEGO mosaic by Brickasso (Albert Oprea)">
+      <!-- GALERIE IMAGINI -->
+      <div class="artwork-gallery">
+        <img id="mainImage" src="hulk-front.webp" alt="Rolex Hulk – front view" class="main-img">
+        <div class="thumbnails">
+          <img src="hulk-front.webp" alt="Front view" onclick="changeImage(this)">
+          <img src="hulk-left.webp" alt="Left diagonal" onclick="changeImage(this)">
+          <img src="hulk-right.webp" alt="Right diagonal" onclick="changeImage(this)">
+          <img src="hulk-detail.webp" alt="Detail view" onclick="changeImage(this)">
+        </div>
+      </div>
+
       <div class="meta">
         <div class="badge">Brickasso Registry: <strong>#04</strong></div>
         <h1>Rolex Hulk</h1>
-        <p>An homage to the bold green of the Rolex Hulk, this LEGO® 3D mosaic radiates intensity and depth. Thousands of tiles capture the dynamic light play of the dial and bezel, evoking the spirit of haute horlogerie through a new medium. Exhibited against Novacolor ARCHI+ Big, Metallo Fuso finish, the metallic plaster enhances the shimmer of the design, while a solid wood frame grounds the work with timeless elegance. The Hulk becomes not only a watch, but a monumental artwork.</p>
+        <p>
+          The Rolex Hulk emerges in LEGO® with its bold green dial and bezel rebuilt piece by piece.
+          This Brickasso artwork plays with vibrant color and architectural order, giving the legendary Submariner
+          a fresh interpretation. Mounted on ARCHI+ Big background and framed in solid wood for museum-quality presentation.
+        </p>
 
-         <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
-           Brickasso is an independent artistic reinterpretation and is not affiliated with Rolex SA, nor endorsed or sponsored by any watch brand.
-          </p>
-        
+        <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
+          Brickasso is an independent artistic reinterpretation and is not affiliated with Rolex SA,
+          nor endorsed or sponsored by any watch brand.
+        </p>
+
         <ul class="specs">
           <li><strong>Registry No.</strong> BRK-04</li>
-          <li><strong>Medium</strong> LEGO® bricks (3D mosaic)</li>
-          <li><strong>Dimensions</strong> 120 × 80 cm</li>
-          <li><strong>Brick count</strong> 8120</li>
-          <li><strong>Hours to create</strong> 120</li>
-          <li><strong>Year</strong> 2024</li>
+          <li><strong>Medium</strong> LEGO® bricks (mosaic)</li>
+          <li><strong>Dimensions</strong> 115 × 80 cm</li>
+          <li><strong>Brick count</strong> 7,240</li>
+          <li><strong>Hours to create</strong> 110</li>
+          <li><strong>Year</strong> 2025</li>
           <li><strong>Certificate</strong> Included (signed & numbered)</li>
         </ul>
 
@@ -103,8 +136,18 @@
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
     document.addEventListener('dragstart',  e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
 
-   // Authenticity check (client-side SHA-256 of SALT + code)
-    async function sha256Hex(str){const enc=new TextEncoder().encode(str);const buf=await crypto.subtle.digest('SHA-256',enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
+    function changeImage(el){
+      const main=document.getElementById("mainImage");
+      main.src=el.src;
+      main.alt=el.alt;
+    }
+
+    // Authenticity check (client-side SHA-256 of SALT + code)
+    async function sha256Hex(str){
+      const enc=new TextEncoder().encode(str);
+      const buf=await crypto.subtle.digest('SHA-256',enc);
+      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    }
     const SALT="P3QX5Z&kDVa)!BLH";
     const HASH_HEX="90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24";
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
@@ -113,8 +156,13 @@
       const msg=document.getElementById('verifyMsg');
       const ok=(await sha256Hex(SALT+v))===HASH_HEX;
       msg.style.display='block'; msg.style.padding='10px'; msg.style.borderRadius='8px';
-      if(ok){msg.style.color='#155724';msg.style.background='#d4edda';msg.style.border='1px solid #c3e6cb';msg.textContent='✅ Verified: This code matches the official registry entry.';}
-      else{msg.style.color='#721c24';msg.style.background='#f8d7da';msg.style.border='1px solid #f5c6cb';msg.textContent='⚠️ Invalid code. Please check the certificate and try again.';}
+      if(ok){
+        msg.style.color='#155724';msg.style.background='#d4edda';msg.style.border='1px solid #c3e6cb';
+        msg.textContent='✅ Verified: This code matches the official registry entry.';
+      }else{
+        msg.style.color='#721c24';msg.style.background='#f8d7da';msg.style.border='1px solid #f5c6cb';
+        msg.textContent='⚠️ Invalid code. Please check the certificate and try again.';
+      }
     });
   </script>
 </body>
