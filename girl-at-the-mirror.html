@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Girl at the Mirror – Brickasso #03</title>
-  <meta name="description" content="Girl at the Mirror – Brickasso #03. LEGO® mosaic by Albert Oprea. Specs, registry number, and certificate details." />
+  <meta name="description" content="Girl at the Mirror – Brickasso #03. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
   <link rel="canonical" href="https://brickasso.art/girl-at-the-mirror.html">
   <meta property="og:type" content="website"><meta property="og:title" content="Girl at the Mirror – Brickasso #03" />
   <meta property="og:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification." />
@@ -19,18 +19,36 @@
     header{padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.8);position:sticky;top:0;z-index:1000;border-bottom:1px solid #ddd}
     .logo{height:50px}.menu-toggle{display:none;font-size:1.2em;background:none;border:none;cursor:pointer}
     nav{display:flex}nav a{margin-left:20px;text-decoration:none;color:#000;font-weight:600;transition:color .3s}nav a:hover{color:#d62828}
+
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
-    .art img.main{width:100%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}.badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
+
+    /* Galerie artwork */
+    .artwork-gallery{text-align:center}
+    .artwork-gallery .main-img{
+      width:100%;max-width:800px;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
+    }
+    .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+    .thumbnails img{
+      width:120px;cursor:pointer;border-radius:8px;
+      transition:transform .3s; box-shadow:0 3px 8px rgba(0,0,0,.12);
+    }
+    .thumbnails img:hover{transform:scale(1.1)}
+
+    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}
+    .badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
     .specs{list-style:none;padding:0;margin:18px 0 0}.specs li{margin:10px 0}.specs strong{display:inline-block;width:160px}
+
     .back{margin-top:30px;display:inline-block;padding:12px 18px;background:#000;color:#fff;border-radius:10px;text-decoration:none;font-weight:700}.back:hover{background:#d62828}
     footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}.social-icons-footer{margin-bottom:10px}
     .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}.social-icons-footer img{height:64px;width:auto;vertical-align:middle}
     .social-icons-footer a:hover{transform:scale(1.2)}
-    @media(max-width:900px){.art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
+    @media(max-width:900px){
+      .art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
+      .thumbnails img{width:90px}
     }
   </style>
 </head>
@@ -49,11 +67,27 @@
 
   <main class="wrap">
     <div class="art">
-      <img class="main" src="girl-at-the-mirror.webp" alt="Girl at the Mirror – LEGO mosaic by Brickasso (Albert Oprea)">
+      <!-- GALERIE IMAGINI -->
+      <div class="artwork-gallery">
+        <img id="mainImage" src="girl-at-the-mirror-front.webp" alt="Girl at the Mirror – front view" class="main-img">
+        <div class="thumbnails">
+          <img src="girl-at-the-mirror-front.webp" alt="Front view" onclick="changeImage(this)">
+          <img src="girl-at-the-mirror-left.webp" alt="Left diagonal" onclick="changeImage(this)">
+          <img src="girl-at-the-mirror-right.webp" alt="Right diagonal" onclick="changeImage(this)">
+          <img src="girl-at-the-mirror-detail.webp" alt="Detail view" onclick="changeImage(this)">
+        </div>
+      </div>
+
       <div class="meta">
         <div class="badge">Brickasso Registry: <strong>#03</strong></div>
         <h1>Girl at the Mirror</h1>
-        <p>Inspired by Picasso’s masterpiece, this 3D mosaic reinvents the eternal dialogue of reflection through over 32,000 LEGO® tiles. Vivid contrasts, geometric fragments and tactile layers transform the original into a sculptural meditation on identity. Set against Novacolor ARCHI+ Big, Metallo Fuso finish, the work gains a contemporary material depth, while the solid wood frame makes it resonate as both homage and reinvention. A bridge between classic modernism and playful construction.</p>
+        <p>
+          Inspired by Picasso’s masterpiece, this 3D mosaic reinvents the eternal dialogue of reflection through over 32,000 LEGO® tiles.
+          Vivid contrasts, geometric fragments and tactile layers transform the original into a sculptural meditation on identity.
+          Set against Novacolor ARCHI+ Big, Metallo Fuso finish, the work gains a contemporary material depth, while the solid wood frame
+          makes it resonate as both homage and reinvention. A bridge between classic modernism and playful construction.
+        </p>
+
         <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
           Inspired by Pablo Picasso’s <em>Girl at the Mirror</em> (1932).  
           Brickasso’s LEGO® 3D mosaic is an independent reinterpretation and not connected to the Picasso Estate or Foundation.  
@@ -63,8 +97,8 @@
         <ul class="specs">
           <li><strong>Registry No.</strong> BRK-03</li>
           <li><strong>Medium</strong> LEGO® bricks (mosaic)</li>
-          <li><strong>Dimensions</strong> 164.8 x 135.2 cm</li>
-          <li><strong>Brick count</strong> 32457</li>
+          <li><strong>Dimensions</strong> 164.8 × 135.2 cm</li>
+          <li><strong>Brick count</strong> 32,457</li>
           <li><strong>Hours to create</strong> 480</li>
           <li><strong>Year</strong> 2025</li>
           <li><strong>Certificate</strong> Included (signed & numbered)</li>
@@ -75,9 +109,10 @@
           <h2 style="margin:0 0 10px 0; font-size:1.2em;">Verify authenticity</h2>
           <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-03</strong> · Check code: <strong>BRK-03-******</strong></p>
           <form id="verifyForm" style="display:flex; gap:10px; flex-wrap:wrap;">
-            <input id="verifyInput" type="text" inputmode="latin" autocomplete="off" placeholder="Enter full code (e.g. BRK-03-******)" 
+            <input id="verifyInput" type="text" inputmode="latin" autocomplete="off"
+                   placeholder="Enter full code (e.g. BRK-03-******)"
                    style="flex:1; min-width:260px; padding:10px; border:1px solid #ccc; border-radius:8px; font-family:inherit;">
-            <button type="submit" 
+            <button type="submit"
                     style="background:#000; color:#fff; padding:10px 14px; border:none; border-radius:10px; font-weight:700; cursor:pointer">
               Verify
             </button>
@@ -103,8 +138,18 @@
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
     document.addEventListener('dragstart',  e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
 
+    function changeImage(el){
+      const main=document.getElementById("mainImage");
+      main.src=el.src;
+      main.alt=el.alt;
+    }
+
     // Authenticity check (client-side SHA-256 of SALT + code)
-    async function sha256Hex(str){const enc=new TextEncoder().encode(str);const buf=await crypto.subtle.digest('SHA-256',enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
+    async function sha256Hex(str){
+      const enc=new TextEncoder().encode(str);
+      const buf=await crypto.subtle.digest('SHA-256',enc);
+      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    }
     const SALT="e4O8w0mi_(9L&HK]";
     const HASH_HEX="c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055";
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
@@ -113,8 +158,13 @@
       const msg=document.getElementById('verifyMsg');
       const ok=(await sha256Hex(SALT+v))===HASH_HEX;
       msg.style.display='block'; msg.style.padding='10px'; msg.style.borderRadius='8px';
-      if(ok){msg.style.color='#155724';msg.style.background='#d4edda';msg.style.border='1px solid #c3e6cb';msg.textContent='✅ Verified: This code matches the official registry entry.';}
-      else{msg.style.color='#721c24';msg.style.background='#f8d7da';msg.style.border='1px solid #f5c6cb';msg.textContent='⚠️ Invalid code. Please check the certificate and try again.';}
+      if(ok){
+        msg.style.color='#155724';msg.style.background='#d4edda';msg.style.border='1px solid #c3e6cb';
+        msg.textContent='✅ Verified: This code matches the official registry entry.';
+      }else{
+        msg.style.color='#721c24';msg.style.background='#f8d7da';msg.style.border='1px solid #f5c6cb';
+        msg.textContent='⚠️ Invalid code. Please check the certificate and try again.';
+      }
     });
   </script>
 </body>
