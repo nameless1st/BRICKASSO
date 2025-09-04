@@ -21,16 +21,32 @@
     nav{display:flex}nav a{margin-left:20px;text-decoration:none;color:#000;font-weight:600;transition:color .3s}nav a:hover{color:#d62828}
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
-    .art img.main{width:100%;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}.badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
+
+    /* Galerie artwork */
+    .artwork-gallery{text-align:center}
+    .artwork-gallery .main-img{
+      width:100%;max-width:800px;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
+    }
+    .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+    .thumbnails img{
+      width:120px;cursor:pointer;border-radius:8px;
+      transition:transform .3s; box-shadow:0 3px 8px rgba(0,0,0,.12);
+    }
+    .thumbnails img:hover{transform:scale(1.1)}
+
+    .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}
+    .badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
     .specs{list-style:none;padding:0;margin:18px 0 0}.specs li{margin:10px 0}.specs strong{display:inline-block;width:160px}
     .back{margin-top:30px;display:inline-block;padding:12px 18px;background:#000;color:#fff;border-radius:10px;text-decoration:none;font-weight:700}.back:hover{background:#d62828}
     footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}.social-icons-footer{margin-bottom:10px}
     .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}.social-icons-footer img{height:64px;width:auto;vertical-align:middle}
     .social-icons-footer a:hover{transform:scale(1.2)}
-    @media(max-width:900px){.art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
+    @media(max-width:900px){
+      .art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
+      .thumbnails img{width:90px}
     }
   </style>
 </head>
@@ -49,15 +65,26 @@
 
   <main class="wrap">
     <div class="art">
-      <img class="main" src="daytona.webp" alt="Rolex Daytona – LEGO mosaic by Brickasso (Albert Oprea)">
+      <div class="artwork-gallery">
+        <!-- imaginea mare -->
+        <img id="mainImage" src="daytona-front.webp" alt="Rolex Daytona – front view" class="main-img">
+        <!-- thumbnails -->
+        <div class="thumbnails">
+          <img src="daytona-front.webp" alt="Front view" onclick="changeImage(this)">
+          <img src="daytona-left.webp" alt="Left diagonal" onclick="changeImage(this)">
+          <img src="daytona-right.webp" alt="Right diagonal" onclick="changeImage(this)">
+          <img src="daytona-detail.webp" alt="Detail view" onclick="changeImage(this)">
+        </div>
+      </div>
+
       <div class="meta">
         <div class="badge">Brickasso Registry: <strong>#05</strong></div>
         <h1>Rolex Daytona</h1>
         <p>Precision and speed find their LEGO® counterpart in this Brickasso 3D mosaic of the Daytona. Every dial, sub-register and shadow is rebuilt brick by brick, mirroring the balance of mechanics and artistry. The background of Novacolor ARCHI+ Big (Metallo Fuso) lends an industrial yet luminous character, while the solid wood frame ensures museum-quality presentation. The Daytona transcends timekeeping to become an architectural vision in LEGO®.</p>
 
-           <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
-           Brickasso is an independent artistic reinterpretation and is not affiliated with Rolex SA, nor endorsed or sponsored by any watch brand.
-          </p>
+        <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
+          Brickasso is an independent artistic reinterpretation and is not affiliated with Rolex SA, nor endorsed or sponsored by any watch brand.
+        </p>
         
         <ul class="specs">
           <li><strong>Registry No.</strong> BRK-05</li>
@@ -102,6 +129,12 @@
     function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
     document.addEventListener('dragstart',  e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+
+    function changeImage(el){
+      const main=document.getElementById("mainImage");
+      main.src=el.src;
+      main.alt=el.alt;
+    }
 
     // Authenticity check (client-side SHA-256 of SALT + code)
     async function sha256Hex(str){const enc=new TextEncoder().encode(str);const buf=await crypto.subtle.digest('SHA-256',enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
