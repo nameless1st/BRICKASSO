@@ -6,7 +6,6 @@
   <title>Gallery – Brickasso</title>
   <meta name="description" content="Discover Brickasso's LEGO Art gallery: watches, portraits, and creative masterpieces by Albert Oprea." />
 
-  <!-- Canonical & Open Graph -->
   <link rel="canonical" href="https://brickasso.art/gallery.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gallery – Brickasso LEGO Art" />
@@ -14,87 +13,55 @@
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/gallery.html" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gallery – Brickasso LEGO Art">
-  <meta name="twitter:description" content="Explore Brickasso's LEGO Art gallery: unique watches, portraits, and masterpieces built from thousands of LEGO bricks.">
-  <meta name="twitter:image" content="https://brickasso.art/logo.png">
-
-  <!-- Favicon -->
   <link rel="icon" href="/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/logo.png" />
-
-  <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
 
-  <!-- Organization schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Brickasso",
-    "url": "https://brickasso.art",
-    "logo": "https://brickasso.art/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/brickasso.art",
-      "https://www.tiktok.com/@brickasso.art"
-    ]
-  }
-  </script>
-
   <style>
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-image: url('archi-big-bg.jpg');
-      background-size: cover; background-position: center; background-attachment: fixed;
-      color: #111;
-    }
+    body { margin:0; padding:0; font-family:'Montserrat',sans-serif;
+      background:url('archi-big-bg.jpg') center/cover fixed; color:#111; }
     header {
-      padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #ddd;
+      padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
+      background-color:rgba(255,255,255,.8); position:sticky; top:0; z-index:1000; border-bottom:1px solid #ddd;
     }
-    .logo { height: 50px; }
-    .menu-toggle { display: none; font-size: 1.2em; background: none; border: none; cursor: pointer; }
-    nav { display: flex; }
-    nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
-    nav a:hover { color: #d62828; }
+    .logo{height:50px;}
+    .menu-toggle{display:none; font-size:1.2em; background:none; border:none; cursor:pointer;}
+    nav{display:flex;}
+    nav a{margin-left:20px; text-decoration:none; color:#000; font-weight:600; transition:color .3s;}
+    nav a:hover{color:#d62828;}
 
-    .hero { text-align: center; padding: 100px 20px 30px; background-color: rgba(255,255,255,.75); }
-    .hero h1 { font-size: 3em; margin: 0 0 10px; font-weight: 600; }
-    .hero p { font-size: 1.2em; color: #444; margin: 0 auto 10px; max-width: 800px; }
+    .hero{text-align:center; padding:100px 20px 30px; background:rgba(255,255,255,.75);}
+    .hero h1{font-size:3em; margin:0 0 10px; font-weight:600;}
+    .hero p{font-size:1.2em; color:#444; margin:0 auto 10px; max-width:800px;}
 
-    .gallery { padding: 20px; background: rgba(255,255,255,.75); }
-    .grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-      max-width: 1400px; margin: 0 auto;
+    .gallery{padding:20px; background:rgba(255,255,255,.75);}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1400px; margin:0 auto;}
+    .tile{border-radius:12px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.12); overflow:hidden; transition:.25s;}
+    .tile:hover{transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.18);}
+    .tile img{width:100%; display:block;}
+    .tile figcaption{
+      padding:12px; text-align:center; font-weight:600; color:#000; background:#fff;
     }
-    .tile {
-      position: relative; overflow: hidden; border-radius: 12px; background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,.12); transition: transform .25s, box-shadow .25s;
-    }
-    .tile:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
-    .tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .tile-link { display: block; text-decoration: none; color: inherit; }
+    .tile-link{text-decoration:none; color:inherit;}
+    .tile-link:hover figcaption{color:#d62828;}
 
-    footer { margin-top: 40px; padding: 30px; text-align: center; font-size: .9em; color: #666; }
-    .social-icons-footer { margin-bottom: 10px; }
-    .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform .3s; }
-    .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
-    .social-icons-footer a:hover { transform: scale(1.2); }
+    footer{margin-top:40px; padding:30px; text-align:center; font-size:.9em; color:#666;}
+    .social-icons-footer{margin-bottom:10px;}
+    .social-icons-footer a{margin:0 15px; display:inline-block; transition:transform .3s;}
+    .social-icons-footer img{height:64px;}
+    .social-icons-footer a:hover{transform:scale(1.2);}
 
-    @media (max-width:1024px){ .grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width:768px){
-      header { flex-direction: row; justify-content: space-between; align-items: center; }
-      .menu-toggle { display: block; }
-      nav { display: none; flex-direction: column; gap: 15px; position: absolute; top: 70px; right: 0; width: 100%;
-            background: rgba(255,255,255,.95); padding: 20px; text-align: center; z-index: 999; }
-      nav.active { display: flex; }
-      .hero { padding: 60px 20px 20px; }
-      .hero h1 { font-size: 2em; } .hero p { font-size: 1.05em; padding: 0 10px; }
-      .grid { grid-template-columns: 1fr; gap: 14px; }
-      .social-icons-footer img { height: 48px; } footer { padding: 40px 20px; }
+    @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px){
+      header{flex-direction:row; justify-content:space-between; align-items:center;}
+      .menu-toggle{display:block;}
+      nav{display:none; flex-direction:column; gap:15px; position:absolute; top:70px; right:0; width:100%;
+          background:rgba(255,255,255,.95); padding:20px; text-align:center; z-index:999;}
+      nav.active{display:flex;}
+      .hero{padding:60px 20px 20px;}
+      .hero h1{font-size:2em;} .hero p{font-size:1.05em; padding:0 10px;}
+      .grid{grid-template-columns:1fr; gap:14px;}
+      .social-icons-footer img{height:48px;} footer{padding:40px 20px;}
     }
   </style>
 </head>
@@ -118,24 +85,39 @@
 
   <section class="gallery">
     <div class="grid">
-      <a class="tile-link" href="white-horse.html" aria-label="View details: The White Horse">
-        <figure class="tile"><img src="white-horse.webp" alt="The White Horse – LEGO mosaic by Brickasso" loading="lazy"></figure>
+      <a class="tile-link" href="white-horse.html">
+        <figure class="tile">
+          <img src="white-horse.webp" alt="The White Horse – LEGO mosaic">
+          <figcaption>The White Horse – Details →</figcaption>
+        </figure>
       </a>
 
-    <a class="tile-link" href="pepsi.html" aria-label="View details: Rolex Pepsi">
-        <figure class="tile"><img src="pepsi.webp" alt="Rolex Pepsi – LEGO mosaic by Brickasso" loading="lazy"></figure>
+      <a class="tile-link" href="pepsi.html">
+        <figure class="tile">
+          <img src="pepsi.webp" alt="Rolex Pepsi – LEGO mosaic">
+          <figcaption>Rolex Pepsi – Details →</figcaption>
+        </figure>
       </a>
       
-      <a class="tile-link" href="girl-at-the-mirror.html" aria-label="View details: Girl at the Mirror">
-        <figure class="tile"><img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – LEGO mosaic by Brickasso" loading="lazy"></figure>
+      <a class="tile-link" href="girl-at-the-mirror.html">
+        <figure class="tile">
+          <img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – LEGO mosaic">
+          <figcaption>Girl at the Mirror – Details →</figcaption>
+        </figure>
       </a>
 
-      <a class="tile-link" href="hulk.html" aria-label="View details: Rolex Hulk">
-        <figure class="tile"><img src="hulk.webp" alt="Rolex Hulk – LEGO mosaic by Brickasso" loading="lazy"></figure>
+      <a class="tile-link" href="hulk.html">
+        <figure class="tile">
+          <img src="hulk.webp" alt="Rolex Hulk – LEGO mosaic">
+          <figcaption>Rolex Hulk – Details →</figcaption>
+        </figure>
       </a>
 
-      <a class="tile-link" href="daytona.html" aria-label="View details: Rolex Daytona">
-        <figure class="tile"><img src="daytona.webp" alt="Rolex Daytona – LEGO mosaic by Brickasso" loading="lazy"></figure>
+      <a class="tile-link" href="daytona.html">
+        <figure class="tile">
+          <img src="daytona.webp" alt="Rolex Daytona – LEGO mosaic">
+          <figcaption>Rolex Daytona – Details →</figcaption>
+        </figure>
       </a>
     </div>
   </section>
