@@ -25,6 +25,7 @@
   <style>
     /* Base */
     * { box-sizing: border-box; }
+    :root{ --brand:#d62828; }
     body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-image: url('archi-big-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: #111; }
 
     /* Header (same across site) */
@@ -33,13 +34,13 @@
     .menu-toggle { display: none; font-size: 1.2em; background: none; border: none; cursor: pointer; }
     nav { display: flex; }
     nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
-    nav a:hover { color: #d62828; }
+    nav a:hover { color: var(--brand); }
 
     /* Content */
-    .certificate-section { position: relative; padding: 100px 20px 30px; background: rgba(255,255,255,0.75); text-align: center; }
+    .certificate-section { position: relative; padding: 100px 20px 30px; background: rgba(255,255,255,0.75); text-align: center; overflow:hidden; }
     .certificate-section h1 { font-size: 3em; margin-bottom: 20px; font-weight: 600; }
     .certificate-section p { font-size: 1.15em; line-height: 1.8; max-width: 820px; margin: 0 auto 16px; }
-    .sigiliu { position: absolute; top: 35%; right: 8%; height: 240px; transform: rotate(-25deg); }
+    .sigiliu { position: absolute; bottom: -10px; right: 4%; height: 220px; transform: rotate(-15deg); opacity: .9; filter: drop-shadow(0 4px 16px rgba(0,0,0,.15)); }
 
     /* Verify card */
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
@@ -102,14 +103,27 @@
     <!-- VERIFY AUTHENTICITY CARD -->
     <section class="card">
       <h2 class="muted" style="margin:0 0 8px 0">Verify authenticity</h2>
-      <p class="muted" style="margin:0 0 8px 0">Enter your code below (format: <strong>BRK-XX-XXXXXX</strong>)</p>
+      <p class="muted" style="margin:0 0 8px 0">Enter your code below (format: <strong>BRK-XX-XXXXXX</strong>). Optionally select an artwork to prefill its registry prefix.</p>
+
+      <div class="verify-row">
+        <select id="artworkSelect" class="input" aria-label="Select artwork (optional)">
+          <option value="">— Select artwork (optional) —</option>
+          <option value="BRK-01">BRK-01 — White Horse</option>
+          <option value="BRK-02">BRK-02 — Rolex Pepsi</option>
+          <option value="BRK-03">BRK-03 — Girl at the Mirror (homage)</option>
+          <option value="BRK-04">BRK-04 — Rolex Hulk</option>
+          <option value="BRK-05">BRK-05 — Rolex Daytona</option>
+        </select>
+      </div>
+
       <form id="verifyForm" class="verify-row">
-        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-XX-XXXXXX)" autocomplete="off" />
+        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-01-7X3Q9A)" autocomplete="off" />
         <button type="submit" class="btn">Verify</button>
         <a class="btn secondary" href="gallery.html">← Back to Gallery</a>
       </form>
-      <p id="verifyMsg" class="result"></p>
+      <p id="verifyMsg" class="result" aria-live="polite"></p>
     </section>
+  </div>
 
   <footer>
     <div class="social-icons-footer">
@@ -121,6 +135,16 @@
 
   <script>
     function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
+
+    // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
+    function normalizeCode(input){
+      return (input||'')
+        .toString()
+        .trim()
+        .toUpperCase()
+        .replace(/[‐‑‒–—﹘﹣]/g,'-')
+        .replace(/\s+/g,'');
+    }
 
     // Hash helper (browser Web Crypto)
     async function sha256Hex(str){
@@ -138,16 +162,31 @@
       'BRK-05': { title:'Rolex Daytona',               salt:'$Jt-+WlmjO[t98]5',  hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' }
     };
 
+    // Prefill prefix from dropdown
+    document.getElementById('artworkSelect').addEventListener('change', (e)=>{
+      const prefix = e.target.value; if(!prefix) return;
+      const input = document.getElementById('verifyInput');
+      const current = normalizeCode(input.value);
+      if(/^BRK-\d{2}-/.test(current)){
+        input.value = prefix + '-' + current.slice(8);
+      } else {
+        input.value = prefix + '-';
+      }
+      input.focus();
+    });
+
+    // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
-      const v = (document.getElementById('verifyInput').value||'').trim().toUpperCase();
+      const vRaw = document.getElementById('verifyInput').value;
+      const v = normalizeCode(vRaw);
       const msg = document.getElementById('verifyMsg');
       msg.style.display='block';
 
       // Accept letters+digits in last 6: BRK-XX-XXXXXX
       if(!/^BRK-\d{2}-[A-Z0-9]{6}$/.test(v)){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX.';
+        msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX (letters and digits).';
         return;
       }
 
@@ -159,13 +198,18 @@
         return;
       }
 
-      const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-      if(ok){
-        msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-        msg.textContent = `✅ Verified: ${entry.title} (${prefix}) — code matches the official registry.`;
-      } else {
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
+      try{
+        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+        if(ok){
+          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+          msg.textContent = `✅ Verified: ${entry.title} (${prefix}) — code matches the official registry.`;
+        } else {
+          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
+        }
+      }catch(err){
+        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+        msg.textContent = 'Temporary error validating the code.';
       }
     });
   </script>
