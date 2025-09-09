@@ -103,19 +103,7 @@
     <!-- VERIFY AUTHENTICITY CARD -->
     <section class="card">
       <h2 class="muted" style="margin:0 0 8px 0">Verify authenticity</h2>
-      <p class="muted" style="margin:0 0 8px 0">Enter your code below (format: <strong>BRK-XX-XXXXXX</strong>). Optionally select an artwork to prefill its registry prefix.</p>
-
-      <div class="verify-row">
-        <select id="artworkSelect" class="input" aria-label="Select artwork (optional)">
-          <option value="">— Select artwork (optional) —</option>
-          <option value="BRK-01">BRK-01 — White Horse</option>
-          <option value="BRK-02">BRK-02 — Rolex Pepsi</option>
-          <option value="BRK-03">BRK-03 — Girl at the Mirror (homage)</option>
-          <option value="BRK-04">BRK-04 — Rolex Hulk</option>
-          <option value="BRK-05">BRK-05 — Rolex Daytona</option>
-        </select>
-      </div>
-
+      <p class="muted" style="margin:0 0 8px 0">Enter your code below (format: <strong>BRK-XX-XXXXXX</strong>)</p>
       <form id="verifyForm" class="verify-row">
         <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-01-7X3Q9A)" autocomplete="off" />
         <button type="submit" class="btn">Verify</button>
@@ -155,31 +143,17 @@
 
     // Registry map (no full codes exposed): SALT + HASH(SALT + FULL_CODE)
     const REGISTRY = {
-      'BRK-01': { title:'White Horse',                 salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
-      'BRK-02': { title:'Rolex Pepsi',                 salt:'gfB7t9yK(Neix3iy',  hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
-      'BRK-03': { title:'Girl at the Mirror (homage)', salt:'e4O8w0mi_(9L&HK]',  hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
-      'BRK-04': { title:'Rolex Hulk',                  salt:'P3QX5Z&kDVa)!BLH',  hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
-      'BRK-05': { title:'Rolex Daytona',               salt:'$Jt-+WlmjO[t98]5',  hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' }
+      'BRK-01': { label:'The White Horse',                 salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
+      'BRK-02': { label:'Rolex Series — Pepsi',            salt:'gfB7t9yK(Neix3iy',  hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
+      'BRK-03': { label:'Girl at the Mirror',              salt:'e4O8w0mi_(9L&HK]',  hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
+      'BRK-04': { label:'Rolex Series — Hulk',             salt:'P3QX5Z&kDVa)!BLH',  hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
+      'BRK-05': { label:'Rolex Series — Daytona',          salt:'$Jt-+WlmjO[t98]5',  hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' }
     };
-
-    // Prefill prefix from dropdown
-    document.getElementById('artworkSelect').addEventListener('change', (e)=>{
-      const prefix = e.target.value; if(!prefix) return;
-      const input = document.getElementById('verifyInput');
-      const current = normalizeCode(input.value);
-      if(/^BRK-\d{2}-/.test(current)){
-        input.value = prefix + '-' + current.slice(8);
-      } else {
-        input.value = prefix + '-';
-      }
-      input.focus();
-    });
 
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
-      const vRaw = document.getElementById('verifyInput').value;
-      const v = normalizeCode(vRaw);
+      const v = normalizeCode(document.getElementById('verifyInput').value);
       const msg = document.getElementById('verifyMsg');
       msg.style.display='block';
 
@@ -190,7 +164,7 @@
         return;
       }
 
-      const prefix = v.substring(0,7);
+      const prefix = v.slice(0,6); // FIX: first 6 chars => BRK-01, BRK-05, etc.
       const entry = REGISTRY[prefix];
       if(!entry){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
@@ -202,7 +176,7 @@
         const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
         if(ok){
           msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: ${entry.title} (${prefix}) — code matches the official registry.`;
+          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
         } else {
           msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
           msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
