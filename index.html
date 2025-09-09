@@ -66,6 +66,12 @@
   </script>
 
   <style>
+    :root{
+      --brand:#d62828;
+      --ink:#111;
+      --paper:rgba(255,255,255,.75);
+      --paper-strong:rgba(255,255,255,.85);
+    }
     body {
       margin: 0;
       padding: 0;
@@ -74,7 +80,7 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      color: #111;
+      color: var(--ink);
     }
 
     header {
@@ -87,6 +93,7 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #ddd;
+      backdrop-filter: blur(6px);
     }
 
     .logo {
@@ -114,14 +121,12 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #d62828;
-    }
+    nav a:hover { color: var(--brand); }
 
     .hero {
       text-align: center;
       padding: 100px 20px 60px;
-      background-color: rgba(255, 255, 255, 0.75);
+      background-color: var(--paper);
     }
 
     .hero h1 {
@@ -137,6 +142,8 @@
       line-height: 1.6;
     }
 
+    .cta-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
     .cta {
       display: inline-block;
       padding: 14px 28px;
@@ -145,11 +152,21 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 10px;
-      transition: background 0.3s;
+      transition: background 0.3s, color .3s, border-color .3s;
+      border: 2px solid #000;
     }
+    .cta:hover { background-color: var(--brand); border-color: var(--brand); }
 
-    .cta:hover {
-      background-color: #d62828;
+    /* Secondary CTA (Portfolio) */
+    .cta.secondary{
+      background: transparent;
+      color:#000;
+      border-color:#000;
+    }
+    .cta.secondary:hover{
+      background: var(--brand);
+      border-color: var(--brand);
+      color:#fff;
     }
 
     footer {
@@ -160,9 +177,7 @@
       color: #666;
     }
 
-    .social-icons-footer {
-      margin-bottom: 10px;
-    }
+    .social-icons-footer { margin-bottom: 10px; }
 
     .social-icons-footer a {
       margin: 0 15px;
@@ -176,23 +191,12 @@
       vertical-align: middle;
     }
 
-    .social-icons-footer a:hover {
-      transform: scale(1.2);
-    }
+    .social-icons-footer a:hover { transform: scale(1.2); }
 
     /* Responsive mobile menu */
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.2em;
-      }
-
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
+      .menu-toggle { display: block; font-size: 1.2em; }
       nav {
         display: none;
         flex-direction: column;
@@ -206,48 +210,25 @@
         text-align: center;
         z-index: 999;
       }
-
-      nav.active {
-        display: flex;
-      }
-
-      .hero {
-        padding: 60px 20px 40px;
-      }
-
-      .hero h1 {
-        font-size: 1.7em;
-        margin-bottom: 20px;
-      }
-
-      .hero p {
-        font-size: 1.05em;
-        padding: 0 10px;
-      }
-
-      .cta {
-        padding: 12px 24px;
-        font-size: 1em;
-      }
-
-      .social-icons-footer img {
-        height: 48px;
-      }
-
-      footer {
-        padding: 40px 20px;
-      }
+      nav.active { display: flex; }
+      .hero { padding: 60px 20px 40px; }
+      .hero h1 { font-size: 1.7em; margin-bottom: 20px; }
+      .hero p { font-size: 1.05em; padding: 0 10px; }
+      .cta { padding: 12px 24px; font-size: 1em; }
+      .social-icons-footer img { height: 48px; }
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
 <body>
   <header>
     <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
-    <nav id="mobile-menu">
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰ Menu</button>
+    <nav id="mobile-menu" aria-label="Main">
       <a href="index.html" onclick="toggleMenu()">Home</a>
       <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
       <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
       <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
       <a href="contact.html" onclick="toggleMenu()">Contact</a>
     </nav>
@@ -260,15 +241,18 @@
       brick by brick. Every artwork is handcrafted by Albert Oprea – a passionate 10-year-old
       artist transforming thousands of LEGO® pieces into fine art.
     </p>
-    <a class="cta" href="gallery.html">Explore the Gallery</a>
+    <div class="cta-group">
+      <a class="cta" href="gallery.html">Explore the Gallery</a>
+      <a class="cta secondary" href="portfolio.html" title="Artist CV & Highlights">View Portfolio</a>
+    </div>
   </section>
 
   <footer>
     <div class="social-icons-footer">
-      <a href="https://instagram.com/brickasso.art" target="_blank">
+      <a href="https://instagram.com/brickasso.art" target="_blank" rel="noopener">
         <img src="instagram-logo.png" alt="Instagram">
       </a>
-      <a href="https://x.com/brickasso_art" target="_blank">
+      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">
         <img src="x-logo.png" alt="X (Twitter)">
       </a>
     </div>
