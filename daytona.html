@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rolex Daytona – Brickasso #05</title>
-  <meta name="description" content="Rolex Daytona – Brickasso #05. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
+  <title>Daytona – Brickasso #04</title>
+  <meta name="description" content="Daytona – Brickasso #04. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
   <link rel="canonical" href="https://brickasso.art/daytona.html">
-  <meta property="og:type" content="website"><meta property="og:title" content="Rolex Daytona – Brickasso #05" />
+  <meta property="og:type" content="website"><meta property="og:title" content="Daytona – Brickasso #04" />
   <meta property="og:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification." />
   <meta property="og:image" content="https://brickasso.art/daytona.webp" />
   <meta property="og:url" content="https://brickasso.art/daytona.html" />
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rolex Daytona – Brickasso #05">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Daytona – Brickasso #04">
   <meta name="twitter:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification.">
   <meta name="twitter:image" content="https://brickasso.art/daytona.webp">
   <link rel="icon" href="/logo.png" type="image/png" /><link rel="apple-touch-icon" href="/logo.png" />
@@ -22,7 +22,6 @@
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
 
-    /* Galerie artwork */
     .artwork-gallery{text-align:center}
     .artwork-gallery .main-img{
       width:100%;max-width:800px;border-radius:12px;
@@ -67,9 +66,7 @@
   <main class="wrap">
     <div class="art">
       <div class="artwork-gallery">
-        <!-- imaginea mare -->
-        <img id="mainImage" src="daytona-front.webp" alt="Rolex Daytona – front view" class="main-img">
-        <!-- thumbnails -->
+        <img id="mainImage" src="daytona-front.webp" alt="Daytona – front view" class="main-img">
         <div class="thumbnails">
           <img src="daytona-front.webp" alt="Front view" onclick="changeImage(this)">
           <img src="daytona-left.webp" alt="Left diagonal" onclick="changeImage(this)">
@@ -79,8 +76,8 @@
       </div>
 
       <div class="meta">
-        <div class="badge">Brickasso Registry: <strong>#05</strong></div>
-        <h1>Rolex Daytona</h1>
+        <div class="badge">Brickasso Registry: <strong>#04</strong></div>
+        <h1>Daytona</h1>
         <p>Precision and speed find their LEGO® counterpart in this Brickasso 3D mosaic of the Daytona. Every dial, sub-register and shadow is rebuilt brick by brick, mirroring the balance of mechanics and artistry. The background of Novacolor ARCHI+ Big (Metallo Fuso) lends an industrial yet luminous character, while the solid wood frame ensures museum-quality presentation. The Daytona transcends timekeeping to become an architectural vision in LEGO®.</p>
 
         <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
@@ -88,7 +85,7 @@
         </p>
         
         <ul class="specs">
-          <li><strong>Registry No.</strong> BRK-05</li>
+          <li><strong>Registry No.</strong> BRK-04</li>
           <li><strong>Medium</strong> LEGO® bricks (3D mosaic)</li>
           <li><strong>Dimensions</strong> 120 × 80 cm</li>
           <li><strong>Brick count</strong> 6855</li>
@@ -97,13 +94,12 @@
           <li><strong>Certificate</strong> Included (signed & numbered)</li>
         </ul>
 
-        <!-- VERIFY AUTHENTICITY -->
         <section style="margin-top:24px">
           <h2 style="margin:0 0 10px 0; font-size:1.2em;">Verify authenticity</h2>
-          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-05</strong> · Check code: <strong>BRK-05-******</strong></p>
+          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-04</strong> · Check code: <strong>BRK-04-******</strong></p>
           <form id="verifyForm" style="display:flex; gap:10px; flex-wrap:wrap;">
             <input id="verifyInput" type="text" inputmode="latin" autocomplete="off"
-                   placeholder="Enter full code (e.g. BRK-05-******)"
+                   placeholder="Enter full code (e.g. BRK-04-******)"
                    style="flex:1; min-width:260px; padding:10px; border:1px solid #ccc; border-radius:8px; font-family:inherit;">
             <button type="submit"
                     style="background:#000; color:#fff; padding:10px 14px; border:none; border-radius:10px; font-weight:700; cursor:pointer">
@@ -120,7 +116,7 @@
 
   <footer>
     <div class="social-icons-footer">
-      <a href="https://instagram.com/brickasso.art" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
+      <a href="https://instagram.com/brickasso.official" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
       <a href="https://x.com/brickasso_art" target="_blank"><img src="x-logo.png" alt="X (Twitter)"></a>
     </div>
     © Brickasso 2025 – Original LEGO Art by Albert Oprea
@@ -137,10 +133,9 @@
       main.alt=el.alt;
     }
 
-    // Authenticity check (client-side SHA-256 of SALT + code)
     async function sha256Hex(str){const enc=new TextEncoder().encode(str);const buf=await crypto.subtle.digest('SHA-256',enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
-    const SALT="$Jt-+WlmjO[t98]5";
-    const HASH_HEX="d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581";
+    const SALT="P3QX5Z&kDVa)!BLH";
+    const HASH_HEX="90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24";
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
       const v=(document.getElementById('verifyInput').value||"").trim().toUpperCase();
