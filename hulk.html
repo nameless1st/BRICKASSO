@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rolex Hulk – Brickasso #04</title>
-  <meta name="description" content="Rolex Hulk – Brickasso #04. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
+  <title>Hulk – Brickasso #02</title>
+  <meta name="description" content="Hulk – Brickasso #02. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
   <link rel="canonical" href="https://brickasso.art/hulk.html">
-  <meta property="og:type" content="website"><meta property="og:title" content="Rolex Hulk – Brickasso #04" />
+  <meta property="og:type" content="website"><meta property="og:title" content="Hulk – Brickasso #02" />
   <meta property="og:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification." />
   <meta property="og:image" content="https://brickasso.art/hulk.webp" />
   <meta property="og:url" content="https://brickasso.art/hulk.html" />
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rolex Hulk – Brickasso #04">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hulk – Brickasso #02">
   <meta name="twitter:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification.">
   <meta name="twitter:image" content="https://brickasso.art/hulk.webp">
   <link rel="icon" href="/logo.png" type="image/png" /><link rel="apple-touch-icon" href="/logo.png" />
@@ -25,24 +25,16 @@
 
     /* Galerie artwork */
     .artwork-gallery{text-align:center}
-    /* container comun pentru main + thumbs ca să aibă fix aceeași lățime */
-    .artwork-gallery .media{width:100%;max-width:800px;margin:0 auto}
     .artwork-gallery .main-img{
-      width:100%;border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:14px
+      width:100%;max-width:800px;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
     }
-
-    /* thumbs: pe desktop 4 pe rând, pe mobil 2 pe rând */
-    .thumbnails{
-      display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
-    }
+    .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
     .thumbnails img{
-      width:24%; /* ~25% fiecare, 4 pe rând */
-      cursor:pointer;border-radius:8px;
+      width:120px;cursor:pointer;border-radius:8px;
       transition:transform .3s; box-shadow:0 3px 8px rgba(0,0,0,.12);
-      display:block;
     }
-    .thumbnails img:hover{transform:scale(1.05)}
+    .thumbnails img:hover{transform:scale(1.1)}
 
     .meta h1{margin:0 0 8px;font-size:2.2em;font-weight:700}
     .badge{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:.9em;margin-bottom:14px}
@@ -52,13 +44,11 @@
     footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}.social-icons-footer{margin-bottom:10px}
     .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}.social-icons-footer img{height:64px;width:auto;vertical-align:middle}
     .social-icons-footer a:hover{transform:scale(1.2)}
-
     @media(max-width:900px){
       .art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
-      /* pe mobil: 2 thumbs pe rând, mari și ușor de apăsat */
-      .thumbnails img{width:48%}
+      .thumbnails img{width:90px}
     }
   </style>
 </head>
@@ -70,6 +60,7 @@
       <a href="index.html" onclick="toggleMenu()">Home</a>
       <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
       <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
       <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
       <a href="contact.html" onclick="toggleMenu()">Contact</a>
     </nav>
@@ -79,35 +70,32 @@
     <div class="art">
       <!-- GALERIE IMAGINI -->
       <div class="artwork-gallery">
-        <div class="media">
-          <img id="mainImage" src="hulk-front.webp" alt="Rolex Hulk – front view" class="main-img">
-          <div class="thumbnails">
-            <img src="hulk-front.webp"  alt="Front view"      onclick="changeImage(this)">
-            <img src="hulk-left.webp"   alt="Left diagonal"   onclick="changeImage(this)">
-            <img src="hulk-right.webp"  alt="Right diagonal"  onclick="changeImage(this)">
-            <img src="hulk-detail.webp" alt="Detail view"     onclick="changeImage(this)">
-          </div>
+        <img id="mainImage" src="hulk-front.webp" alt="Hulk – front view" class="main-img">
+        <div class="thumbnails">
+          <img src="hulk-front.webp" alt="Front view" onclick="changeImage(this)">
+          <img src="hulk-left.webp" alt="Left diagonal" onclick="changeImage(this)">
+          <img src="hulk-right.webp" alt="Right diagonal" onclick="changeImage(this)">
+          <img src="hulk-detail.webp" alt="Detail view" onclick="changeImage(this)">
         </div>
       </div>
 
       <div class="meta">
-        <div class="badge">Brickasso Registry: <strong>#04</strong></div>
-        <h1>Rolex Hulk</h1>
+        <div class="badge">Brickasso Registry: <strong>#02</strong></div>
+        <h1>Hulk</h1>
         <p>
-          The Rolex Hulk emerges in LEGO® with its bold green dial and bezel rebuilt piece by piece.
-          This Brickasso artwork plays with vibrant color and architectural order, giving the legendary Submariner
-          a fresh interpretation. Mounted on ARCHI+ Big background and framed in solid wood for museum-quality presentation.
+          The Hulk emerges in LEGO® with its bold green dial and bezel rebuilt piece by piece.
+          This Brickasso artwork plays with vibrant color and architectural order,
+          giving a fresh interpretation. Mounted on ARCHI+ Big background and framed in solid wood for museum-quality presentation.
         </p>
 
         <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
-          Brickasso is an independent artistic reinterpretation and is not affiliated with Rolex SA,
-          nor endorsed or sponsored by any watch brand.
+          Brickasso is an independent artistic reinterpretation and is not affiliated with, nor endorsed or sponsored by any watch brand.
         </p>
 
         <ul class="specs">
-          <li><strong>Registry No.</strong> BRK-04</li>
+          <li><strong>Registry No.</strong> BRK-02</li>
           <li><strong>Medium</strong> LEGO® bricks (mosaic)</li>
-          <li><strong>Dimensions</strong> 120 × 80 cm</li>
+          <li><strong>Dimensions</strong> 115 × 80 cm</li>
           <li><strong>Brick count</strong> 7,240</li>
           <li><strong>Hours to create</strong> 110</li>
           <li><strong>Year</strong> 2025</li>
@@ -117,10 +105,10 @@
         <!-- VERIFY AUTHENTICITY -->
         <section style="margin-top:24px">
           <h2 style="margin:0 0 10px 0; font-size:1.2em;">Verify authenticity</h2>
-          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-04</strong> · Check code: <strong>BRK-04-******</strong></p>
+          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-02</strong> · Check code: <strong>BRK-02-9M8Z2K</strong></p>
           <form id="verifyForm" style="display:flex; gap:10px; flex-wrap:wrap;">
             <input id="verifyInput" type="text" inputmode="latin" autocomplete="off"
-                   placeholder="Enter full code (e.g. BRK-04-******)"
+                   placeholder="Enter full code (e.g. BRK-02-9M8Z2K)"
                    style="flex:1; min-width:260px; padding:10px; border:1px solid #ccc; border-radius:8px; font-family:inherit;">
             <button type="submit"
                     style="background:#000; color:#fff; padding:10px 14px; border:none; border-radius:10px; font-weight:700; cursor:pointer">
@@ -160,8 +148,8 @@
       const buf=await crypto.subtle.digest('SHA-256',enc);
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
-    const SALT="P3QX5Z&kDVa)!BLH";
-    const HASH_HEX="90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24";
+    const SALT="gfB7t9yK(Neix3iy";
+    const HASH_HEX="e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f";
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
       const v=(document.getElementById('verifyInput').value||"").trim().toUpperCase();
