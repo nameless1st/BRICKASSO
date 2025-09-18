@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Girl at the Mirror – Brickasso #03</title>
-  <meta name="description" content="Girl at the Mirror – Brickasso #03. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
+  <title>Girl at the Mirror – Brickasso #05</title>
+  <meta name="description" content="Girl at the Mirror – Brickasso #05. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
   <link rel="canonical" href="https://brickasso.art/girl-at-the-mirror.html">
-  <meta property="og:type" content="website"><meta property="og:title" content="Girl at the Mirror – Brickasso #03" />
+  <meta property="og:type" content="website"><meta property="og:title" content="Girl at the Mirror – Brickasso #05" />
   <meta property="og:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification." />
   <meta property="og:image" content="https://brickasso.art/girl-at-the-mirror.webp" />
   <meta property="og:url" content="https://brickasso.art/girl-at-the-mirror.html" />
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Girl at the Mirror – Brickasso #03">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Girl at the Mirror – Brickasso #05">
   <meta name="twitter:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification.">
   <meta name="twitter:image" content="https://brickasso.art/girl-at-the-mirror.webp">
   <link rel="icon" href="/logo.png" type="image/png" /><link rel="apple-touch-icon" href="/logo.png" />
@@ -23,7 +23,6 @@
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
 
-    /* Galerie artwork */
     .artwork-gallery{text-align:center}
     .artwork-gallery .main-img{
       width:100%;max-width:800px;border-radius:12px;
@@ -68,7 +67,6 @@
 
   <main class="wrap">
     <div class="art">
-      <!-- GALERIE IMAGINI -->
       <div class="artwork-gallery">
         <img id="mainImage" src="girl-at-the-mirror-front.webp" alt="Girl at the Mirror – front view" class="main-img">
         <div class="thumbnails">
@@ -80,7 +78,7 @@
       </div>
 
       <div class="meta">
-        <div class="badge">Brickasso Registry: <strong>#03</strong></div>
+        <div class="badge">Brickasso Registry: <strong>#05</strong></div>
         <h1>Girl at the Mirror</h1>
         <p>
           Inspired by Picasso’s masterpiece, this 3D mosaic reinvents the eternal dialogue of reflection through over 32,000 LEGO® tiles.
@@ -96,7 +94,7 @@
         </p>
 
         <ul class="specs">
-          <li><strong>Registry No.</strong> BRK-03</li>
+          <li><strong>Registry No.</strong> BRK-05</li>
           <li><strong>Medium</strong> LEGO® bricks (mosaic)</li>
           <li><strong>Dimensions</strong> 164.8 × 135.2 cm</li>
           <li><strong>Brick count</strong> 32,457</li>
@@ -105,13 +103,12 @@
           <li><strong>Certificate</strong> Included (signed & numbered)</li>
         </ul>
 
-        <!-- VERIFY AUTHENTICITY -->
         <section style="margin-top:24px">
           <h2 style="margin:0 0 10px 0; font-size:1.2em;">Verify authenticity</h2>
-          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-03</strong> · Check code: <strong>BRK-03-******</strong></p>
+          <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-05</strong> · Check code: <strong>BRK-05-******</strong></p>
           <form id="verifyForm" style="display:flex; gap:10px; flex-wrap:wrap;">
             <input id="verifyInput" type="text" inputmode="latin" autocomplete="off"
-                   placeholder="Enter full code (e.g. BRK-03-******)"
+                   placeholder="Enter full code (e.g. BRK-05-******)"
                    style="flex:1; min-width:260px; padding:10px; border:1px solid #ccc; border-radius:8px; font-family:inherit;">
             <button type="submit"
                     style="background:#000; color:#fff; padding:10px 14px; border:none; border-radius:10px; font-weight:700; cursor:pointer">
@@ -128,7 +125,7 @@
 
   <footer>
     <div class="social-icons-footer">
-      <a href="https://instagram.com/brickasso.art" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
+      <a href="https://instagram.com/brickasso.official" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
       <a href="https://x.com/brickasso_art" target="_blank"><img src="x-logo.png" alt="X (Twitter)"></a>
     </div>
     © Brickasso 2025 – Original LEGO Art by Albert Oprea
@@ -145,14 +142,13 @@
       main.alt=el.alt;
     }
 
-    // Authenticity check (client-side SHA-256 of SALT + code)
     async function sha256Hex(str){
       const enc=new TextEncoder().encode(str);
       const buf=await crypto.subtle.digest('SHA-256',enc);
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
-    const SALT="e4O8w0mi_(9L&HK]";
-    const HASH_HEX="c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055";
+    const SALT="$Jt-+WlmjO[t98]5";
+    const HASH_HEX="d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581";
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
       const v=(document.getElementById('verifyInput').value||"").trim().toUpperCase();
