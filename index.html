@@ -96,9 +96,7 @@
       backdrop-filter: blur(6px);
     }
 
-    .logo {
-      height: 50px;
-    }
+    .logo { height: 50px; }
 
     .menu-toggle {
       display: none;
@@ -109,9 +107,7 @@
       cursor: pointer;
     }
 
-    nav {
-      display: flex;
-    }
+    nav { display: flex; }
 
     nav a {
       margin-left: 20px;
@@ -157,7 +153,6 @@
     }
     .cta:hover { background-color: var(--brand); border-color: var(--brand); }
 
-    /* Secondary CTA (Portfolio) */
     .cta.secondary{
       background: transparent;
       color:#000;
@@ -168,6 +163,9 @@
       border-color: var(--brand);
       color:#fff;
     }
+
+    /* Banda cu iconițe – DOAR pe mobil; stă pe fundal, nu pe voalul alb */
+    .social-strip-mobile { display: none; }
 
     footer {
       margin-top: 100px;
@@ -193,7 +191,7 @@
 
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* Responsive mobile menu */
+    /* Responsive mobile */
     @media (max-width: 768px) {
       header { flex-direction: row; justify-content: space-between; align-items: center; }
       .menu-toggle { display: block; font-size: 1.2em; }
@@ -211,10 +209,28 @@
         z-index: 999;
       }
       nav.active { display: flex; }
+
       .hero { padding: 60px 20px 40px; }
       .hero h1 { font-size: 1.7em; margin-bottom: 20px; }
       .hero p { font-size: 1.05em; padding: 0 10px; }
       .cta { padding: 12px 24px; font-size: 1em; }
+
+      /* Afișăm banda imediat sub hero, pe fundal */
+      .social-strip-mobile{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:18px;
+        padding: 24px 0 8px;   /* „ridică” vizual icoanele sub View Portfolio */
+        background: transparent; /* fundalul paginii */
+      }
+      .social-strip-mobile img{
+        width:56px; height:56px; display:block;
+      }
+
+      /* Ascundem iconițele din footer pe mobil ca să nu se dubleze */
+      .social-icons-footer{ display:none; }
+
       .social-icons-footer img { height: 48px; }
       footer { padding: 40px 20px; }
     }
@@ -247,28 +263,38 @@
     </div>
   </section>
 
-<footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
-  <div class="social-icons-footer" style="margin-bottom:10px;">
-    <a href="https://instagram.com/brickasso.official" target="_blank" style="margin:0 15px;">
-      <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
+  <!-- BANDA CU ACELEAȘI ICONIȚE – SUB HERO, DOAR PE MOBIL, PE FUNDAL -->
+  <section class="social-strip-mobile" aria-label="Follow Brickasso">
+    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="instagram-logo.png" alt="Instagram">
     </a>
-    <a href="https://x.com/brickasso_art" target="_blank" style="margin:0 15px;">
-      <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
+    <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <img src="x-logo.png" alt="X (Twitter)">
     </a>
-  </div>
-  
-  <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-  
-  <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-    LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
-  </p>
-  
-  <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
-  </p>
-</footer>
+  </section>
+
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+    <div class="social-icons-footer" style="margin-bottom:10px;">
+      <a href="https://instagram.com/brickasso.official" target="_blank" style="margin:0 15px;">
+        <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
+      </a>
+      <a href="https://x.com/brickasso_art" target="_blank" style="margin:0 15px;">
+        <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
+      </a>
+    </div>
+
+    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
+
+    <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+    </p>
+
+    <p>
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
+      <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    </p>
+  </footer>
 
   <script>
     function toggleMenu() {
