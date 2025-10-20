@@ -128,17 +128,13 @@
   <script>
   function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
 
-  // Normalize: trim, uppercase, dash normalize, no spaces
+  // Normalize: trim, uppercase, unify dashes, no spaces
   function normalizeCode(input){
-    return (input||'')
-      .toString()
-      .trim()
-      .toUpperCase()
+    return (input||'').toString().trim().toUpperCase()
       .replace(/[‐-‒–—﹘﹣]/g,'-')
       .replace(/\s+/g,'');
   }
 
-  // Web Crypto helper
   async function sha256Hex(str){
     const enc = new TextEncoder().encode(str);
     const buf = await crypto.subtle.digest('SHA-256', enc);
@@ -147,13 +143,13 @@
 
   // ✅ Registry 2025 — Journey (01..04) + Official Signed (01..03)
   const REGISTRY = {
-    /* Brickasso Journey (early works) */
-    'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
-    'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
-    'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
-    'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' },
+    /* Brickasso Journey (early works) — NEW HASHES for new prefixes */
+    'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'93973cefa2d429ece64bdfbd187930102fff5bc71a7c2072279584a71407fead' },
+    'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'8bc3c37cccfba84899ab0d760b856ecc5ab34834e570bb8f4c614a595e764967' },
+    'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'7105533488a95437eb51a1b3ae240dbc6008165d62bb85b8d9a33e167c611a74' },
+    'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'aa3113a22127c1df4f1e5fa1fbe9d70a31ec05314a6a6cdd18ea54d4410ec10e' },
 
-    /* Official Signed Works */
+    /* Official Signed Works (unchanged) */
     'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
     'BRK-02': { label:'Pepsi 02',        salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
     'BRK-03': { label:'Afghan Girl',     salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
@@ -175,11 +171,9 @@
 
     // Build registry key prefix
     const parts = v.split('-');
-    const key = (v.startsWith('BRK-JOURNEY'))
-      ? parts.slice(0,3).join('-')          // BRK-JOURNEY-01
-      : parts.slice(0,2).join('-');         // BRK-01
-
+    const key = (v.startsWith('BRK-JOURNEY')) ? parts.slice(0,3).join('-') : parts.slice(0,2).join('-');
     const entry = REGISTRY[key];
+
     if(!entry){
       msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
       msg.textContent='⚠️ Unknown registry number.';
@@ -196,7 +190,7 @@
         msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
       }
     }catch(err){
-      msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+      msg.style.color='#721c24'; msg.style.background:'#fff3cd'; msg.style.border='1px solid #ffeeba';
       msg.textContent = 'Temporary error validating the code.';
     }
   });
