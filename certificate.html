@@ -128,10 +128,14 @@
   <script>
   function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
 
-  // Normalize: trim, uppercase, unify dashes, no spaces
+  // Normalize: trim, uppercase, unifică toate tipurile de dash → '-'
   function normalizeCode(input){
-    return (input||'').toString().trim().toUpperCase()
-      .replace(/[‐-‒–—﹘﹣]/g,'-')
+    return (input||'')
+      .toString()
+      .trim()
+      .toUpperCase()
+      // IMPORTANT: '-' mutat la finalul clasei ca să nu mai fie gamă invalidă
+      .replace(/[‐-‒–—﹘﹣-]/g,'-')
       .replace(/\s+/g,'');
   }
 
@@ -141,27 +145,29 @@
     return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
   }
 
-  // ✅ Registry 2025 — Journey (01..04) + Official Signed (01..03)
+  // Registry 2025 — Journey (01..04) + Official Signed (01..03)
   const REGISTRY = {
-    /* Brickasso Journey (early works) — NEW HASHES for new prefixes */
+    /* Brickasso Journey (early works) – HASH-urile recalibrate pe noile prefixuri */
     'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'93973cefa2d429ece64bdfbd187930102fff5bc71a7c2072279584a71407fead' },
     'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'8bc3c37cccfba84899ab0d760b856ecc5ab34834e570bb8f4c614a595e764967' },
     'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'7105533488a95437eb51a1b3ae240dbc6008165d62bb85b8d9a33e167c611a74' },
     'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'aa3113a22127c1df4f1e5fa1fbe9d70a31ec05314a6a6cdd18ea54d4410ec10e' },
 
-    /* Official Signed Works (unchanged) */
+    /* Official Signed Works (rămân neschimbate) */
     'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
     'BRK-02': { label:'Pepsi 02',        salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
     'BRK-03': { label:'Afghan Girl',     salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
   };
 
+  // Atașează submit handler
   document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
     e.preventDefault();
+
     const v = normalizeCode(document.getElementById('verifyInput').value);
     const msg = document.getElementById('verifyMsg');
     msg.style.display='block';
 
-    // Accept either BRK-XX-XXXXXX or BRK-JOURNEY-XX-XXXXXX
+    // Acceptă BRK-XX-XXXXXX sau BRK-JOURNEY-XX-XXXXXX
     const validFormat = /^(BRK-\d{2}-[A-Z0-9]{6}|BRK-JOURNEY-\d{2}-[A-Z0-9]{6})$/;
     if(!validFormat.test(v)){
       msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
@@ -169,9 +175,9 @@
       return;
     }
 
-    // Build registry key prefix
+    // Prefix pentru map: BRK-01 sau BRK-JOURNEY-01
     const parts = v.split('-');
-    const key = (v.startsWith('BRK-JOURNEY')) ? parts.slice(0,3).join('-') : parts.slice(0,2).join('-');
+    const key = v.startsWith('BRK-JOURNEY') ? parts.slice(0,3).join('-') : parts.slice(0,2).join('-');
     const entry = REGISTRY[key];
 
     if(!entry){
