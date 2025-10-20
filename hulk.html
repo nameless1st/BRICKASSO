@@ -155,49 +155,31 @@
     }
     // Hash helper (browser Web Crypto)
     async function sha256Hex(str){
-      const enc = new TextEncoder().encode(str);
-      const buf = await crypto.subtle.digest('SHA-256', enc);
-      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+      try {
+        const enc = new TextEncoder().encode(str);
+        const buf = await crypto.subtle.digest('SHA-256', enc);
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      } catch (err) {
+        console.error('SHA-256 error:', err);
+        return null;
+      }
     }
     // Registry for this page (only for Hulk)
     const REGISTRY = {
       'BRK-J': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' }
     };
     // Submit verification
-    document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
+    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const v = normalizeCode(document.getElementById('verifyInput').value);
       const msg = document.getElementById('verifyMsg');
-      msg.style.display='block';
-      msg.style.padding='10px';
-      msg.style.borderRadius='8px';
+      msg.style.display = 'block';
+      msg.style.padding = '10px';
+      msg.style.borderRadius = '8px';
+      console.log('Input code:', v);
+
       // Accept letters+digits in last 6: BRK-J-XXXXXX
-      if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
-        return;
-      }
-      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
-      const entry = REGISTRY[prefix];
-      if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
-        return;
-      }
-      try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
-        } else {
-          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
-        }
-      }catch(err){
-        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
-        msg.textContent = 'Temporary error validating the code.';
-      }
-    });
-  </script>
-</body>
-</html>
+      if (!/^BRK-J-[A-Z0-9]{6}$/.test(v)) {
+        msg.style.color = '#721c24';
+        msg.style.background = '#f8d7da';
+        msg.style.border = '1px solid
