@@ -1,10 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Certificate of Authenticity – Brickasso</title>
+
   <!-- SEO / Sharing -->
   <meta name="description" content="Certificate of Authenticity for Brickasso artworks by Albert Oprea. Signed, numbered, and QR-verified." />
   <link rel="canonical" href="https://brickasso.art/certificate.html" />
@@ -14,16 +14,20 @@
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/certificate.html" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Favicon -->
   <link rel="icon" href="/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/logo.png" />
+
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+
   <style>
     /* Base */
     * { box-sizing: border-box; }
     :root{ --brand:#d62828; }
     body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-image: url('archi-big-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: #111; }
+
     /* Header (same across site) */
     header { padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; background-color: rgba(255, 255, 255, 0.8); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #ddd; }
     .logo { height: 50px; }
@@ -31,11 +35,13 @@
     nav { display: flex; }
     nav a { margin-left: 20px; text-decoration: none; color: #000; font-weight: 600; transition: color 0.3s; }
     nav a:hover { color: var(--brand); }
+
     /* Content */
     .certificate-section { position: relative; padding: 100px 20px 30px; background: rgba(255,255,255,0.75); text-align: center; overflow:hidden; }
     .certificate-section h1 { font-size: 3em; margin-bottom: 20px; font-weight: 600; }
     .certificate-section p { font-size: 1.15em; line-height: 1.8; max-width: 820px; margin: 0 auto 16px; }
     .sigiliu { position: absolute; bottom: 135px; right: 250px; height: 220px; transform: rotate(15deg); opacity: .9; filter: drop-shadow(0 4px 16px rgba(0,0,0,.15)); }
+
     /* Verify card */
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; }
     .card { background: rgba(255,255,255,.88); border: 1px solid rgba(0,0,0,.06); border-radius: 16px; padding: 22px; margin: 18px 0; }
@@ -47,12 +53,14 @@
     .btn.secondary { background: transparent; color: #000; }
     .btn.secondary:hover { background: #d62828; color: #fff; }
     .result { margin-top: 12px; font-size: 1rem; display:none; padding: 10px; border-radius: 8px; }
+
     /* Footer */
     footer { margin-top: 40px; padding: 30px; text-align: center; font-size: 0.9em; color: #666; }
     .social-icons-footer { margin-bottom: 10px; }
     .social-icons-footer a { margin: 0 15px; display: inline-block; transition: transform 0.3s ease; }
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
+
     /* Mobile */
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
@@ -80,6 +88,7 @@
       <a href="contact.html" onclick="toggleMenu()">Contact</a>
     </nav>
   </header>
+
   <section class="certificate-section">
     <h1>Certificate of Authenticity</h1>
     <p>Each Brickasso artwork ships with a signed & numbered Certificate of Authenticity. The certificate contains a private BRK code and QR link for verification. For security, the full code is never published online.</p>
@@ -89,19 +98,21 @@
     <p style="font-style: italic; color: #555; margin-top: 24px;">"Every brick tells a story — and every certificate preserves it."<br/>— Albert Oprea</p>
     <img src="sigiliu.gif" alt="Brickasso Seal" class="sigiliu" />
   </section>
+
   <div class="wrap">
     <!-- VERIFY AUTHENTICITY CARD -->
     <section class="card">
       <h2 class="muted" style="margin:0 0 8px 0">Verify authenticity</h2>
-      <p class="muted" style="margin:0 0 8px 0">Use your certificate to check the code in the field below. Enter the complete format <strong>BRK-XX-XXXXXX or BRK-J-XXXXXX</strong>. For privacy, only owners can verify.</p>
+      <p class="muted" style="margin:0 0 8px 0">Use your certificate to check the code in the field below. Accepted formats: <strong>BRK-J-XXXXXX</strong> or <strong>BRK-01-XXXXXX</strong>. For privacy, only owners can verify.</p>
       <form id="verifyForm" class="verify-row">
-        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-01-XXXXXX or BRK-J-01-XXXXXX)" autocomplete="off" />
+        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-J-9M8Z2K or BRK-01-7X3Q9A)" autocomplete="off" />
         <button type="submit" class="btn">Verify</button>
         <a class="btn secondary" href="gallery.html">← Back to Gallery</a>
       </form>
       <p id="verifyMsg" class="result" aria-live="polite"></p>
     </section>
   </div>
+
 <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
   <div class="social-icons-footer" style="margin-bottom:10px;">
     <a href="https://instagram.com/brickasso.official" target="_blank" style="margin:0 15px;">
@@ -111,70 +122,129 @@
       <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
     </a>
   </div>
- 
+  
   <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
- 
+  
   <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
     LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
   </p>
- 
+  
   <p>
-    <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
-    <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
+    <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
+    <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
     <a href="contact.html" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
   </p>
 </footer>
+
+
   <script>
     function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
+
     // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
     function normalizeCode(input){
       return (input||'')
         .toString()
         .trim()
         .toUpperCase()
-        .replace(/[‐‑‒–—﹘﹣]/g,'-')
+        .replace(/[‐-‒–—﹘﹣]/g,'-')
         .replace(/\s+/g,'');
     }
+
     // Hash helper (browser Web Crypto)
     async function sha256Hex(str){
       const enc = new TextEncoder().encode(str);
       const buf = await crypto.subtle.digest('SHA-256', enc);
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
-    // Registry map (no full codes exposed): SALT + HASH(SALT + FULL_CODE)
+
+    // Registry map (keys use prefix formed by first two segments: BRK-J or BRK-01)
     const REGISTRY = {
-      'BRK-J-01': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'[RECOMPUTE_FOR_BRK-J-01-9M8Z2K]' },
-      'BRK-J-02': { label:'Pepsi', salt:'e4O8w0mi_(9L&HK]', hash:'[RECOMPUTE_FOR_BRK-J-02-4K7B6P]' },
-      'BRK-J-03': { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'[RECOMPUTE_FOR_BRK-J-03-5D2L8Q]' },
-      'BRK-J-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'[RECOMPUTE_FOR_BRK-J-04-6T1R9V]' },
-      'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*', hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
-      'BRK-02': { label:'Pepsi 02', salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
-      'BRK-03': { label:'Afghan Girl', salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
+      // Brickasso Journey (test codes)
+      'BRK-J': { label:'Hulk (Journey) — BRK-JOURNEY-01', salt:'gfB7t9yK(Neix3iy',  hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
+      'BRK-J-2': { label:'Pepsi (Journey) — BRK-JOURNEY-02', salt:'e4O8w0mi_(9L&HK]', hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
+      'BRK-J-3': { label:'Daytona (Journey) — BRK-JOURNEY-03', salt:'P3QX5Z&kDVa)!BLH', hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
+      'BRK-J-4': { label:'Girl at the Mirror (Journey) — BRK-JOURNEY-04', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' },
+
+      // Official Signed Works
+      'BRK-01': { label:'The White Horse — BRK-01', salt:'nJrlu0dROS5(J+Q*', hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
+      'BRK-02': { label:'Pepsi 02 — BRK-02', salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
+      'BRK-03': { label:'Afghan Girl — BRK-03', salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
     };
+
+    // Helper to derive registry key from normalized code.
+    // Accepts formats like BRK-J-9M8Z2K and BRK-01-7X3Q9A.
+    function registryKeyFromCode(code){
+      // split by hyphen
+      const parts = code.split('-');
+      if(parts.length < 3) return null;
+      const first = parts[0]; // BRK
+      const second = parts[1]; // J or 01
+      // For journey series we used separate keys for each journey entry beyond BRK-J
+      if(first === 'BRK' && second === 'J'){
+        // attempt to map by known full code pattern for journeys.
+        // If the third segment starts with a digit that can map to an index, try to use direct 'BRK-J' key first.
+        // We'll try multiple fallback keys.
+        const base = 'BRK-J';
+        // Some journey entries are stored as BRK-J, BRK-J-2, BRK-J-3, BRK-J-4
+        // Determine mapping by known code values length and simple heuristic:
+        // If full match equals one of known hashes we will check them all anyway later.
+        // Here return base; verification routine will check candidate keys if needed.
+        return base;
+      }
+      // Standard signed works like BRK-01, BRK-02, BRK-03
+      if(first === 'BRK' && /^[0-9]{2}$/.test(second)){
+        return `${first}-${second}`;
+      }
+      return null;
+    }
+
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
-      const v = normalizeCode(document.getElementById('verifyInput').value);
+      const raw = document.getElementById('verifyInput').value;
+      const v = normalizeCode(raw);
       const msg = document.getElementById('verifyMsg');
       msg.style.display='block';
-      // Accept letters+digits in last 6: BRK-XX-XXXXXX or BRK-J-XXXXXX
-      if(!/^BRK-(J-)?\d{2}-[A-Z0-9]{6}$/.test(v)){
+
+      // Accept BRK-J-XXXXXX or BRK-01-XXXXXX etc.
+      if(!/^BRK-(?:J|\d{2})-[A-Z0-9]{6}$/.test(v)){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX or BRK-J-XXXXXX (letters and digits).';
+        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX or BRK-01-XXXXXX.';
         return;
       }
-      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
-      const entry = REGISTRY[prefix];
-      if(!entry){
+
+      // Try map key
+      const key = registryKeyFromCode(v);
+      if(!key){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
+        msg.textContent='⚠️ Unknown registry prefix.';
         return;
       }
+
       try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
+        // For journey entries we may need to test multiple candidate registry entries.
+        const candidates = [];
+        if(key === 'BRK-J'){
+          // Build candidate keys in the same order as REGISTRY definition
+          candidates.push('BRK-J', 'BRK-J-2', 'BRK-J-3', 'BRK-J-4');
+        } else {
+          candidates.push(key);
+        }
+
+        let matched = null;
+        for(const k of candidates){
+          const entry = REGISTRY[k];
+          if(!entry) continue;
+          const hashed = await sha256Hex(entry.salt + v);
+          if(hashed === entry.hash){
+            matched = entry;
+            break;
+          }
+        }
+
+        if(matched){
           msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+          msg.textContent = `✅ Verified: This code matches the official registry entry. (${matched.label})`;
         } else {
           msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
           msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
@@ -187,4 +257,3 @@
   </script>
 </body>
 </html>
-```
