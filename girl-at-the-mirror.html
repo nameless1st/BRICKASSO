@@ -164,39 +164,37 @@
       'BRK-J': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' }
     };
     // Submit verification
-    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
+    document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
       const v = normalizeCode(document.getElementById('verifyInput').value);
       const msg = document.getElementById('verifyMsg');
-      msg.style.display = 'block';
-      msg.style.padding = '10px';
-      msg.style.borderRadius = '8px';
+      msg.style.display='block';
+      msg.style.padding='10px';
+      msg.style.borderRadius='8px';
       // Accept letters+digits in last 6: BRK-J-XXXXXX
-      if (!/^BRK-J-[A-Z0-9]{6}$/.test(v)) {
-        msg.style.color = '#721c24'; msg.style.background = '#f8d7da'; msg.style.border = '1px solid #f5c6cb';
-        msg.textContent = '⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
+      if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
+        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
         return;
       }
       const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
       const entry = REGISTRY[prefix];
-      if (!entry) {
-        msg.style.color = '#721c24'; msg.style.background = '#f8d7da'; msg.style.border = '1px solid #f5c6cb';
-        msg.textContent = '⚠️ Unknown registry number.';
+      if(!entry){
+        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.textContent='⚠️ Unknown registry number.';
         return;
       }
-      try {
-        const computedHash = await sha256Hex(entry.salt + v);
-        console.log('Computed Hash:', computedHash); // For debugging
-        const ok = computedHash === entry.hash;
-        if (ok) {
-          msg.style.color = '#155724'; msg.style.background = '#d4edda'; msg.style.border = '1px solid #c3e6cb';
+      try{
+        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+        if(ok){
+          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
           msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
         } else {
-          msg.style.color = '#721c24'; msg.style.background = '#f8d7da'; msg.style.border = '1px solid #f5c6cb';
+          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
           msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
         }
-      } catch (err) {
-        msg.style.color = '#721c24'; msg.style.background = '#fff3cd'; msg.style.border = '1px solid #ffeeba';
+      }catch(err){
+        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
         msg.textContent = 'Temporary error validating the code.';
       }
     });
