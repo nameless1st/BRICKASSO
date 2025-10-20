@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Certificate of Authenticity – Brickasso</title>
 
+  <!-- SEO / Sharing -->
   <meta name="description" content="Certificate of Authenticity for Brickasso artworks by Albert Oprea. Signed, numbered, and QR-verified." />
   <link rel="canonical" href="https://brickasso.art/certificate.html" />
   <meta property="og:type" content="website" />
@@ -14,8 +15,11 @@
   <meta property="og:url" content="https://brickasso.art/certificate.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Favicon -->
   <link rel="icon" href="/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/logo.png" />
+
+  <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
 
   <style>
@@ -24,6 +28,7 @@
     body { margin:0; padding:0; font-family:'Montserrat',sans-serif;
            background:url('archi-big-bg.jpg') center/cover fixed; color:#111; }
 
+    /* Header (same across site) */
     header { padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
              background:rgba(255,255,255,.8); position:sticky; top:0; z-index:1000; border-bottom:1px solid #ddd; }
     .logo { height:50px; }
@@ -32,6 +37,7 @@
     nav a { margin-left:20px; text-decoration:none; color:#000; font-weight:600; transition:color .3s; }
     nav a:hover { color:var(--brand); }
 
+    /* Content */
     .certificate-section { position:relative; padding:100px 20px 30px;
       background:rgba(255,255,255,0.75); text-align:center; overflow:hidden; }
     .certificate-section h1 { font-size:3em; margin-bottom:20px; font-weight:600; }
@@ -39,6 +45,7 @@
     .sigiliu { position:absolute; bottom:135px; right:250px; height:220px;
                transform:rotate(15deg); opacity:.9; filter:drop-shadow(0 4px 16px rgba(0,0,0,.15)); }
 
+    /* Verify card */
     .wrap { max-width:1100px; margin:0 auto; padding:0 20px 80px; }
     .card { background:rgba(255,255,255,.88); border:1px solid rgba(0,0,0,.06);
             border-radius:16px; padding:22px; margin:18px 0; }
@@ -51,12 +58,14 @@
     .btn.secondary:hover { background:#d62828; color:#fff; }
     .result { margin-top:12px; font-size:1rem; display:none; padding:10px; border-radius:8px; }
 
+    /* Footer */
     footer { margin-top:40px; padding:30px; text-align:center; font-size:.9em; color:#666; }
     .social-icons-footer { margin-bottom:10px; }
-    .social-icons-footer a { margin:0 15px; display:inline-block; transition:transform .3s ease; }
-    .social-icons-footer img { height:64px; }
+    .social-icons-footer a { margin:0 15px; display:inline-block; transition:transform 0.3s ease; }
+    .social-icons-footer img { height:64px; width:auto; vertical-align:middle; }
     .social-icons-footer a:hover { transform:scale(1.2); }
 
+    /* Mobile */
     @media(max-width:768px){
       .menu-toggle{display:block;}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;
@@ -96,17 +105,22 @@
   </section>
 
   <div class="wrap">
+    <!-- VERIFY AUTHENTICITY CARD -->
     <section class="card">
       <h2 class="muted" style="margin:0 0 8px 0">Verify authenticity</h2>
       <p class="muted" style="margin:0 0 8px 0">
-        Enter your code below (format: <strong>BRK-XX-XXXXXX</strong> or <strong>BRK-JOURNEY-XX-XXXXXX</strong>)
+        Use your certificate to check the code below. Accepted formats:
+        <strong>BRK-XX-XXXXXX</strong> (official signed) or
+        <strong>BRK-JOURNEY-XX-XXXXXX</strong> (early works).
       </p>
       <form id="verifyForm" class="verify-row" onsubmit="return false">
-  <input id="verifyInput" class="input" placeholder="Enter code (e.g. BRK-02-XXXXXX or BRK-JOURNEY-01-XXXXXX)" autocomplete="off" />
-  <button id="verifyBtn" type="button" class="btn">Verify</button>
-  <a class="btn secondary" href="gallery.html">← Back to Gallery</a>
-</form>
-<p id="verifyMsg" class="result" aria-live="polite"></p>
+        <input id="verifyInput" class="input"
+               placeholder="Enter code (e.g. BRK-02-ZNB1QT or BRK-JOURNEY-01-9M8Z2K)"
+               autocomplete="off" />
+        <button id="verifyBtn" type="button" class="btn">Verify</button>
+        <a class="btn secondary" href="gallery.html">← Back to Gallery</a>
+      </form>
+      <p id="verifyMsg" class="result" aria-live="polite"></p>
     </section>
   </div>
 
@@ -125,86 +139,84 @@
     </p>
   </footer>
 
-<script>
-  function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
+  <script>
+    function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
 
-  // Normalize: uppercase + toate tipurile de dash -> '-' + fără spații
-  function normalizeCode(input){
-    return (input||'')
-      .toString()
-      .trim()
-      .toUpperCase()
-      // dash-urile enumerate explicit (cu hyphen '-' la final, ca să nu creeze range)
-      .replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\uFE58\uFE63\uFF0D-]/g, '-')
-      .replace(/\s+/g,'');
-  }
-
-  async function sha256Hex(str){
-    const enc = new TextEncoder().encode(str);
-    const buf = await crypto.subtle.digest('SHA-256', enc);
-    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-
-  // Registry 2025 — Journey (01..04) + Official Signed (01..03)
-  const REGISTRY = {
-    // Brickasso Journey (early works) — HASH-uri recalibrate pe noile prefixuri
-    'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'93973cefa2d429ece64bdfbd187930102fff5bc71a7c2072279584a71407fead' },
-    'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'8bc3c37cccfba84899ab0d760b856ecc5ab34834e570bb8f4c614a595e764967' },
-    'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'7105533488a95437eb51a1b3ae240dbc6008165d62bb85b8d9a33e167c611a74' },
-    'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'aa3113a22127c1df4f1e5fa1fbe9d70a31ec05314a6a6cdd18ea54d4410ec10e' },
-
-    // Official Signed Works (neschimbate)
-    'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
-    'BRK-02': { label:'Pepsi 02',        salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
-    'BRK-03': { label:'Afghan Girl',     salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
-  };
-
-  // Rulează după ce există DOM-ul
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('verifyBtn');
-    const input = document.getElementById('verifyInput');
-    const msg = document.getElementById('verifyMsg');
-
-    async function runVerify(){
-      msg.style.display='block';
-      const v = normalizeCode(input.value);
-
-      // Acceptă BRK-XX-XXXXXX sau BRK-JOURNEY-XX-XXXXXX
-      const validFormat = /^(BRK-\d{2}-[A-Z0-9]{6}|BRK-JOURNEY-\d{2}-[A-Z0-9]{6})$/;
-      if(!validFormat.test(v)){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX or BRK-JOURNEY-XX-XXXXXX.';
-        return;
-      }
-
-      const parts = v.split('-');
-      const key = v.startsWith('BRK-JOURNEY') ? parts.slice(0,3).join('-') : parts.slice(0,2).join('-');
-      const entry = REGISTRY[key];
-      if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
-        return;
-      }
-
-      try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
-        } else {
-          msg.style.color='#721c24'; msg.style.background:'#f8d7da'; msg.style.border='1px solid #f5c6cb';
-          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
-        }
-      }catch(err){
-        msg.style.color='#721c24'; msg.style.background:'#fff3cd'; msg.style.border='1px solid #ffeeba';
-        msg.textContent = 'Temporary error validating the code.';
-      }
+    // Normalize: uppercase + toate tipurile de dash → '-' + fără spații
+    function normalizeCode(input){
+      return (input||'').toString().trim().toUpperCase()
+        /* U+2010..U+2015 (dash-uri), U+FE58, U+FE63, U+FF0D + '-' clasic la final ca să nu formeze range */
+        .replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\uFE58\uFE63\uFF0D-]/g, '-')
+        .replace(/\s+/g,'');
     }
 
-    // Click pe buton + Enter în input
-    btn.addEventListener('click', runVerify);
-    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); runVerify(); } });
-  });
-</script>
+    async function sha256Hex(str){
+      const enc = new TextEncoder().encode(str);
+      const buf = await crypto.subtle.digest('SHA-256', enc);
+      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    }
+
+    // ✅ Registry 2025 — Journey (01..04) + Official Signed (01..03) — în ordinea corectă
+    const REGISTRY = {
+      /* Brickasso Journey (early works) */
+      'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'93973cefa2d429ece64bdfbd187930102fff5bc71a7c2072279584a71407fead' },
+      'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'8bc3c37cccfba84899ab0d760b856ecc5ab34834e570bb8f4c614a595e764967' },
+      'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'7105533488a95437eb51a1b3ae240dbc6008165d62bb85b8d9a33e167c611a74' },
+      'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'aa3113a22127c1df4f1e5fa1fbe9d70a31ec05314a6a6cdd18ea54d4410ec10e' },
+
+      /* Official Signed Works */
+      'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
+      'BRK-02': { label:'Pepsi 02',        salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
+      'BRK-03': { label:'Afghan Girl',     salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
+    };
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const btn = document.getElementById('verifyBtn');
+      const input = document.getElementById('verifyInput');
+      const msg = document.getElementById('verifyMsg');
+
+      async function runVerify(){
+        msg.style.display='block';
+        const v = normalizeCode(input.value);
+
+        // Acceptă BRK-XX-XXXXXX sau BRK-JOURNEY-XX-XXXXXX
+        const validFormat = /^(BRK-\d{2}-[A-Z0-9]{6}|BRK-JOURNEY-\d{2}-[A-Z0-9]{6})$/;
+        if(!validFormat.test(v)){
+          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+          msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX or BRK-JOURNEY-XX-XXXXXX.';
+          return;
+        }
+
+        // Cheie de lookup: BRK-01 sau BRK-JOURNEY-01
+        const parts = v.split('-');
+        const key = v.startsWith('BRK-JOURNEY') ? parts.slice(0,3).join('-') : parts.slice(0,2).join('-');
+        const entry = REGISTRY[key];
+
+        if(!entry){
+          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+          msg.textContent='⚠️ Unknown registry number.';
+          return;
+        }
+
+        try{
+          const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+          if(ok){
+            msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+            msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+          }else{
+            msg.style.color='#721c24'; msg.style.background:'#f8d7da'; msg.style.border='1px solid #f5c6cb';
+            msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
+          }
+        }catch(err){
+          msg.style.color='#721c24'; msg.style.background:'#fff3cd'; msg.style.border='1px solid #ffeeba';
+          msg.textContent = 'Temporary error validating the code.';
+        }
+      }
+
+      // Click pe buton + Enter în input (fără refresh)
+      btn.addEventListener('click', runVerify);
+      input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); runVerify(); } });
+    });
+  </script>
 </body>
 </html>
