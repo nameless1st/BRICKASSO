@@ -134,7 +134,6 @@
     <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
   </p>
 </footer>
- 
   <script>
     function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
@@ -159,9 +158,9 @@
       const buf = await crypto.subtle.digest('SHA-256', enc);
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
-    // Registry for this page (only for Daytona)
+    // Registry for this page (only for Hulk)
     const REGISTRY = {
-      'BRK-J': { label:'Hulk', salt:'gfB7t9yK(Neix3iy)!BLH', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' }
+      'BRK-J': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'7626532b157a16f1a51d79c4a587e92f3a68d03ab2d77f3bafb70ef854ac3491' }
     };
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
