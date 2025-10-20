@@ -126,61 +126,80 @@
   </footer>
 
   <script>
-    function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
+  function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
 
-    function normalizeCode(input){
-      return (input||'').toString().trim().toUpperCase().replace(/[‐-‒–—﹘﹣]/g,'-').replace(/\s+/g,'');
+  // Normalize: trim, uppercase, dash normalize, no spaces
+  function normalizeCode(input){
+    return (input||'')
+      .toString()
+      .trim()
+      .toUpperCase()
+      .replace(/[‐-‒–—﹘﹣]/g,'-')
+      .replace(/\s+/g,'');
+  }
+
+  // Web Crypto helper
+  async function sha256Hex(str){
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  // ✅ Registry 2025 — Journey (01..04) + Official Signed (01..03)
+  const REGISTRY = {
+    /* Brickasso Journey (early works) */
+    'BRK-JOURNEY-01': { label:'Hulk',               salt:'gfB7t9yK(Neix3iy', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
+    'BRK-JOURNEY-02': { label:'Pepsi',              salt:'e4O8w0mi_(9L&HK]', hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
+    'BRK-JOURNEY-03': { label:'Daytona',            salt:'P3QX5Z&kDVa)!BLH', hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
+    'BRK-JOURNEY-04': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' },
+
+    /* Official Signed Works */
+    'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*',  hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
+    'BRK-02': { label:'Pepsi 02',        salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
+    'BRK-03': { label:'Afghan Girl',     salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
+  };
+
+  document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const v = normalizeCode(document.getElementById('verifyInput').value);
+    const msg = document.getElementById('verifyMsg');
+    msg.style.display='block';
+
+    // Accept either BRK-XX-XXXXXX or BRK-JOURNEY-XX-XXXXXX
+    const validFormat = /^(BRK-\d{2}-[A-Z0-9]{6}|BRK-JOURNEY-\d{2}-[A-Z0-9]{6})$/;
+    if(!validFormat.test(v)){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX or BRK-JOURNEY-XX-XXXXXX.';
+      return;
     }
 
-    async function sha256Hex(str){
-      const enc = new TextEncoder().encode(str);
-      const buf = await crypto.subtle.digest('SHA-256', enc);
-      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    // Build registry key prefix
+    const parts = v.split('-');
+    const key = (v.startsWith('BRK-JOURNEY'))
+      ? parts.slice(0,3).join('-')          // BRK-JOURNEY-01
+      : parts.slice(0,2).join('-');         // BRK-01
+
+    const entry = REGISTRY[key];
+    if(!entry){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Unknown registry number.';
+      return;
     }
 
-    // ✅ Updated Registry 2025
-    const REGISTRY = {
-      /* Brickasso Journey (early works) */
-      'BRK-JOURNEY-02': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
-      'BRK-JOURNEY-03': { label:'Pepsi', salt:'e4O8w0mi_(9L&HK]', hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
-      'BRK-JOURNEY-04': { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
-      'BRK-JOURNEY-05': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' },
-
-      /* Official Signed Works */
-      'BRK-01': { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*', hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
-      'BRK-02': { label:'Pepsi 02', salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
-      'BRK-03': { label:'Afghan Girl', salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
-    };
-
-    document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const v = normalizeCode(document.getElementById('verifyInput').value);
-      const msg = document.getElementById('verifyMsg');
-      msg.style.display='block';
-
-      const prefix = v.startsWith('BRK-JOURNEY') ? v.split('-').slice(0,3).join('-') : v.split('-').slice(0,2).join('-');
-      const entry = REGISTRY[prefix];
-
-      if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
-        return;
+    try{
+      const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+      if(ok){
+        msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+        msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+      }else{
+        msg.style.color='#721c24'; msg.style.background:'#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
       }
-
-      try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
-        } else {
-          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
-        }
-      }catch(err){
-        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
-        msg.textContent = 'Temporary error validating the code.';
-      }
-    });
-  </script>
+    }catch(err){
+      msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+      msg.textContent = 'Temporary error validating the code.';
+    }
+  });
+</script>
 </body>
 </html>
