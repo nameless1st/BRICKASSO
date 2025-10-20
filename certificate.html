@@ -103,9 +103,9 @@
     <!-- VERIFY AUTHENTICITY CARD -->
     <section class="card">
       <h2 class="muted" style="margin:0 0 8px 0">Verify authenticity</h2>
-      <p class="muted" style="margin:0 0 8px 0">Use your certificate to check the code in the field below. Accepted formats: <strong>BRK-J-XXXXXX</strong> or <strong>BRK-01-XXXXXX</strong>. For privacy, only owners can verify.</p>
+      <p class="muted" style="margin:0 0 8px 0">Use your certificate to check the code in the field below. Enter the complete format <strong>BRK-XX-XXXXXX or BRK-J-XXXXXX</strong>. For privacy, only owners can verify.</p>
       <form id="verifyForm" class="verify-row">
-        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-J-9M8Z2K or BRK-01-7X3Q9A)" autocomplete="off" />
+        <input id="verifyInput" class="input" placeholder="Enter BRK code (e.g. BRK-01-XXXXXX or BRK-J-XXXXXX)" autocomplete="off" />
         <button type="submit" class="btn">Verify</button>
         <a class="btn secondary" href="gallery.html">← Back to Gallery</a>
       </form>
@@ -146,7 +146,7 @@
         .toString()
         .trim()
         .toUpperCase()
-        .replace(/[‐-‒–—﹘﹣]/g,'-')
+        .replace(/[‐‑‒–—﹘﹣]/g,'-')
         .replace(/\s+/g,'');
     }
 
@@ -157,95 +157,43 @@
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
 
-    // Registry map (keys use prefix formed by first two segments: BRK-J or BRK-01)
-    const REGISTRY = {
-      // Brickasso Journey (test codes)
-      'BRK-J': { label:'Hulk (Journey) — BRK-JOURNEY-01', salt:'gfB7t9yK(Neix3iy',  hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' },
-      'BRK-J-2': { label:'Pepsi (Journey) — BRK-JOURNEY-02', salt:'e4O8w0mi_(9L&HK]', hash:'c395fe99d20bc8297c7b5e5f5ea65e9bc6f24df29a5026c94a35cc1aeb962055' },
-      'BRK-J-3': { label:'Daytona (Journey) — BRK-JOURNEY-03', salt:'P3QX5Z&kDVa)!BLH', hash:'90bfc6f45eaeda7ae25f8c301b6196f2921587b90b849c0b2d32c5b6b94c7c24' },
-      'BRK-J-4': { label:'Girl at the Mirror (Journey) — BRK-JOURNEY-04', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' },
-
-      // Official Signed Works
-      'BRK-01': { label:'The White Horse — BRK-01', salt:'nJrlu0dROS5(J+Q*', hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
-      'BRK-02': { label:'Pepsi 02 — BRK-02', salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
-      'BRK-03': { label:'Afghan Girl — BRK-03', salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
-    };
-
-    // Helper to derive registry key from normalized code.
-    // Accepts formats like BRK-J-9M8Z2K and BRK-01-7X3Q9A.
-    function registryKeyFromCode(code){
-      // split by hyphen
-      const parts = code.split('-');
-      if(parts.length < 3) return null;
-      const first = parts[0]; // BRK
-      const second = parts[1]; // J or 01
-      // For journey series we used separate keys for each journey entry beyond BRK-J
-      if(first === 'BRK' && second === 'J'){
-        // attempt to map by known full code pattern for journeys.
-        // If the third segment starts with a digit that can map to an index, try to use direct 'BRK-J' key first.
-        // We'll try multiple fallback keys.
-        const base = 'BRK-J';
-        // Some journey entries are stored as BRK-J, BRK-J-2, BRK-J-3, BRK-J-4
-        // Determine mapping by known code values length and simple heuristic:
-        // If full match equals one of known hashes we will check them all anyway later.
-        // Here return base; verification routine will check candidate keys if needed.
-        return base;
-      }
-      // Standard signed works like BRK-01, BRK-02, BRK-03
-      if(first === 'BRK' && /^[0-9]{2}$/.test(second)){
-        return `${first}-${second}`;
-      }
-      return null;
-    }
+    // Registry map (no full codes exposed): SALT + HASH(SALT + FULL_CODE)
+    const REGISTRY = [
+      { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'7626532b157a16f1a51d79c4a587e92f3a68d03ab2d77f3bafb70ef854ac3491' },
+      { label:'Pepsi', salt:'e4O8w0mi_(9L&HK]', hash:'4f1f50633dba396be8fba7a9078299819ab92df79696bb0a39f5ca65d8611c8d' },
+      { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'873dcf55dcdd3da05a42f5ccbe660b0f6cfa41aeec5cf208a56ddec468283b63' },
+      { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'f06c133be38343e05722b2646692133f3ff0a540c2bbbf7ea3d58b7c301599d6' },
+      { label:'The White Horse', salt:'nJrlu0dROS5(J+Q*', hash:'e0af1924a1980f27a7b9593d690349467f9b6ad902bbf926bf36b005f19b3d94' },
+      { label:'Pepsi 02', salt:'ZX}s4F7}4ivm]e6_', hash:'1c5f746be3e343cf85459b90567d841e935268bb79ee7220ecd1dd85257183d4' },
+      { label:'Afghan Girl', salt:'DP^Do8VE4}eJSAoU', hash:'7c3b9391c305325a048982a11c8b12cd01c3596bdbfac27e39a1a429784538f4' }
+    ];
 
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
-      const raw = document.getElementById('verifyInput').value;
-      const v = normalizeCode(raw);
+      const v = normalizeCode(document.getElementById('verifyInput').value);
       const msg = document.getElementById('verifyMsg');
       msg.style.display='block';
 
-      // Accept BRK-J-XXXXXX or BRK-01-XXXXXX etc.
-      if(!/^BRK-(?:J|\d{2})-[A-Z0-9]{6}$/.test(v)){
+      // Accept letters+digits in last 6: BRK-XX-XXXXXX or BRK-J-XXXXXX
+      if(!/^BRK-(J-|\d{2}-)[A-Z0-9]{6}$/.test(v)){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX or BRK-01-XXXXXX.';
-        return;
-      }
-
-      // Try map key
-      const key = registryKeyFromCode(v);
-      if(!key){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry prefix.';
+        msg.textContent='⚠️ Invalid format. Use BRK-XX-XXXXXX or BRK-J-XXXXXX (letters and digits).';
         return;
       }
 
       try{
-        // For journey entries we may need to test multiple candidate registry entries.
-        const candidates = [];
-        if(key === 'BRK-J'){
-          // Build candidate keys in the same order as REGISTRY definition
-          candidates.push('BRK-J', 'BRK-J-2', 'BRK-J-3', 'BRK-J-4');
-        } else {
-          candidates.push(key);
-        }
-
-        let matched = null;
-        for(const k of candidates){
-          const entry = REGISTRY[k];
-          if(!entry) continue;
-          const hashed = await sha256Hex(entry.salt + v);
-          if(hashed === entry.hash){
-            matched = entry;
+        let found = false;
+        for (const entry of REGISTRY) {
+          const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+          if (ok) {
+            msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+            msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+            found = true;
             break;
           }
         }
-
-        if(matched){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${matched.label})`;
-        } else {
+        if (!found) {
           msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
           msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
         }
