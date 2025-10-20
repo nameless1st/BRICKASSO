@@ -161,7 +161,7 @@
     }
     // Registry for this page (only for Hulk)
     const REGISTRY = {
-      'BRK-J': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'e9990386be3c4270c239dceddf3edb200044ce54e6ba319b7cff0befe14b766f' }
+      'BRK-J': { label:'Hulk', salt:'gfB7t9yK(Neix3iy', hash:'7626532b157a16f1a51d79c4a587e92f3a68d03ab2d77f3bafb70ef854ac3491' }
     };
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
@@ -177,7 +177,7 @@
         msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
         return;
       }
-      const prefix = 'BRK-J'; // Fixed prefix for consistency with registry
+      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
       const entry = REGISTRY[prefix];
       if(!entry){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
