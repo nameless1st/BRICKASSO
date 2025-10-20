@@ -177,7 +177,7 @@
         msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
         return;
       }
-      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
+      const prefix = 'BRK-J'; // Fixed prefix for consistency with registry
       const entry = REGISTRY[prefix];
       if(!entry){
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
