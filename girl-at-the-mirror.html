@@ -136,68 +136,89 @@
   </p>
 </footer>
   <script>
-    function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
-    document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    function changeImage(el){
-      const main=document.getElementById("mainImage");
-      main.src=el.src;
-      main.alt=el.alt;
+  function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
+  document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  function changeImage(el){
+    const main=document.getElementById("mainImage");
+    main.src=el.src;
+    main.alt=el.alt;
+  }
+
+  // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
+  function normalizeCode(input){
+    return (input||'')
+      .toString()
+      .trim()
+      .toUpperCase()
+      .replace(/[‐-‒–—﹘﹣]/g,'-')
+      .replace(/\s+/g,'');
+  }
+
+  // Hash helper (browser Web Crypto)
+  async function sha256Hex(str){
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  // Accept și aliasuri uman-readable
+  const ALIAS = {
+    'BRK-JOURNEY-04': 'BRK-J-6T1R9V'
+  };
+
+  // Registry pentru această lucrare
+  // Hash-ul este ACELAȘI cu cel din certificate.html pentru Girl
+  const REGISTRY = {
+    'BRK-J': {
+      label:'Girl at the Mirror',
+      salt:'$Jt-+WlmjO[t98]5',
+      hash:'f06c133be38343e05722b2646692133f3ff0a540c2bbbf7ea3d58b7c301599d6'
     }
-    // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
-    function normalizeCode(input){
-      return (input||'')
-        .toString()
-        .trim()
-        .toUpperCase()
-        .replace(/[‐‑‒–—﹘﹣]/g,'-')
-        .replace(/\s+/g,'');
+  };
+
+  // Submit verification
+  document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const raw = document.getElementById('verifyInput').value;
+    const v0  = normalizeCode(raw);
+    const v   = ALIAS[v0] || v0; // map la forma canonică, dacă e alias
+
+    const msg = document.getElementById('verifyMsg');
+    msg.style.display='block';
+    msg.style.padding='10px';
+    msg.style.borderRadius='8px';
+
+    // Accept BRK-J-XXXXXX
+    if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX.';
+      return;
     }
-    // Hash helper (browser Web Crypto)
-    async function sha256Hex(str){
-      const enc = new TextEncoder().encode(str);
-      const buf = await crypto.subtle.digest('SHA-256', enc);
-      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+
+    const prefix = v.substring(0, v.lastIndexOf('-')); // BRK-J
+    const entry = REGISTRY[prefix];
+    if(!entry){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Unknown registry number.';
+      return;
     }
-    // Registry for this page (only for Girl at the Mirror)
-    const REGISTRY = {
-      'BRK-J': { label:'Girl at the Mirror', salt:'$Jt-+WlmjO[t98]5', hash:'d7783c545c23e25307360f3e5a7054ca352e192963bfa1d5a30cf7b8b4038581' }
-    };
-    // Submit verification
-    document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const v = normalizeCode(document.getElementById('verifyInput').value);
-      const msg = document.getElementById('verifyMsg');
-      msg.style.display='block';
-      msg.style.padding='10px';
-      msg.style.borderRadius='8px';
-      // Accept letters+digits in last 6: BRK-J-XXXXXX
-      if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
+
+    try{
+      const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+      if(ok){
+        msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+        msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+      } else {
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
-        return;
+        msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
       }
-      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
-      const entry = REGISTRY[prefix];
-      if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
-        return;
-      }
-      try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
-        } else {
-          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
-        }
-      }catch(err){
-        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
-        msg.textContent = 'Temporary error validating the code.';
-      }
-    });
-  </script>
+    }catch(err){
+      msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+      msg.textContent = 'Temporary error validating the code.';
+    }
+  });
+</script>
+
 </body>
 </html>
