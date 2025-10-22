@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brickasso – New Artwork Coming Soon</title>
 
-  <!-- META CLEAN: fără nume, fără indicii -->
-  <meta name="description" content="O nouă lucrare Brickasso este în pregătire. Detaliile vor fi publicate după lansarea oficială." />
+  <!-- META CLEAN: no project name, no spoilers -->
+  <meta name="description" content="A new Brickasso artwork is coming soon. Full details will be revealed after the official event." />
   <link rel="canonical" href="https://brickasso.art/soon.html" />
 
-  <!-- Social sharing neutru -->
+  <!-- Social sharing (neutral preview) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="New Brickasso Artwork – Coming Soon" />
-  <meta property="og:description" content="O nouă lucrare Brickasso urmează să fie dezvăluită curând." />
+  <meta property="og:title" content="Brickasso – Coming Soon" />
+  <meta property="og:description" content="A new Brickasso artwork will be revealed soon." />
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/soon.html" />
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Brickasso – Coming Soon">
-  <meta name="twitter:description" content="O nouă lucrare Brickasso va fi dezvăluită în curând.">
+  <meta name="twitter:description" content="A new Brickasso artwork is coming soon.">
   <meta name="twitter:image" content="https://brickasso.art/logo.png">
 
   <link rel="icon" href="/logo.png" type="image/png" />
@@ -80,13 +80,21 @@
       font-size:.9em;
       color:#666;
     }
-    .social-icons-footer a {
-      margin: 0 15px;
-      display: inline-block;
+    .social-icons-footer {
+      margin-bottom:20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:30px;
     }
     .social-icons-footer img {
-      height: 60px;
-      width: auto;
+      width:100px;
+      height:100px;
+      vertical-align:middle;
+      transition: transform .3s;
+    }
+    .social-icons-footer a:hover img {
+      transform: scale(1.1);
     }
     @media (max-width:900px) {
       .menu-toggle { display:block; }
@@ -106,32 +114,38 @@
 <body>
   <header>
     <a href="index.html"><img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo"></a>
-    <button class="menu-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('active')">☰ Meniu</button>
+    <button class="menu-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('active')">☰ Menu</button>
     <nav id="mobile-menu">
-      <a href="index.html" onclick="this.closest('nav').classList.remove('active')">Acasă</a>
-      <a href="gallery.html" onclick="this.closest('nav').classList.remove('active')">Galerie</a>
-      <a href="about.html" onclick="this.closest('nav').classList.remove('active')">Despre</a>
-      <a href="portfolio.html" onclick="this.closest('nav').classList.remove('active')">Portofoliu</a>
+      <a href="index.html" onclick="this.closest('nav').classList.remove('active')">Home</a>
+      <a href="gallery.html" onclick="this.closest('nav').classList.remove('active')">Gallery</a>
+      <a href="about.html" onclick="this.closest('nav').classList.remove('active')">About</a>
+      <a href="portfolio.html" onclick="this.closest('nav').classList.remove('active')">Portfolio</a>
       <a href="contact.html" onclick="this.closest('nav').classList.remove('active')">Contact</a>
     </nav>
   </header>
 
   <main class="wrap">
     <h1>Coming Soon</h1>
-    <p>O nouă lucrare Brickasso urmează să fie dezvăluită.<br>
-       Detaliile vor fi disponibile imediat după evenimentul oficial.</p>
-    <a href="gallery.html" class="cta">← Înapoi la Galerie</a>
+    <p>A new Brickasso artwork is currently under embargo.<br>
+       Full details and photos will be published right after the official reveal.</p>
+    <a href="gallery.html" class="cta">← Back to Gallery</a>
   </main>
 
   <footer>
     <div class="social-icons-footer">
-      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener"><img src="instagram-logo.png" alt="Instagram"></a>
-      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener"><img src="x-logo.png" alt="X"></a>
-      <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener"><img src="tiktok-logo.png" alt="TikTok"></a>
+      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="instagram-logo.png" alt="Instagram">
+      </a>
+      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <img src="x-logo.png" alt="X (Twitter)">
+      </a>
+      <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="tiktok-logo.png" alt="TikTok">
+      </a>
     </div>
     <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
     <p style="max-width:600px;margin:5px auto;font-size:11px;line-height:1.4;color:#333">
-      LEGO® este marcă înregistrată a LEGO Group, care nu sponsorizează, autorizează sau susține lucrările Brickasso.
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
     </p>
   </footer>
 
