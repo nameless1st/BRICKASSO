@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brickasso – Original LEGO Art</title>
-  <meta name="description" content="Official site of Brickasso – Original LEGO Art by Albert Oprea. Unique 1-of-1 artworks built with thousands of LEGO bricks. Watches, portraits, and masterpieces." />
+  <title>Brickasso – Original LEGO® Art</title>
+  <meta name="description" content="Official site of Brickasso – Original LEGO® Art by Albert Oprea. Unique 1-of-1 artworks built with thousands of LEGO bricks. Watches, portraits, and masterpieces." />
 
   <!-- Canonical & Open Graph -->
   <link rel="canonical" href="https://brickasso.art/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Brickasso – Original LEGO Art by Albert Oprea" />
+  <meta property="og:title" content="Brickasso – Original LEGO® Art by Albert Oprea" />
   <meta property="og:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea." />
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brickasso – Original LEGO Art by Albert Oprea">
+  <meta name="twitter:title" content="Brickasso – Original LEGO® Art by Albert Oprea">
   <meta name="twitter:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea.">
   <meta name="twitter:image" content="https://brickasso.art/logo.png">
 
@@ -25,7 +25,9 @@
   <link rel="apple-touch-icon" href="/logo.png">
 
   <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
 
   <!-- Structured Data for Google -->
   <script type="application/ld+json">
@@ -37,8 +39,7 @@
     "logo": "https://brickasso.art/logo.png",
     "sameAs": [
       "https://www.instagram.com/brickasso.official",
-      "https://www.tiktok.com/@brickasso.art",
-      "https://x.com/brickasso_art"
+      "https://www.tiktok.com/@brickasso.art"
     ]
   }
   </script>
@@ -53,7 +54,10 @@
     "publisher": {
       "@type": "Organization",
       "name": "Brickasso",
-      "logo": { "@type": "ImageObject", "url": "https://brickasso.art/logo.png" }
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://brickasso.art/logo.png"
+      }
     },
     "potentialAction": {
       "@type": "SearchAction",
@@ -69,7 +73,9 @@
       --ink:#111;
       --paper:rgba(255,255,255,.75);
       --paper-strong:rgba(255,255,255,.85);
+      --border:rgba(0,0,0,.08);
     }
+    *{box-sizing:border-box}
     body {
       margin: 0;
       padding: 0;
@@ -93,6 +99,7 @@
       border-bottom: 1px solid #ddd;
       backdrop-filter: blur(6px);
     }
+
     .logo { height: 50px; }
 
     .menu-toggle {
@@ -103,7 +110,9 @@
       border: none;
       cursor: pointer;
     }
+
     nav { display: flex; }
+
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -111,76 +120,135 @@
       font-weight: 600;
       transition: color 0.3s;
     }
+
     nav a:hover { color: var(--brand); }
+    nav a[aria-current="page"]{ color: var(--brand); }
 
     .hero {
       text-align: center;
       padding: 100px 20px 60px;
       background-color: var(--paper);
     }
-    .hero h1 { font-size: 3em; margin-bottom: 20px; font-weight: 600; }
+
+    .hero h1 {
+      font-size: 2.6em;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
     .hero p {
-      font-size: 1.3em;
-      max-width: 700px;
+      font-size: 1.25em;
+      max-width: 760px;
       margin: 0 auto 40px;
-      line-height: 1.6;
+      line-height: 1.75;
+      color:#222;
     }
+
     .cta-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
     .cta {
-      display: inline-block; padding: 14px 28px; background:#000; color:#fff;
-      text-decoration: none; font-weight: bold; border-radius: 10px;
-      transition: background 0.3s, color .3s, border-color .3s; border: 2px solid #000;
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      border: 2px solid #000;
+      letter-spacing:.2px;
     }
-    .cta:hover { background-color: var(--brand); border-color: var(--brand); }
-    .cta.secondary{ background: transparent; color:#000; border-color:#000; }
-    .cta.secondary:hover{ background: var(--brand); border-color: var(--brand); color:#fff; }
+    .cta:hover { background-color: var(--brand); border-color: var(--brand); transform: translateY(-1px); }
 
-    /* Footer */
-    footer { margin-top: 100px; padding: 30px; text-align: center; font-size: 0.9em; color: #666; }
-
-    /* === Unic set de iconițe (Variant A) === */
-    .socials{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:28px;
-      flex-wrap:wrap;
-      padding:12px 0 8px;
+    .cta.secondary{
+      background: transparent;
+      color:#000;
+      border-color:#000;
     }
-    .socials a{
-      width:56px; height:56px;
-      display:inline-flex; align-items:center; justify-content:center;
-      transition:transform .2s ease;
+    .cta.secondary:hover{
+      background: var(--brand);
+      border-color: var(--brand);
+      color:#fff;
     }
-    .socials a:hover{ transform:scale(1.08); }
-    .socials img{ width:100%; height:100%; object-fit:contain; display:block; }
 
+    footer {
+      margin-top: 80px;
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      background: transparent;
+    }
+
+    .social-icons-footer { margin-bottom: 4px; }
+    .social-icons-footer a {
+      margin: 0 14px;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .social-icons-footer img {
+      height: 100px !important;
+      width: auto !important;
+      vertical-align: middle;
+    }
+    .social-icons-footer a:hover { transform: translateY(-2px); }
+
+    /* Banda social mobilă */
+    .social-strip-mobile { display: none; }
+
+    /* Responsive mobile menu */
     @media (max-width: 768px) {
-      .menu-toggle { display:block; font-size:1.2em; }
+      header { flex-direction: row; justify-content: space-between; align-items: center; }
+      .menu-toggle { display: block; font-size: 1.2em; }
       nav {
-        display:none; flex-direction:column; gap:15px;
-        position:absolute; top:70px; right:0; width:100%;
-        background:rgba(255,255,255,.95); padding:20px; text-align:center; z-index:999;
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        z-index: 999;
       }
-      nav.active { display:flex; }
+      nav.active { display: flex; }
 
       .hero { padding: 60px 20px 40px; }
-      .hero h1 { font-size: 1.7em; margin-bottom: 20px; }
+      .hero h1 { font-size: 1.9em; margin-bottom: 14px; }
       .hero p { font-size: 1.05em; padding: 0 10px; }
-      .cta { padding: 12px 24px; font-size: 1em; }
 
-      .socials{ gap:20px; }
-      .socials a{ width:44px; height:44px; }
-      footer{ padding:40px 20px; }
+      /* Banda mobilă sub View Portfolio, pe fundal */
+      .social-strip-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        padding: 0px 0;
+        background: transparent;
+      }
+      .social-strip-mobile img {
+        width: 60px;°px;
+        display: block;
+      }
+
+      /* Ascundem icoanele din footer pe mobil (păstrăm banda mobilă) */
+      .social-icons-footer { display: none; }
+
+      footer { padding: 40px 20px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    <a href="index.html">
+      <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
+    </a>    
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰ Menu</button>
     <nav id="mobile-menu" aria-label="Main">
-      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="index.html" aria-current="page" onclick="toggleMenu()">Home</a>
       <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
       <a href="about.html" onclick="toggleMenu()">About</a>
       <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
@@ -198,28 +266,28 @@
     </p>
     <div class="cta-group">
       <a class="cta" href="gallery.html">Explore the Gallery</a>
-      <a class="cta secondary" href="portfolio.html" title="Artist CV & Highlights">View Portfolio</a>
+      <a class="cta secondary" href="portfolio.html" title="Artist CV &amp; Highlights">View Portfolio</a>
     </div>
   </section>
 
-  <!-- 👇 Unicul set de iconițe sociale (desktop + mobil) -->
-  <footer>
-    <div class="socials" aria-label="Follow Brickasso">
-      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="instagram-logo.png" alt="Instagram">
-      </a>
-      <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="tiktok-logo.png" alt="TikTok">
-      </a>
-      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
-        <img src="x-logo.png" alt="X (Twitter)">
-      </a>
-    </div>
-
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+  <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
+    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
+    </a>
+        <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
+      <img src="tiktok-logo.png" alt="TikTok" style="width:100px; height:100px;">
+    </a>
+    <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
+    </a>
+  </div>
     <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
+    
     <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
       LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
     </p>
+    
     <p>
       <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
       <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
@@ -231,6 +299,15 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("active");
     }
+    // ensure active nav when not using onclick
+    (function(){
+      const here = location.pathname.split('/').pop() || 'index.html';
+      const links = document.querySelectorAll('nav a');
+      links.forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === here) a.setAttribute('aria-current','page');
+      });
+    })();
   </script>
 </body>
 </html>
