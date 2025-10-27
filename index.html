@@ -234,11 +234,16 @@
         display: block;
       }
 
-      /* Ascundem icoanele din footer pe mobil (păstrăm banda mobilă) */
-      .social-icons-footer { display: none; }
+.social-icons-footer {
+  display: flex !important;       /* le menținem vizibile */
+  justify-content: center;
+  align-items: center;
+  gap: 12px !important;           /* ~1 cm între icoane */
+}
 
-      footer { padding: 40px 20px; }
-    }
+footer { 
+  padding: 40px 20px; 
+}
   </style>
 </head>
 <body>
