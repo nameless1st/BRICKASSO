@@ -55,7 +55,24 @@
     .social-icons-footer img { height:64px; width:auto; vertical-align:middle; }
     .social-icons-footer a:hover { transform:scale(1.2); }
     @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
-    @media (max-width:768px){ header{flex-direction:row; justify-content:space-between; align-items:center;} .menu-toggle{display:block;font-size:1.2em;} nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background-color:rgba(255,255,255,0.95);padding:20px;text-align:center;z-index:999;} nav.active{display:flex;} .hero{padding:60px 20px 40px;} .hero h1{font-size:1.7em;margin-bottom:14px;} .hero p{font-size:1.05em;padding:0 10px;} .social-icons-footer img{height:48px;} footer{padding:40px 20px;} }
+    @media (max-width:768px){ header{flex-direction:row; justify-content:space-between; align-items:center;} .menu-toggle{display:block;font-size:1.2em;} nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background-color:rgba(255,255,255,0.95);padding:20px;text-align:center;z-index:999;} nav.active{display:flex;} .hero{padding:60px 20px 40px;} .hero h1{font-size:1.7em;margin-bottom:14px;} .hero p{font-size:1.05em;padding:0 10px;} 
+                             /* ===== Footer icons fix for mobile ===== */
+  .social-icons-footer {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0 !important;             /* fără spațiu între ele */
+    margin-bottom: 10px !important;
+  }
+  .social-icons-footer a {
+    margin: 0 !important;
+  }
+  .social-icons-footer img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
+
       .cta-row{display:flex;gap:14px;flex-wrap:wrap}
   </style>
 </head>
