@@ -73,8 +73,25 @@
       .hero{padding:60px 20px 20px}
       .hero h1{font-size:2em}.hero p{font-size:1.05em;padding:0 10px}
       .grid{max-width:100%;gap:18px}
-      .social-icons-footer img{height:48px}
-      footer{padding:40px 20px}
+      /* Footer icons fix — one line close together on mobile */
+      .social-icons-footer {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0 !important;
+        margin-bottom: 10px !important;
+      }
+      .social-icons-footer a {
+        margin: 0 !important;
+      }
+      .social-icons-footer img {
+        width: 70px !important;
+        height: 70px !important;
+      }
+
+      footer { 
+        padding: 40px 20px; 
+      }
     }
   </style>
 </head>
