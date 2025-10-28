@@ -49,7 +49,23 @@
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
       .thumbnails img{width:90px}
-    }
+     /* ===== Footer icons fix for mobile ===== */
+@media (max-width: 768px) {
+  .social-icons-footer {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0 !important;             /* fără spațiu între ele */
+    margin-bottom: 10px !important;
+  }
+  .social-icons-footer a {
+    margin: 0 !important;
+  }
+  .social-icons-footer img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
   </style>
 </head>
 <body>
