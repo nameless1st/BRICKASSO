@@ -164,8 +164,25 @@
       .about-image, .about-text { width: 100%; }
       .about-text { font-size: 1.05em; }
 
-      .social-icons-footer img { height: 48px; }
-      footer { padding: 40px 20px; }
+      /* Footer icons fix — one line close together on mobile */
+      .social-icons-footer {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0 !important;
+        margin-bottom: 10px !important;
+      }
+      .social-icons-footer a {
+        margin: 0 !important;
+      }
+      .social-icons-footer img {
+        width: 70px !important;
+        height: 70px !important;
+      }
+
+      footer { 
+        padding: 40px 20px; 
+      }
     }
   </style>
 </head>
