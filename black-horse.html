@@ -170,8 +170,14 @@
       return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
     }
     // Registry for this page (only BRK-04)
-    const REGISTRY = {
-      'BRK-04': { label:'Black Horse', salt:'M4gR9$eA!Zb2t0Vq', hash:'c217f07f45fb0d19b2d34f374c35e75e5ca2c57ab5e047262ee4dd364548f6ba' }
+    // Registry for this page (only BRK-04)
+const REGISTRY = {
+  'BRK-04': {
+    label: 'Black Horse',
+    salt: 'M4gR9$eA!Zb2t0Vq',
+    hash: '76797425f48f7901cb45d174aa18a6099f6564d6f798ef47412a5a57b075e832'
+  }
+
     };
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
