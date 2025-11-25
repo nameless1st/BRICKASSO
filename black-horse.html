@@ -171,14 +171,14 @@
     }
     // Registry for this page (only BRK-04)
     // Registry for this page (only BRK-04)
-const REGISTRY = {
-  'BRK-04': {
-    label: 'Black Horse',
-    salt: 'M4gR9$eA!Zb2t0Vq',
-    hash: '76797425f48f7901cb45d174aa18a6099f6564d6f798ef47412a5a57b075e832'
-  }
-
+    const REGISTRY = {
+      'BRK-04': {
+        label: 'Black Horse',
+        salt: 'M4gR9$eA!Zb2t0Vq',
+        hash: '76797425f48f7901cb45d174aa18a6099f6564d6f798ef47412a5a57b075e832'
+      }
     };
+
     // Submit verification
     document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
       e.preventDefault();
@@ -187,30 +187,43 @@ const REGISTRY = {
       msg.style.display='block';
       msg.style.padding='10px';
       msg.style.borderRadius='8px';
+
       // Accept letters+digits in last 6: BRK-04-XXXXXX
       if(!/^BRK-04-[A-Z0-9]{6}$/.test(v)){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.style.color='#721c24';
+        msg.style.background='#f8d7da';
+        msg.style.border='1px solid #f5c6cb';
         msg.textContent='⚠️ Invalid format. Use BRK-04-XXXXXX (letters and digits).';
         return;
       }
+
       const prefix = v.slice(0,6); // BRK-04
       const entry = REGISTRY[prefix];
       if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.style.color='#721c24';
+        msg.style.background='#f8d7da';
+        msg.style.border='1px solid #f5c6cb';
         msg.textContent='⚠️ Unknown registry number.';
         return;
       }
+
       try{
         const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
         if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+          msg.style.color='#155724';
+          msg.style.background='#d4edda';
+          msg.style.border='1px solid #c3e6cb';
           msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
         } else {
-          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+          msg.style.color='#721c24';
+          msg.style.background='#f8d7da';
+          msg.style.border='1px solid #f5c6cb';
           msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
         }
       }catch(err){
-        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+        msg.style.color='#721c24';
+        msg.style.background='#fff3cd';
+        msg.style.border='1px solid #ffeeba';
         msg.textContent = 'Temporary error validating the code.';
       }
     });
