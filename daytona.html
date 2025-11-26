@@ -165,34 +165,47 @@
     <img alt="Artwork preview">
   </div>
   <script>
-  function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
-  document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-  document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  function toggleMenu(){
+    document.getElementById("mobile-menu").classList.toggle("active");
+  }
 
-  // imaginea principală
-  const main = document.getElementById("mainImage");
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
 
-  // thumbnails -> schimbă imaginea principală
+  document.addEventListener('dragstart', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  // imaginea principala + lightbox
+  const main  = document.getElementById('mainImage');
+  const lb    = document.getElementById('lightbox');
+  const lbImg = lb ? lb.querySelector('img') : null;
+
+  // thumbnails -> schimba imaginea principala
   function changeImage(el){
+    if(!main) return;
     main.src = el.src;
     main.alt = el.alt;
   }
 
-  // Lightbox
-  const lb = document.getElementById('lightbox');
+  // click pe poza mare ca sa o maresti
+  if (main && lb && lbImg) {
+    main.style.cursor = 'zoom-in';
 
-  main.addEventListener('click', ()=>{
-    lb.querySelector('img').src = main.src;
-    lb.classList.add('open');
-  });
+    main.addEventListener('click', ()=>{
+      lbImg.src = main.src;
+      lb.classList.add('open');
+    });
 
-  lb.addEventListener('click', (e)=>{
-    if(e.target === lb) lb.classList.remove('open');
-  });
+    lb.addEventListener('click', (e)=>{
+      if(e.target === lb) lb.classList.remove('open');
+    });
 
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') lb.classList.remove('open');
-  });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') lb.classList.remove('open');
+    });
+  }
 
   // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
   function normalizeCode(input){
@@ -213,7 +226,11 @@
 
   // Registry for this page (only for Daytona)
   const REGISTRY = {
-    'BRK-J': { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'873dcf55dcdd3da05a42f5ccbe660b0f6cfa41aeec5cf208a56ddec468283b63' }
+    'BRK-J': {
+      label:'Daytona',
+      salt:'P3QX5Z&kDVa)!BLH',
+      hash:'873dcf55dcdd3da05a42f5ccbe660b0f6cfa41aeec5cf208a56ddec468283b63'
+    }
   };
 
   // Submit verification
@@ -227,7 +244,9 @@
 
     // Accept letters+digits in last 6: BRK-J-XXXXXX
     if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
-      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.style.color='#721c24';
+      msg.style.background='#f8d7da';
+      msg.style.border='1px solid #f5c6cb';
       msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
       return;
     }
@@ -235,7 +254,9 @@
     const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
     const entry = REGISTRY[prefix];
     if(!entry){
-      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.style.color='#721c24';
+      msg.style.background='#f8d7da';
+      msg.style.border='1px solid #f5c6cb';
       msg.textContent='⚠️ Unknown registry number.';
       return;
     }
@@ -243,14 +264,20 @@
     try{
       const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
       if(ok){
-        msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+        msg.style.color='#155724';
+        msg.style.background='#d4edda';
+        msg.style.border='1px solid #c3e6cb';
         msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
       } else {
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+        msg.style.color='#721c24';
+        msg.style.background='#f8d7da';
+        msg.style.border='1px solid #f5c6cb';
         msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
       }
     }catch(err){
-      msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+      msg.style.color='#721c24';
+      msg.style.background='#fff3cd';
+      msg.style.border='1px solid #ffeeba';
       msg.textContent = 'Temporary error validating the code.';
     }
   });
