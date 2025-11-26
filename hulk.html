@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hulk – Brickasso #02</title>
-  <meta name="description" content="Hulk – Brickasso #02. LEGO® mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
+  <meta name="description" content="Hulk – Brickasso #02. LEGO® 3D mosaic by Albert Oprea. Specs, registry number, certificate & verification." />
   <link rel="canonical" href="https://brickasso.art/hulk.html">
   <meta property="og:type" content="website"><meta property="og:title" content="Hulk – Brickasso #02" />
   <meta property="og:description" content="Brickasso artwork by Albert Oprea. LEGO® mosaic: specs, registry number, certificate, verification." />
@@ -21,12 +21,11 @@
     nav{display:flex}nav a{margin-left:20px;text-decoration:none;color:#000;font-weight:600;transition:color .3s}nav a:hover{color:#d62828}
     .wrap{max-width:1200px;margin:0 auto;padding:60px 20px;background:rgba(255,255,255,.75)}
     .art{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
-    /* Galerie artwork */
     .artwork-gallery{text-align:center}
     .artwork-gallery .main-img{
       width:100%;max-width:800px;border-radius:12px;
       box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
-    }
+    cursor:zoom-in;}
     .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
     .thumbnails img{
       width:120px;cursor:pointer;border-radius:8px;
@@ -45,23 +44,29 @@
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
       .thumbnails img{width:90px}
-      /* ===== Footer icons fix for mobile ===== */
-@media (max-width: 768px) {
-  .social-icons-footer {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 0 !important;             /* fără spațiu între ele */
-    margin-bottom: 10px !important;
-  }
-  .social-icons-footer a {
-    margin: 0 !important;
-  }
-  .social-icons-footer img {
-    width: 70px !important;
-    height: 70px !important;
-  }
-}
+    }
+    /* Footer icons fix mobile */
+    @media (max-width: 768px) {
+      .social-icons-footer {
+        display:flex !important;
+        justify-content:center;
+        align-items:center;
+        gap:0 !important;
+        margin-bottom:10px !important;
+      }
+      .social-icons-footer a {
+        margin:0 !important;
+      }
+      .social-icons-footer img {
+        width:70px !important;
+        height:70px !important;
+      }
+    }
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:2000}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:94vw;max-height:94vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .lightbox .close{position:absolute;top:20px;right:20px;background:#000;color:#fff;border:2px solid #fff;border-radius:12px;padding:8px 12px;font-weight:700;cursor:pointer}
   </style>
 </head>
 <body>
@@ -94,22 +99,18 @@
       <div class="meta">
         <div class="badge">Brickasso Registry: <strong>Journey #01</strong></div>
 <h1>Hulk – LEGO® 3D Mosaic</h1>
-<p>“Hulk” introduces the Brickasso Journey series, an exploration of icons through color and construction. The vibrant green palette is rebuilt brick by brick, transforming energy into geometry and power into order.</p>
-<p>Mounted on a Novacolor ARCHI+ Big surface and framed in solid wood, the work merges playful invention with architectural precision, defining the sculptural character that has become Brickasso’s signature.</p>
-
-        <p style="font-size: 0.85em; color: #777; margin-top: 30px; text-align: left;">
-          Brickasso is an independent artistic reinterpretation and is not affiliated with, nor endorsed or sponsored by any watch brand.
-        </p>
+<p>“Hulk” introduces the Brickasso Journey series, an exploration of energy, volume and control. The subject is explosive, but the construction is methodical. Each LEGO® tile is placed to hold motion inside the frame.</p>
+<p>The composition is built in multiple layers, creating the feeling that the figure pushes forward out of the surface. Light and shadow travel across studs and plates, changing the piece during the day.</p>
+<p>One of one. Early work from Albert’s LEGO Journey.</p>
         <ul class="specs">
           <li><strong>Registry No.</strong> BRK-JOURNEY-01</li>
-          <li><strong>Medium</strong> LEGO® bricks (mosaic)</li>
+          <li><strong>Medium</strong> LEGO® bricks (3D mosaic)</li>
           <li><strong>Dimensions</strong> 120 × 80 cm</li>
-          <li><strong>Brick count</strong> 7,240</li>
+          <li><strong>Brick count</strong> 8,640</li>
           <li><strong>Hours to create</strong> 110</li>
-          <li><strong>Year</strong> 2025</li>
+          <li><strong>Year</strong> 2024</li>
           <li><strong>Certificate</strong> Included (signed & numbered)</li>
         </ul>
-        <!-- VERIFY AUTHENTICITY -->
         <section style="margin-top:24px">
           <h2 style="margin:0 0 10px 0; font-size:1.2em;">Verify authenticity</h2>
           <p style="margin:0 0 10px 0; color:#555">Registry: <strong>BRK-JOURNEY-01</strong> · Check code: <strong>BRK-J-******</strong></p>
@@ -151,27 +152,58 @@
   </p>
  
   <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
+    <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
+    <a href="contact.html" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
   </p>
 </footer>
+
+  <!-- LIGHTBOX ROOT -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork preview">
+    <button class="close" type="button" onclick="document.getElementById('lightbox').classList.remove('open')">Close</button>
+    <img alt="Artwork preview">
+  </div>
+
   <script>
-    function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
+    function toggleMenu(){
+      document.getElementById("mobile-menu").classList.toggle("active");
+    }
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
     document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+
+    // Main image + lightbox
+    const main = document.getElementById('mainImage');
+    const lb   = document.getElementById('lightbox');
+    const lbImg = lb ? lb.querySelector('img') : null;
+
+    // Thumbnails -> main image
     function changeImage(el){
-      const main=document.getElementById("mainImage");
-      main.src=el.src;
-      main.alt=el.alt;
+      if(!main) return;
+      main.src = el.src;
+      main.alt = el.alt;
     }
+
+    // Click on main image to open lightbox
+    if(main && lb && lbImg){
+      main.addEventListener('click', ()=>{
+        lbImg.src = main.src;
+        lb.classList.add('open');
+      });
+      lb.addEventListener('click', (e)=>{
+        if(e.target === lb) lb.classList.remove('open');
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') lb.classList.remove('open');
+      });
+    }
+
     // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
     function normalizeCode(input){
       return (input||'')
         .toString()
         .trim()
         .toUpperCase()
-        .replace(/[‐‑‒–—﹘﹣]/g,'-')
+        .replace(/[‐-‒–—﹘﹣]/g,'-')
         .replace(/\s+/g,'');
     }
     // Hash helper (browser Web Crypto)
