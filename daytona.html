@@ -61,6 +61,11 @@
     height: 70px !important;
   }
 }
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:2000}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:94vw;max-height:94vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .lightbox .close{position:absolute;top:20px;right:20px;background:#000;color:#fff;border:2px solid #fff;border-radius:12px;padding:8px 12px;font-weight:700;cursor:pointer}
   </style>
 </head>
 <body>
@@ -160,68 +165,93 @@
     <img alt="Artwork preview">
   </div>
   <script>
-    function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
-    document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-    function changeImage(el){
-      const main=document.getElementById("mainImage");
-      main.src=el.src;
-      main.alt=el.alt;
+  function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
+  document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+
+  // imaginea principală
+  const main = document.getElementById("mainImage");
+
+  // thumbnails -> schimbă imaginea principală
+  function changeImage(el){
+    main.src = el.src;
+    main.alt = el.alt;
+  }
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+
+  main.addEventListener('click', ()=>{
+    lb.querySelector('img').src = main.src;
+    lb.classList.add('open');
+  });
+
+  lb.addEventListener('click', (e)=>{
+    if(e.target === lb) lb.classList.remove('open');
+  });
+
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') lb.classList.remove('open');
+  });
+
+  // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
+  function normalizeCode(input){
+    return (input||'')
+      .toString()
+      .trim()
+      .toUpperCase()
+      .replace(/[‐-‒–—﹘﹣]/g,'-')
+      .replace(/\s+/g,'');
+  }
+
+  // Hash helper (browser Web Crypto)
+  async function sha256Hex(str){
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  // Registry for this page (only for Daytona)
+  const REGISTRY = {
+    'BRK-J': { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'873dcf55dcdd3da05a42f5ccbe660b0f6cfa41aeec5cf208a56ddec468283b63' }
+  };
+
+  // Submit verification
+  document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const v = normalizeCode(document.getElementById('verifyInput').value);
+    const msg = document.getElementById('verifyMsg');
+    msg.style.display='block';
+    msg.style.padding='10px';
+    msg.style.borderRadius='8px';
+
+    // Accept letters+digits in last 6: BRK-J-XXXXXX
+    if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
+      return;
     }
-    // Normalize code: trim, uppercase, replace fancy dashes with hyphen, remove spaces
-    function normalizeCode(input){
-      return (input||'')
-        .toString()
-        .trim()
-        .toUpperCase()
-        .replace(/[‐‑‒–—﹘﹣]/g,'-')
-        .replace(/\s+/g,'');
+
+    const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
+    const entry = REGISTRY[prefix];
+    if(!entry){
+      msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
+      msg.textContent='⚠️ Unknown registry number.';
+      return;
     }
-    // Hash helper (browser Web Crypto)
-    async function sha256Hex(str){
-      const enc = new TextEncoder().encode(str);
-      const buf = await crypto.subtle.digest('SHA-256', enc);
-      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    }
-    // Registry for this page (only for Daytona)
-    const REGISTRY = {
-      'BRK-J': { label:'Daytona', salt:'P3QX5Z&kDVa)!BLH', hash:'873dcf55dcdd3da05a42f5ccbe660b0f6cfa41aeec5cf208a56ddec468283b63' }
-    };
-    // Submit verification
-    document.getElementById('verifyForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const v = normalizeCode(document.getElementById('verifyInput').value);
-      const msg = document.getElementById('verifyMsg');
-      msg.style.display='block';
-      msg.style.padding='10px';
-      msg.style.borderRadius='8px';
-      // Accept letters+digits in last 6: BRK-J-XXXXXX
-      if(!/^BRK-J-[A-Z0-9]{6}$/.test(v)){
+
+    try{
+      const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
+      if(ok){
+        msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
+        msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
+      } else {
         msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Invalid format. Use BRK-J-XXXXXX (letters and digits).';
-        return;
+        msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
       }
-      const prefix = v.substring(0, v.lastIndexOf('-')); // Extract prefix up to the last hyphen
-      const entry = REGISTRY[prefix];
-      if(!entry){
-        msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-        msg.textContent='⚠️ Unknown registry number.';
-        return;
-      }
-      try{
-        const ok = (await sha256Hex(entry.salt + v)) === entry.hash;
-        if(ok){
-          msg.style.color='#155724'; msg.style.background='#d4edda'; msg.style.border='1px solid #c3e6cb';
-          msg.textContent = `✅ Verified: This code matches the official registry entry. (${entry.label})`;
-        } else {
-          msg.style.color='#721c24'; msg.style.background='#f8d7da'; msg.style.border='1px solid #f5c6cb';
-          msg.textContent = '⚠️ Invalid code. Please check the certificate and try again.';
-        }
-      }catch(err){
-        msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
-        msg.textContent = 'Temporary error validating the code.';
-      }
-    });
-  </script>
-</body>
-</html>
+    }catch(err){
+      msg.style.color='#721c24'; msg.style.background='#fff3cd'; msg.style.border='1px solid #ffeeba';
+      msg.textContent = 'Temporary error validating the code.';
+    }
+  });
+</script>
