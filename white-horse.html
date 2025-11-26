@@ -26,8 +26,12 @@
     /* Galerie artwork */
     .artwork-gallery{text-align:center}
     .artwork-gallery .main-img{
-      width:100%;max-width:800px;border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,.12);margin-bottom:20px
+      width:100%;
+      max-width:800px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+      margin-bottom:20px;
+      cursor:zoom-in;
     }
     .thumbnails{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
     .thumbnails img{
@@ -44,35 +48,70 @@
     footer{margin-top:40px;padding:30px;text-align:center;font-size:.9em;color:#666}.social-icons-footer{margin-bottom:10px}
     .social-icons-footer a{margin:0 15px;display:inline-block;transition:transform .3s}.social-icons-footer img{height:64px;width:auto;vertical-align:middle}
     .social-icons-footer a:hover{transform:scale(1.2)}
+
     @media(max-width:900px){
-      .art{grid-template-columns:1fr}.menu-toggle{display:block}.meta h1{font-size:1.8em}
+      .art{grid-template-columns:1fr}
+      .menu-toggle{display:block}
+      .meta h1{font-size:1.8em}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
       .thumbnails img{width:90px}
-   /* ===== Footer icons fix for mobile ===== */
-@media (max-width: 768px) {
-  .social-icons-footer {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 0 !important;             /* fără spațiu între ele */
-    margin-bottom: 10px !important;
-  }
-  .social-icons-footer a {
-    margin: 0 !important;
-  }
-  .social-icons-footer img {
-    width: 70px !important;
-    height: 70px !important;
-  }
-}
+    }
+
+    /* Footer icons fix pentru mobil */
+    @media (max-width: 768px) {
+      .social-icons-footer {
+        display:flex !important;
+        justify-content:center;
+        align-items:center;
+        gap:0 !important;
+        margin-bottom:10px !important;
+      }
+      .social-icons-footer a {
+        margin:0 !important;
+      }
+      .social-icons-footer img {
+        width:70px !important;
+        height:70px !important;
+      }
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.9);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+    .lightbox.open{display:flex}
+    .lightbox img{
+      max-width:94vw;
+      max-height:94vh;
+      border-radius:12px;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+    }
+    .lightbox .close{
+      position:absolute;
+      top:20px;
+      right:20px;
+      background:#000;
+      color:#fff;
+      border:2px solid #fff;
+      border-radius:12px;
+      padding:8px 12px;
+      font-weight:700;
+      cursor:pointer;
+    }
   </style>
 </head>
 <body>
   <header>
-<a href="index.html">
+    <a href="index.html">
       <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    </a>    
+    </a>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <nav id="mobile-menu">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -99,11 +138,10 @@
 
       <div class="meta">
         <div class="badge">Brickasso Registry: <strong>#01</strong></div>
-<h1>The White Horse – LEGO® 3D Mosaic</h1>
-<p>“The White Horse” was the first Brickasso creation, a declaration of courage and belief in a new form of art. Built from 18,322 LEGO® bricks, the horse stands as a symbol of strength, freedom, and trust. Every contour of mane and muscle was shaped to capture motion within stillness, and determination within silence.</p>
-<p>Set against a Novacolor ARCHI+ Big background, the surface carries architectural depth and light, while the solid wood frame elevates it to a timeless presence. This inaugural piece marks the beginning of the Brickasso artistic journey, where structure and emotion find balance through discipline and imagination.</p>
-<p>Recorded as BRK-01 in the Brickasso Registry.</p>
-
+        <h1>The White Horse – LEGO® 3D Mosaic</h1>
+        <p>“The White Horse” was the first Brickasso creation, a declaration of courage and belief in a new form of art. Built from 18,322 LEGO® bricks, the horse stands as a symbol of strength, freedom, and trust. Every contour of mane and muscle was shaped to capture motion within stillness, and determination within silence.</p>
+        <p>Set against a Novacolor ARCHI+ Big background, the surface carries architectural depth and light, while the solid wood frame elevates it to a timeless presence. This inaugural piece marks the beginning of the Brickasso artistic journey, where structure and emotion find balance through discipline and imagination.</p>
+        <p>Recorded as BRK-01 in the Brickasso Registry.</p>
 
         <ul class="specs">
           <li><strong>Registry No.</strong> BRK-01</li>
@@ -136,9 +174,9 @@
     </div>
   </main>
 
-<footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
-  <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
-    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+    <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
+      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
       </a>
       <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
@@ -150,20 +188,26 @@
       <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
         <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
       </a>
+    </div>
+    
+    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
+    
+    <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+    </p>
+    
+    <p>
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
+      <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    </p>
+  </footer>
+
+  <!-- LIGHTBOX ROOT -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork preview">
+    <button class="close" type="button" onclick="document.getElementById('lightbox').classList.remove('open')">Close</button>
+    <img alt="Artwork preview">
   </div>
-  
-  <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-  
-  <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-    LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
-  </p>
-  
-  <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
-  </p>
-</footer>
 
   <script>
     function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
@@ -172,8 +216,29 @@
 
     function changeImage(el){
       const main=document.getElementById("mainImage");
+      if(!main) return;
       main.src=el.src;
       main.alt=el.alt;
+    }
+
+    // Lightbox
+    const mainImg = document.getElementById('mainImage');
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = lb ? lb.querySelector('img') : null;
+
+    if(mainImg && lb && lbImg){
+      mainImg.addEventListener('click', ()=>{
+        lbImg.src = mainImg.src;
+        lb.classList.add('open');
+      });
+
+      lb.addEventListener('click', (e)=>{
+        if(e.target === lb) lb.classList.remove('open');
+      });
+
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') lb.classList.remove('open');
+      });
     }
 
     // Authenticity check (client-side SHA-256 of SALT + code)
