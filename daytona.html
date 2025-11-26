@@ -154,6 +154,11 @@
     <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
   </p>
 </footer>
+  <!-- LIGHTBOX ROOT -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork preview">
+    <button class="close" type="button" onclick="document.getElementById('lightbox').classList.remove('open')">Close</button>
+    <img alt="Artwork preview">
+  </div>
   <script>
     function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
     document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
