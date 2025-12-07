@@ -80,10 +80,31 @@
     }
     .contact-section h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       font-weight: 600;
     }
-    .contact-wrapper { max-width: 700px; margin: 0 auto; text-align: left; }
+    .contact-intro {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.05em;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .contact-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* două coloane: formular + detalii email */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
+      text-align: left;
+    }
+
     form { display: grid; gap: 16px; }
     input, textarea {
       padding: 12px;
@@ -115,6 +136,43 @@
     }
     #formStatus.success { display: block; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
     #formStatus.error   { display: block; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+    /* boxes cu emailuri directe */
+    .contact-aside-title {
+      font-size: 1.05em;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+    .contact-note {
+      font-size: 0.9em;
+      color: #666;
+      margin: 0 0 18px;
+    }
+    .contact-box {
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 14px 16px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 12px;
+    }
+    .contact-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95em;
+    }
+    .contact-box a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-box a:hover {
+      color: #d62828;
+    }
+    .contact-box p {
+      margin: 4px 0 0;
+      font-size: 0.9em;
+      color: #555;
+    }
 
     /* Footer */
     footer {
@@ -155,6 +213,13 @@
         background: rgba(255,255,255,0.75);
       }
       .contact-section h1 { font-size: 1.8em; }
+      .contact-intro { font-size: 0.98em; margin-bottom: 24px; }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
       /* Footer icons fix — one line close together on mobile */
       .social-icons-footer {
         display: flex !important;
@@ -179,7 +244,7 @@
 </head>
 <body>
   <header>
-<a href="index.html">
+    <a href="index.html">
       <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
     </a>    
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
@@ -195,51 +260,84 @@
 
   <section class="contact-section">
     <h1>Contact Brickasso</h1>
+    <p class="contact-intro">
+      For commissions, acquisitions, exhibitions or media requests, please use the form or write directly to one of the email addresses below.  
+      We usually reply within 24–48 hours.
+    </p>
+
     <div class="contact-wrapper">
-      <form id="contactForm" action="https://formspree.io/f/xpwjdaaw" method="POST">
-        <input type="text"   name="name"    placeholder="Your Name"  required />
-        <input type="email"  name="email"   placeholder="Your Email" required />
-        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <div class="contact-layout">
+        <!-- FORMULAR -->
+        <div>
+          <form id="contactForm" action="https://formspree.io/f/xpwjdaaw" method="POST">
+            <input type="text"   name="name"    placeholder="Your Name"  required />
+            <input type="email"  name="email"   placeholder="Your Email" required />
+            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
 
-        <!-- Subject + honeypot -->
-        <input type="hidden" name="_subject" value="New message from brickasso.art" />
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- Subject + honeypot -->
+            <input type="hidden" name="_subject" value="New message from brickasso.art" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-        <button type="submit" id="sendBtn">Send Message</button>
-        <p id="formStatus"></p>
-      </form>
+            <button type="submit" id="sendBtn">Send Message</button>
+            <p id="formStatus"></p>
+          </form>
+        </div>
+
+        <!-- EMAILURI DIRECTE -->
+        <aside>
+          <p class="contact-aside-title">Direct email</p>
+          <p class="contact-note">Choose the address that best fits your request.</p>
+
+          <div class="contact-box">
+            <strong>General inquiries</strong>
+            <a href="mailto:contact@brickasso.ro">contact@brickasso.ro</a>
+            <p>Questions about artworks, availability or events.</p>
+          </div>
+
+          <div class="contact-box">
+            <strong>Commissions & acquisitions</strong>
+            <a href="mailto:orders@brickasso.ro">orders@brickasso.ro</a>
+            <p>Serious collectors and custom LEGO art projects.</p>
+          </div>
+
+          <div class="contact-box">
+            <strong>Collaborations & media</strong>
+            <a href="mailto:hello@brickasso.ro">hello@brickasso.ro</a>
+            <p>Galleries, brands, TV, press or content partnerships.</p>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
-<footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
-  <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
-    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
-      </a>
-      <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="tiktok-logo.png" alt="TikTok" style="width:100px; height:100px;">
-      </a>
-      <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener" aria-label="Youtube">
-        <img src="youtube-logo.png" alt="Youtube" style="width:100px; height:100px;">
-      </a>
-      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
-        <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
-      </a>
-  </div>
-  
-  <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-  
-  <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-    LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
-  </p>
-  
-  <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
-  </p>
-</footer>
-
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+    <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
+      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
+        </a>
+        <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
+          <img src="tiktok-logo.png" alt="TikTok" style="width:100px; height:100px;">
+        </a>
+        <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener" aria-label="Youtube">
+          <img src="youtube-logo.png" alt="Youtube" style="width:100px; height:100px;">
+        </a>
+        <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
+        </a>
+    </div>
+    
+    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
+    
+    <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+    </p>
+    
+    <p>
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
+      <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    </p>
+  </footer>
 
   <script>
     function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
