@@ -32,13 +32,12 @@
     .hero h1{font-size:3em;margin:0 0 10px;font-weight:600}
     .hero p{font-size:1.2em;color:#444;margin:0 auto 10px;max-width:800px}
 
-    /* galerie 1 pe coloană, redusă pe desktop */
     .gallery{padding:20px;background:rgba(255,255,255,.75)}
     .grid{
       display:grid;
       grid-template-columns:1fr;
       gap:28px;
-      max-width:1050px;    /* redus ~25% pe desktop */
+      max-width:1050px;
       margin:0 auto;
     }
     .tile{
@@ -49,7 +48,7 @@
     .tile img{width:100%;height:auto;display:block}
     .tile figcaption{
       padding:16px 18px;
-      text-align:center;   /* pe centru */
+      text-align:center;
       font-weight:700;
       color:#000;
       background:#fff;
@@ -64,42 +63,34 @@
     .social-icons-footer img{height:64px}
     .social-icons-footer a:hover{transform:scale(1.2)}
 
-    /* mobil: full width */
     @media(max-width:768px){
       .menu-toggle{display:block}
       nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;
           background:rgba(255,255,255,.95);padding:20px;text-align:center;z-index:999}
       nav.active{display:flex}
       .hero{padding:60px 20px 20px}
-      .hero h1{font-size:2em}.hero p{font-size:1.05em;padding:0 10px}
+      .hero h1{font-size:2em}
+      .hero p{font-size:1.05em;padding:0 10px}
       .grid{max-width:100%;gap:18px}
-      /* Footer icons fix — one line close together on mobile */
-      .social-icons-footer {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        gap: 0 !important;
-        margin-bottom: 10px !important;
-      }
-      .social-icons-footer a {
-        margin: 0 !important;
-      }
-      .social-icons-footer img {
-        width: 70px !important;
-        height: 70px !important;
-      }
 
-      footer { 
-        padding: 40px 20px; 
+      .social-icons-footer{
+        display:flex !important;
+        justify-content:center;
+        align-items:center;
+        gap:0 !important;
+        margin-bottom:10px !important;
       }
+      .social-icons-footer a{margin:0 !important;}
+      .social-icons-footer img{width:70px !important;height:70px !important;}
+      footer{padding:40px 20px}
     }
   </style>
 </head>
 <body>
   <header>
-<a href="index.html">
+    <a href="index.html">
       <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    </a>    
+    </a>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <nav id="mobile-menu">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -114,80 +105,80 @@
   <section class="hero">
     <h1>Gallery</h1>
     <p>Selected LEGO® artworks by Albert Oprea.</p>
-<section class="gallery">
-  <div class="grid">
-    <!-- 9. David beckham (latest) -->
-    <a class="tile-link" href="david-beckham.html">
-      <figure class="tile">
-        <img src="david-beckham.webp" alt="David Beckham Tribute – 3D LEGO mosaic">
-        <figcaption>David Beckham Tribute – Details (BRK-05)</figcaption>
-      </figure>
-    </a>
-    <!-- 8. Black Horse (latest) -->
-    <a class="tile-link" href="black-horse.html">
-      <figure class="tile">
-        <img src="black-horse.webp" alt="Black Horse – 3D LEGO mosaic">
-        <figcaption>The Black Horse – Details (BRK-04)</figcaption>
-      </figure>
-    </a>
-     <!-- 7. NEW WORK (temporarily hidden until TV release) -->
-<a class="tile-link" href="soon.html">
-  <figure class="tile">
-    <img src="coming-soon.webp" alt="New Brickasso artwork – coming soon">
-    <figcaption>New Artwork – Coming Soon (BRK-03)</figcaption>
-  </figure>
-</a>
-    <!-- 6. PEPSI 02 (latest) -->
-    <a class="tile-link" href="pepsi02.html">
-      <figure class="tile">
-        <img src="pepsi02.webp" alt="Pepsi 02 – 3D LEGO mosaic">
-        <figcaption>Pepsi 02 – Details (BRK-02 · New Edition)</figcaption>
-      </figure>
-    </a>
-    <!-- 5. THE WHITE HORSE (latest) -->
-    <a class="tile-link" href="white-horse.html">
-      <figure class="tile">
-        <img src="white-horse.webp" alt="The White Horse – 3DLEGO mosaic">
-        <figcaption>The White Horse – Details (BRK-01 · First Signed)</figcaption>
-      </figure>
-    </a>
+  </section>
 
-    <!-- 4. GIRL AT THE MIRROR -->
-    <a class="tile-link" href="girl-at-the-mirror.html">
-      <figure class="tile">
-        <img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – 3D LEGO mosaic">
-        <figcaption>Girl at the Mirror – Details (Part of the Brickasso Journey)</figcaption>
-      </figure>
-    </a>
+  <section class="gallery">
+    <div class="grid">
 
-    <!-- 3. DAYTONA -->
-    <a class="tile-link" href="daytona.html">
-      <figure class="tile">
-        <img src="daytona.webp" alt="Daytona – 3D LEGO mosaic">
-        <figcaption>Daytona – Details (Part of the Brickasso Journey)</figcaption>
-      </figure>
-    </a>
+      <a class="tile-link" href="david-beckham.html">
+        <figure class="tile">
+          <img src="david-beckham.webp" alt="David Beckham Tribute – 3D LEGO mosaic">
+          <figcaption>David Beckham Tribute – Details (BRK-05)</figcaption>
+        </figure>
+      </a>
 
-    <!-- 2. PEPSI -->
-    <a class="tile-link" href="pepsi.html">
-      <figure class="tile">
-        <img src="pepsi.webp" alt="Pepsi – 3D LEGO mosaic">
-        <figcaption>Pepsi – Details (Part of the Brickasso Journey)</figcaption>
-      </figure>
-    </a>
+      <a class="tile-link" href="black-horse.html">
+        <figure class="tile">
+          <img src="black-horse.webp" alt="Black Horse – 3D LEGO mosaic">
+          <figcaption>The Black Horse – Details (BRK-04)</figcaption>
+        </figure>
+      </a>
 
-    <!-- 1. HULK (earliest) -->
-    <a class="tile-link" href="hulk.html">
-      <figure class="tile">
-        <img src="hulk.webp" alt="Hulk – 3D LEGO mosaic">
-        <figcaption>Hulk – Details (Part of the Brickasso Journey)</figcaption>
-      </figure>
-    </a>
-  </div>
-</section>
-<footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
-  <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
-    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+      <a class="tile-link" href="soon.html">
+        <figure class="tile">
+          <img src="coming-soon.webp" alt="New Brickasso artwork – coming soon">
+          <figcaption>New Artwork – Coming Soon</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="pepsi02.html">
+        <figure class="tile">
+          <img src="pepsi02.webp" alt="Pepsi 02 – 3D LEGO mosaic">
+          <figcaption>Pepsi 02 – Details (BRK-02 · New Edition)</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="white-horse.html">
+        <figure class="tile">
+          <img src="white-horse.webp" alt="The White Horse – 3D LEGO mosaic">
+          <figcaption>The White Horse – Details (BRK-01 · First Signed)</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="girl-at-the-mirror.html">
+        <figure class="tile">
+          <img src="girl-at-the-mirror.webp" alt="Girl at the Mirror – 3D LEGO mosaic">
+          <figcaption>Girl at the Mirror – Details (Part of the Brickasso Journey)</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="daytona.html">
+        <figure class="tile">
+          <img src="daytona.webp" alt="Daytona – 3D LEGO mosaic">
+          <figcaption>Daytona – Details (Part of the Brickasso Journey)</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="pepsi.html">
+        <figure class="tile">
+          <img src="pepsi.webp" alt="Pepsi – 3D LEGO mosaic">
+          <figcaption>Pepsi – Details (Part of the Brickasso Journey)</figcaption>
+        </figure>
+      </a>
+
+      <a class="tile-link" href="hulk.html">
+        <figure class="tile">
+          <img src="hulk.webp" alt="Hulk – 3D LEGO mosaic">
+          <figcaption>Hulk – Details (Part of the Brickasso Journey)</figcaption>
+        </figure>
+      </a>
+
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+    <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
+      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
       </a>
       <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
@@ -199,21 +190,21 @@
       <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
         <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
       </a>
-  </div>
-  
-  <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-  
-  <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-    LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
-  </p>
-  
-  <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
-  </p>
-</footer>
-  
+    </div>
+
+    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
+
+    <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+    </p>
+
+    <p>
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
+      <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    </p>
+  </footer>
+
   <script>
     function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("active");}
   </script>
