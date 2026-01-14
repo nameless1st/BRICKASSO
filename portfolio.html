@@ -55,32 +55,73 @@
     .social-icons-footer img { height:64px; width:auto; vertical-align:middle; }
     .social-icons-footer a:hover { transform:scale(1.2); }
     @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
-    @media (max-width:768px){ header{flex-direction:row; justify-content:space-between; align-items:center;} .menu-toggle{display:block;font-size:1.2em;} nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background-color:rgba(255,255,255,0.95);padding:20px;text-align:center;z-index:999;} nav.active{display:flex;} .hero{padding:60px 20px 40px;} .hero h1{font-size:1.7em;margin-bottom:14px;} .hero p{font-size:1.05em;padding:0 10px;} 
-                             /* ===== Footer icons fix for mobile ===== */
-  .social-icons-footer {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 0 !important;             /* fără spațiu între ele */
-    margin-bottom: 10px !important;
-  }
-  .social-icons-footer a {
-    margin: 0 !important;
-  }
-  .social-icons-footer img {
-    width: 70px !important;
-    height: 70px !important;
-  }
-}
+    @media (max-width:768px){
+      header{flex-direction:row; justify-content:space-between; align-items:center;}
+      .menu-toggle{display:block;font-size:1.2em;}
+      nav{display:none;flex-direction:column;gap:15px;position:absolute;top:70px;right:0;width:100%;background-color:rgba(255,255,255,0.95);padding:20px;text-align:center;z-index:999;}
+      nav.active{display:flex;}
+      .hero{padding:60px 20px 40px;}
+      .hero h1{font-size:1.7em;margin-bottom:14px;}
+      .hero p{font-size:1.05em;padding:0 10px;}
 
-      .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+      /* Footer icons fix for mobile */
+      .social-icons-footer {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0 !important;
+        margin-bottom: 10px !important;
+      }
+      .social-icons-footer a { margin: 0 !important; }
+      .social-icons-footer img { width: 70px !important; height: 70px !important; }
+    }
+
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* Press item (logo + text) */
+    .press-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:#000;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.55);
+    }
+    .press-item:hover{
+      border-color: rgba(214,40,40,.35);
+    }
+    .press-logo{
+      width:90px;
+      height:auto;
+      border-radius:8px;
+      display:block;
+      flex-shrink:0;
+    }
+    .press-title{
+      margin:0;
+      font-weight:600;
+      font-size:1em;
+      line-height:1.2;
+    }
+    .press-desc{
+      margin:4px 0 0 0;
+      font-size:.9em;
+      color:#555;
+      line-height:1.35;
+    }
+    @media (max-width:768px){
+      .press-logo{ width:80px; }
+    }
   </style>
 </head>
 <body>
   <header>
-<a href="index.html">
+    <a href="index.html">
       <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    </a>    
+    </a>
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰ Menu</button>
     <nav id="mobile-menu" aria-label="Main">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -101,15 +142,15 @@
     <div class="grid">
       <section class="card">
         <h2>Short Bio</h2>
-        <p class="meta">Albert Oprea (b. 2015), working under the moniker Brickasso, treats the LEGO® brick as a calibrated unit of time, color, and intention. Working entirely by hand, he designs, sorts, and sets tens of thousands of elements to compose one-of-one mosaics whose precision belies their playful origin. His subjects span horology, equine figures, and re-readings of canonical images—approached not as copies, but as translations into a new visual grammar. Each work is signed, catalogued in the BRK Registry, and issued with a QR-linked Certificate of Authenticity. Based in Romania with a global outlook, he builds a body of work oriented toward the most demanding international platforms.</p>
+        <p class="meta">Albert Oprea (b. 2015), working under the moniker Brickasso, treats the LEGO® brick as a calibrated unit of time, color, and intention. Working entirely by hand, he designs, sorts, and sets tens of thousands of elements to compose one-of-one mosaics whose precision belies their playful origin. His subjects span horology, equine figures, and re-readings of canonical images, approached not as copies, but as translations into a new visual grammar. Each work is signed, catalogued in the BRK Registry, and issued with a QR-linked Certificate of Authenticity. Based in Romania with a global outlook, he builds a body of work oriented toward the most demanding international platforms.</p>
       </section>
 
       <section class="card">
         <h2>Highlights</h2>
         <ul>
-          <li><strong>The White Horse</strong> — the first signed work (18,322 LEGO® pieces), a symbol of beginnings and creative force.</li>
-          <li><strong>Watch Series</strong> — Hulk, Daytona, Pepsi: contemporary interpretations of iconic timepieces, rebuilt in LEGO®, bridging watchmaking and visual art.</li>
-          <li><strong>Girl at the Mirror</strong> — an homage to Picasso, through a new visual alphabet. Not for sale, kept as an artistic meditation on dialogue between masters and the new generation.</li>
+          <li><strong>The White Horse</strong> , the first signed work (18,322 LEGO® pieces), a symbol of beginnings and creative force.</li>
+          <li><strong>Watch Series</strong> , Hulk, Daytona, Pepsi: contemporary interpretations of iconic timepieces, rebuilt in LEGO®, bridging watchmaking and visual art.</li>
+          <li><strong>Girl at the Mirror</strong> , an homage to Picasso, through a new visual alphabet. Not for sale, kept as an artistic meditation on dialogue between masters and the new generation.</li>
           <li>All works are one-of-one originals, hand-placed, signed and catalogued.</li>
         </ul>
         <p class="cta-row">
@@ -119,8 +160,26 @@
 
       <section class="card">
         <h2>Exhibitions & Press</h2>
-        <p>Brickasso’s works are envisioned for the international stage, with the ambition of one day standing alongside contemporary art at the highest level. His portfolio is prepared for invitations to major art fairs and galleries, from Basel to beyond.</p>
-        <p>Media features and press interest are welcomed as his journey unfolds — each article, review, or exhibition marking a new chapter in the transformation of play into authentic creation.</p>
+
+        <!-- Media item added -->
+        <div style="margin-top:16px;">
+          <h3 style="margin:0 0 10px 0; font-size:1.1em;">Media</h3>
+
+          <a class="press-item"
+             href="https://www.stiridecluj.ro/social/video-strainii-sunt-la-picioarele-lui-brickasso-un-pusti-minune-din-cluj-napoca-micul-artist-a-uimit-pe-toata-lumea-cu-operele-sale-din-piese-lego"
+             target="_blank"
+             rel="noopener">
+            <img class="press-logo" src="stiri-de-cluj.webp" alt="Știri de Cluj">
+            <div>
+              <p class="press-title">Știri de Cluj</p>
+              <p class="press-desc">Video feature about Brickasso and his LEGO artworks, including process, discipline, and the David Beckham portrait.</p>
+            </div>
+          </a>
+        </div>
+        <!-- End media item -->
+
+        <p style="margin-top:14px;">Brickasso’s works are envisioned for the international stage, with the ambition of one day standing alongside contemporary art at the highest level. His portfolio is prepared for invitations to major art fairs and galleries, from Basel to beyond.</p>
+        <p>Media features and press interest are welcomed as his journey unfolds, each article, review, or exhibition marking a new chapter in the transformation of play into authentic creation.</p>
         <p><em>Looking to feature Brickasso?</em> <a href="contact.html">Get in touch</a></p>
       </section>
 
@@ -131,7 +190,7 @@
 
       <section class="card">
         <h2>Collecting & Commissions</h2>
-        <p>Every Brickasso artwork is unique, signed, and catalogued in the official registry. Personalized commissions are possible, with carefully selected subjects—portraits, watches, animals—always respecting the principle of uniqueness and the laborious brick-by-brick process. The final work becomes a dialogue between the collector’s vision and the artist’s irreproducible signature.</p>
+        <p>Every Brickasso artwork is unique, signed, and catalogued in the official registry. Personalized commissions are possible, with carefully selected subjects, portraits, watches, animals, always respecting the principle of uniqueness and the laborious brick-by-brick process. The final work becomes a dialogue between the collector’s vision and the artist’s irreproducible signature.</p>
         <p class="cta-row">
           <a class="cta" href="contact.html">Request a Commission</a>
           <a class="cta secondary" href="certificate.html">See Certificate</a>
@@ -154,15 +213,15 @@
         <ul>
           <li>Email: <a href="mailto:brickasso_art@protonmail.com">brickasso_art@protonmail.com</a></li>
           <li>Form: <a href="contact.html">Contact page</a></li>
-          <li>Social: <a href="https://instagram.com/brickasso.official" target="_blank">Instagram</a> · <a href="https://x.com/brickasso_art" target="_blank">X</a> · <a href="https://www.tiktok.com/@brickasso.art" target="_blank">TikTok</a></li>
+          <li>Social: <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a> · <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener">TikTok</a></li>
         </ul>
       </section>
     </div>
   </main>
 
-<footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
-  <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
-    <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+  <footer style="text-align:center; padding:20px; font-size:12px; color:#000;">
+    <div class="social-icons-footer" style="margin-bottom:20px; display:flex; justify-content:center; align-items:center; gap:30px;">
+      <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
         <img src="instagram-logo.png" alt="Instagram" style="width:100px; height:100px;">
       </a>
       <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
@@ -174,21 +233,23 @@
       <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
         <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
       </a>
-  </div>
-  
-  <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-  
-  <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-    LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
-  </p>
-  
-  <p>
-    <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-    <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
-    <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
-  </p>
-</footer>
+    </div>
 
-  <script>function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('active');}</script>
+    <p>© 2025 Brickasso , Original LEGO® Art by Albert Oprea</p>
+
+    <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+    </p>
+
+    <p>
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
+      <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
+  </script>
 </body>
 </html>
