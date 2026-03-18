@@ -3,67 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brickasso – Original LEGO® Art</title>
-  <meta name="description" content="Official site of Brickasso – Original LEGO® Art by Albert Oprea. Unique 1-of-1 artworks built with thousands of LEGO bricks. Watches, portraits, and masterpieces." />
 
-  <!-- Canonical & Open Graph -->
-  <link rel="canonical" href="https://brickasso.art/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Brickasso – Original LEGO® Art by Albert Oprea" />
-  <meta property="og:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea." />
-  <meta property="og:image" content="https://brickasso.art/logo.png" />
+  <title>Brickasso | LEGO® Art by Albert Oprea</title>
+  <meta name="description" content="Official website of Brickasso by Albert Oprea. One-of-one LEGO artworks, built by hand, numbered and certified. Discover portraits, watches and original collector pieces." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Albert Oprea" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://brickasso.art/" />
+
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Brickasso" />
+  <meta property="og:title" content="Brickasso | LEGO® Art by Albert Oprea" />
+  <meta property="og:description" content="One-of-one LEGO artworks, built by hand, numbered and certified. Discover the world of Brickasso." />
   <meta property="og:url" content="https://brickasso.art/" />
+  <meta property="og:image" content="https://brickasso.art/preview-social.jpg" />
+  <meta property="og:image:secure_url" content="https://brickasso.art/preview-social.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Brickasso artworks by Albert Oprea, featuring the Beckham and Afghan Girl LEGO portraits" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brickasso – Original LEGO® Art by Albert Oprea">
-  <meta name="twitter:description" content="Explore legendary watches, iconic portraits, and timeless masterpieces rebuilt with LEGO bricks by 10-year-old artist Albert Oprea.">
-  <meta name="twitter:image" content="https://brickasso.art/logo.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brickasso | LEGO® Art by Albert Oprea" />
+  <meta name="twitter:description" content="One-of-one LEGO artworks, built by hand, numbered and certified. Discover the world of Brickasso." />
+  <meta name="twitter:image" content="https://brickasso.art/preview-social.jpg" />
+  <meta name="twitter:image:alt" content="Brickasso artworks by Albert Oprea, featuring the Beckham and Afghan Girl LEGO portraits" />
 
-  <!-- Favicon and Apple Touch Icon -->
-  <link rel="icon" href="/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
 
-  <!-- Structured Data for Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Brickasso",
-    "url": "https://brickasso.art",
+    "url": "https://brickasso.art/",
     "logo": "https://brickasso.art/logo.png",
+    "image": "https://brickasso.art/preview-social.jpg",
     "sameAs": [
       "https://www.instagram.com/brickasso.official",
-      "https://www.tiktok.com/@brickasso.art"
+      "https://www.tiktok.com/@brickasso.art",
+      "https://www.youtube.com/@brickasso.official",
+      "https://x.com/brickasso_art"
     ]
   }
   </script>
 
-  <!-- WebSite schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Brickasso",
-    "url": "https://brickasso.art",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Brickasso",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://brickasso.art/logo.png"
-      }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.google.com/search?q=site%3Abrickasso.art+{search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "url": "https://brickasso.art/"
   }
   </script>
 
@@ -194,10 +189,8 @@
     }
     .social-icons-footer a:hover { transform: translateY(-2px); }
 
-    /* Banda social mobilă */
     .social-strip-mobile { display: none; }
 
-    /* Responsive mobile menu */
     @media (max-width: 768px) {
       header { flex-direction: row; justify-content: space-between; align-items: center; }
       .menu-toggle { display: block; font-size: 1.2em; }
@@ -220,7 +213,6 @@
       .hero h1 { font-size: 1.9em; margin-bottom: 14px; }
       .hero p { font-size: 1.05em; padding: 0 10px; }
 
-      /* Footer icons fix — one line close together on mobile */
       .social-icons-footer {
         display: flex !important;
         justify-content: center;
@@ -236,8 +228,8 @@
         height: 70px !important;
       }
 
-      footer { 
-        padding: 40px 20px; 
+      footer {
+        padding: 40px 20px;
       }
     }
   </style>
@@ -246,7 +238,7 @@
   <header>
     <a href="index.html">
       <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    </a>    
+    </a>
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰ Menu</button>
     <nav id="mobile-menu" aria-label="Main">
       <a href="index.html" aria-current="page" onclick="toggleMenu()">Home</a>
@@ -262,7 +254,7 @@
     <h1>Welcome to the world of Brickasso</h1>
     <p>
       Where legendary watches, iconic portraits, and timeless masterpieces are rebuilt
-      brick by brick. Every artwork is handcrafted by Albert Oprea – a passionate 10-year-old
+      brick by brick. Every artwork is handcrafted by Albert Oprea, a passionate 10 year old
       artist transforming thousands of LEGO® pieces into fine art.
     </p>
     <div class="cta-group">
@@ -279,22 +271,22 @@
       <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
         <img src="tiktok-logo.png" alt="TikTok" style="width:100px; height:100px;">
       </a>
-      <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener" aria-label="Youtube">
-        <img src="youtube-logo.png" alt="Youtube" style="width:100px; height:100px;">
+      <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener" aria-label="YouTube">
+        <img src="youtube-logo.png" alt="YouTube" style="width:100px; height:100px;">
       </a>
-      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X (Twitter)">
-        <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
+      <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X">
+        <img src="x-logo.png" alt="X" style="width:100px; height:100px;">
       </a>
     </div>
-    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-    
+    <p>© 2025 Brickasso | Original LEGO® Art by Albert Oprea</p>
+
     <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+      LEGO® is a trademark of the LEGO Group of companies, which does not sponsor, authorize or endorse Brickasso artworks.
     </p>
-    
+
     <p>
-      <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-      <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
+      <a href="about.html" style="color:#000; text-decoration:none; margin:0 10px;">About</a> |
+      <a href="gallery.html" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> |
       <a href="contact.html" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
     </p>
   </footer>
@@ -303,7 +295,6 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("active");
     }
-    // ensure active nav when not using onclick
     (function(){
       const here = location.pathname.split('/').pop() || 'index.html';
       const links = document.querySelectorAll('nav a');
