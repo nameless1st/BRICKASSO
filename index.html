@@ -9,7 +9,6 @@
   <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://brickasso.art/" />
 
-  <!-- Open Graph -->
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Brickasso" />
@@ -22,7 +21,6 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Brickasso artworks by Albert Oprea, featuring the Beckham and Afghan Girl LEGO portraits" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Brickasso | LEGO® Art by Albert Oprea" />
   <meta name="twitter:description" content="One-of-one LEGO artworks, built by hand, numbered and certified. Discover the world of Brickasso." />
@@ -31,16 +29,13 @@
   <meta name="twitter:site" content="@brickasso_art">
   <meta name="twitter:creator" content="@brickasso_art">
 
-  <!-- Icons -->
   <link rel="icon" href="/brickasso-icon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/brickasso-icon.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -145,7 +140,13 @@
       color:#222;
     }
 
-    .cta-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .cta-group {
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
 
     .cta {
       display: inline-block;
@@ -159,6 +160,7 @@
       border: 2px solid #000;
       letter-spacing:.2px;
     }
+
     .cta:hover { background-color: var(--brand); border-color: var(--brand); transform: translateY(-1px); }
 
     .cta.secondary{
@@ -166,10 +168,69 @@
       color:#000;
       border-color:#000;
     }
+
     .cta.secondary:hover{
       background: var(--brand);
       border-color: var(--brand);
       color:#fff;
+    }
+
+    .paypal-hero {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .paypal-hero form {
+      display: inline-grid;
+      justify-items: center;
+      align-content: start;
+      gap: 0.55rem;
+      margin: 0;
+    }
+
+    .paypal-hero-btn {
+      text-align: center;
+      border: 2px solid #000;
+      border-radius: 12px;
+      min-width: auto;
+      padding: 14px 28px;
+      height: auto;
+      font-weight: 700;
+      background: transparent;
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      cursor: pointer;
+      transition: background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      letter-spacing: .2px;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .paypal-hero-btn:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .paypal-hero img.paypal-cards {
+      height: 20px;
+      width: auto;
+    }
+
+    .paypal-powered {
+      font-size: 0.72rem;
+      color: #444;
+      line-height: 1;
+    }
+
+    .paypal-powered img {
+      height: 0.8rem;
+      vertical-align: middle;
     }
 
     footer {
@@ -218,6 +279,19 @@
       .hero h1 { font-size: 1.9em; margin-bottom: 14px; }
       .hero p { font-size: 1.05em; padding: 0 10px; }
 
+      .paypal-hero {
+        width: 100%;
+      }
+
+      .paypal-hero form {
+        width: 100%;
+      }
+
+      .paypal-hero-btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
       .social-icons-footer {
         display: flex !important;
         justify-content: center;
@@ -265,6 +339,17 @@
     <div class="cta-group">
       <a class="cta" href="gallery.html">Explore the Gallery</a>
       <a class="cta secondary" href="portfolio.html" title="Artist CV &amp; Highlights">View Portfolio</a>
+
+      <div class="paypal-hero">
+        <form action="https://www.paypal.com/ncp/payment/PSNYZ6JM2NFTW" method="post" target="_blank">
+          <input class="paypal-hero-btn" type="submit" value="Support Brickasso" />
+          <img class="paypal-cards" src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="Accepted payment methods" />
+          <section class="paypal-powered">
+            Powered by
+            <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" />
+          </section>
+        </form>
+      </div>
     </div>
   </section>
 
