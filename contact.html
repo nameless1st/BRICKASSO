@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact – Brickasso</title>
+  <title>Contact | Brickasso® | Commissions, Collectors & Media</title>
 
   <!-- SEO / Sharing -->
-  <meta name="description" content="Contact Brickasso – inquiries about LEGO Art, commissions, or collaborations with Albert Oprea." />
+  <meta name="description" content="Contact Brickasso® (Albert Oprea). For collectors, commissions, exhibitions and media inquiries. One-of-one LEGO artworks." />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://brickasso.art/contact.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Contact – Brickasso LEGO Art" />
-  <meta property="og:description" content="Get in touch with Brickasso for commissions, collaborations, or questions about LEGO artworks." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Contact | Brickasso®" />
+  <meta property="og:description" content="Collectors, commissions, exhibitions and media inquiries for Brickasso® artworks." />
   <meta property="og:image" content="https://brickasso.art/logo.png" />
   <meta property="og:url" content="https://brickasso.art/contact.html" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact | Brickasso®" />
+  <meta name="twitter:description" content="Collectors, commissions and media inquiries for Brickasso®." />
+  <meta name="twitter:image" content="https://brickasso.art/logo.png" />
 
   <!-- Favicon -->
   <link rel="icon" href="/logo.png" type="image/png" />
@@ -21,6 +26,21 @@
 
   <!-- Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Brickasso®",
+    "url": "https://brickasso.art/contact.html",
+    "description": "Contact page for collectors, commissions, exhibitions and media inquiries.",
+    "about": {
+      "@type": "Person",
+      "name": "Albert Oprea",
+      "alternateName": "Brickasso®"
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -41,7 +61,6 @@
       color: #111;
     }
 
-    /* Header (same across site) */
     header {
       padding: 10px 20px;
       display: flex;
@@ -72,7 +91,6 @@
     }
     nav a:hover { color: #d62828; }
 
-    /* Section */
     .contact-section {
       padding: 100px 20px 60px;
       background: rgba(255,255,255,0.75);
@@ -96,7 +114,6 @@
       margin: 0 auto;
     }
 
-    /* două coloane: formular + detalii email */
     .contact-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -137,7 +154,6 @@
     #formStatus.success { display: block; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
     #formStatus.error   { display: block; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
-    /* boxes cu emailuri directe */
     .contact-aside-title {
       font-size: 1.05em;
       font-weight: 600;
@@ -174,7 +190,6 @@
       color: #555;
     }
 
-    /* Footer */
     footer {
       margin-top: 100px;
       padding: 30px;
@@ -187,7 +202,6 @@
     .social-icons-footer img { height: 64px; width: auto; vertical-align: middle; }
     .social-icons-footer a:hover { transform: scale(1.2); }
 
-    /* Mobile */
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       nav {
@@ -220,7 +234,6 @@
         gap: 24px;
       }
 
-      /* Footer icons fix — one line close together on mobile */
       .social-icons-footer {
         display: flex !important;
         justify-content: center;
@@ -236,8 +249,8 @@
         height: 70px !important;
       }
 
-      footer { 
-        padding: 40px 20px; 
+      footer {
+        padding: 40px 20px;
       }
     }
   </style>
@@ -245,8 +258,8 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="brickasso-logo.gif" alt="Brickasso Logo" class="logo">
-    </a>    
+      <img src="brickasso-logo.gif" alt="Brickasso® Logo" class="logo">
+    </a>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <nav id="mobile-menu">
       <a href="index.html" onclick="toggleMenu()">Home</a>
@@ -259,51 +272,49 @@
   </header>
 
   <section class="contact-section">
-    <h1>Contact Brickasso</h1>
+    <h1>Contact</h1>
     <p class="contact-intro">
-      For commissions, acquisitions, exhibitions or media requests, please use the form or write directly to one of the email addresses below.  
-      We usually reply within 24–48 hours.
+      For collectors, commissions, exhibitions and media inquiries.
+      Brickasso® works with a limited number of projects each year.
+      All requests are reviewed individually.
     </p>
 
     <div class="contact-wrapper">
       <div class="contact-layout">
-        <!-- FORMULAR -->
         <div>
           <form id="contactForm" action="https://formspree.io/f/xpwjdaaw" method="POST">
-            <input type="text"   name="name"    placeholder="Your Name"  required />
-            <input type="email"  name="email"   placeholder="Your Email" required />
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
 
-            <!-- Subject + honeypot -->
             <input type="hidden" name="_subject" value="New message from brickasso.art" />
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <button type="submit" id="sendBtn">Send Message</button>
+            <button type="submit" id="sendBtn">Send inquiry</button>
             <p id="formStatus"></p>
           </form>
         </div>
 
-        <!-- EMAILURI DIRECTE -->
         <aside>
           <p class="contact-aside-title">Direct email</p>
           <p class="contact-note">Choose the address that best fits your request.</p>
 
           <div class="contact-box">
-            <strong>General inquiries</strong>
-            <a href="mailto:contact@brickasso.ro">contact@brickasso.ro</a>
-            <p>Questions about artworks, availability or events.</p>
-          </div>
-
-          <div class="contact-box">
-            <strong>Commissions & acquisitions</strong>
+            <strong>Collectors & acquisitions</strong>
             <a href="mailto:orders@brickasso.ro">orders@brickasso.ro</a>
-            <p>Serious collectors and custom LEGO art projects.</p>
+            <p>Availability, pricing and private acquisition requests.</p>
           </div>
 
           <div class="contact-box">
-            <strong>Collaborations & media</strong>
+            <strong>Commissions</strong>
+            <a href="mailto:orders@brickasso.ro">orders@brickasso.ro</a>
+            <p>One-of-one custom artworks, based on selected subjects.</p>
+          </div>
+
+          <div class="contact-box">
+            <strong>Media & partnerships</strong>
             <a href="mailto:hello@brickasso.ro">hello@brickasso.ro</a>
-            <p>Galleries, brands, TV, press or content partnerships.</p>
+            <p>Press, exhibitions, collaborations and brand projects.</p>
           </div>
         </aside>
       </div>
@@ -325,16 +336,18 @@
           <img src="x-logo.png" alt="X (Twitter)" style="width:100px; height:100px;">
         </a>
     </div>
-    
-    <p>© 2025 Brickasso – Original LEGO® Art by Albert Oprea</p>
-    
+
+    <p>© 2025 Brickasso® | Original LEGO® Art by Albert Oprea</p>
+
     <p style="max-width:600px; margin:5px auto; font-size:11px; line-height:1.4; color:#333;">
-      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso artworks.
+      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso® artworks.
     </p>
-    
+
     <p>
-      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a> | 
-      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a> | 
+      <a href="/about" style="color:#000; text-decoration:none; margin:0 10px;">About</a>
+      |
+      <a href="/gallery" style="color:#000; text-decoration:none; margin:0 10px;">Gallery</a>
+      |
       <a href="/contact" style="color:#000; text-decoration:none; margin:0 10px;">Contact</a>
     </p>
   </footer>
@@ -342,7 +355,6 @@
   <script>
     function toggleMenu(){ document.getElementById('mobile-menu').classList.toggle('active'); }
 
-    // Submit inline (no redirect)
     const form = document.getElementById('contactForm');
     const statusEl = document.getElementById('formStatus');
     const btn = document.getElementById('sendBtn');
@@ -362,7 +374,7 @@
         });
         if (res.ok) {
           statusEl.className = 'success';
-          statusEl.textContent = '✅ Thank you! Your message has been sent.';
+          statusEl.textContent = '✅ Thank you. Your inquiry has been sent.';
           form.reset();
         } else {
           statusEl.className = 'error';
