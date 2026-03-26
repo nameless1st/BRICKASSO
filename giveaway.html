@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Brickasso No. 12 | Artwork Entry</title>
-  <meta name="description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea. Complete the actions on the pinned video on your platform and submit your entry here." />
+  <title>Brickasso No. 12 | Artwork Selection</title>
+  <meta name="description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea. Complete the actions on the pinned video on your platform and submit your selection here." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Albert Oprea" />
   <meta name="theme-color" content="#ffffff" />
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Brickasso®" />
-  <meta property="og:title" content="Brickasso No. 12 | Artwork Entry" />
+  <meta property="og:title" content="Brickasso No. 12 | Artwork Selection" />
   <meta property="og:description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea." />
   <meta property="og:url" content="https://brickasso.art/giveaway.html" />
   <meta property="og:image" content="https://brickasso.art/giveaway-art.png" />
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="Brickasso No. 12 angel artwork concept" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Brickasso No. 12 | Artwork Entry" />
+  <meta name="twitter:title" content="Brickasso No. 12 | Artwork Selection" />
   <meta name="twitter:description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea." />
   <meta name="twitter:image" content="https://brickasso.art/giveaway-art.png" />
   <meta name="twitter:image:alt" content="Brickasso No. 12 angel artwork concept" />
@@ -44,12 +44,6 @@
       --paper:rgba(255,255,255,.75);
       --paper-strong:rgba(255,255,255,.88);
       --border:rgba(0,0,0,.08);
-      --success-bg:#d4edda;
-      --success-text:#155724;
-      --success-border:#c3e6cb;
-      --error-bg:#f8d7da;
-      --error-text:#721c24;
-      --error-border:#f5c6cb;
     }
 
     *{box-sizing:border-box}
@@ -249,105 +243,21 @@
       margin:0 auto;
     }
 
-    form{
-      display:grid;
-      gap:14px;
-      margin-top:10px;
-    }
-
-    .field label{
-      display:block;
-      font-weight:600;
-      margin-bottom:8px;
-      font-size:.96em;
-    }
-
-    input,
-    select,
-    textarea{
+    .form-embed{
       width:100%;
-      padding:13px 14px;
-      border-radius:12px;
-      border:1px solid #ccc;
-      font-size:1rem;
-      font-family:inherit;
+      border-radius:16px;
+      overflow:hidden;
       background:#fff;
-      color:#111;
-      outline:none;
+      border:1px solid rgba(0,0,0,.08);
+      margin-top:16px;
     }
 
-    textarea{
-      resize:vertical;
-      min-height:140px;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus{
-      border-color:#999;
-    }
-
-    .checkbox-group{
-      display:grid;
-      gap:10px;
-      padding:14px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:14px;
-    }
-
-    .checkbox-item{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      font-size:.96em;
-      line-height:1.5;
-    }
-
-    .checkbox-item input{
-      width:auto;
-      margin-top:2px;
-      transform:scale(1.08);
-    }
-
-    .btn{
-      padding:15px 22px;
-      border-radius:12px;
-      border:2px solid #000;
-      background:#000;
-      color:#fff;
-      font-weight:700;
-      font-size:1rem;
-      cursor:pointer;
-      transition:background .3s,border-color .3s,transform .15s ease;
-    }
-
-    .btn:hover{
-      background:var(--brand);
-      border-color:var(--brand);
-      transform:translateY(-1px);
-    }
-
-    #formStatus{
-      margin-top:2px;
-      padding:12px 14px;
-      border-radius:10px;
-      font-size:.95em;
-      display:none;
-    }
-
-    #formStatus.success{
+    .form-embed iframe{
       display:block;
-      background:var(--success-bg);
-      color:var(--success-text);
-      border:1px solid var(--success-border);
-    }
-
-    #formStatus.error{
-      display:block;
-      background:var(--error-bg);
-      color:var(--error-text);
-      border:1px solid var(--error-border);
+      width:100%;
+      min-height:1650px;
+      border:0;
+      background:#fff;
     }
 
     footer{
@@ -440,6 +350,10 @@
         padding:20px;
       }
 
+      .form-embed iframe{
+        min-height:1800px;
+      }
+
       .social-icons-footer{
         display:flex !important;
         justify-content:center;
@@ -476,15 +390,15 @@
       <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
       <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
       <a href="contact.html" onclick="toggleMenu()">Contact</a>
-      <a href="giveaway.html" aria-current="page" onclick="toggleMenu()">Entry</a>
+      <a href="giveaway.html" aria-current="page" onclick="toggleMenu()">Selection</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Brickasso No. 12 | Artwork Entry</h1>
+    <h1>Brickasso No. 12 | Artwork Selection</h1>
     <p>
       Enter for a chance to receive a one-of-one Brickasso artwork.
-      Complete the actions on the pinned video on your platform, then submit your entry below.
+      Complete the actions on the pinned video on your platform, then submit your selection below.
     </p>
   </section>
 
@@ -496,7 +410,7 @@
 
       <section class="card">
         <div class="badge">Brickasso No. 12</div>
-        <h2>How to enter</h2>
+        <h2>How to participate</h2>
         <p class="lead">
           This artwork will be developed in public during the creative process. One verified participant will receive the final piece.
         </p>
@@ -507,8 +421,8 @@
             <div class="social-rule-links">
               <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener">Instagram</a>
               <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener">TikTok</a>
+              <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
               <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener">YouTube</a>
-               <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
             </div>
           </li>
 
@@ -521,7 +435,7 @@
             Your idea may be selected and included in the final artwork.
           </li>
 
-          <li><strong>5.</strong> Complete your entry form below</li>
+          <li><strong>5.</strong> Complete the selection form below</li>
         </ul>
 
         <div class="note-box">
@@ -529,7 +443,7 @@
         </div>
 
         <div class="note-box">
-        Verified entries only. The winner will be selected from valid entries after the campaign closes.
+          Verified entries only. The winner will be selected from valid entries after the campaign closes.
         </div>
       </section>
     </div>
@@ -537,74 +451,34 @@
     <section class="card form-card">
       <h2>Complete your entry</h2>
       <p class="lead">
-        Use the same details you used on your social platform, so your participation can be verified correctly.
+        Submit your entry below. Make sure you completed all required steps on your platform.
       </p>
+    
+      <div class="form-embed" style="margin-top:20px;">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform?embedded=true" 
+          width="100%" 
+          height="1600" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0"
+          style="border-radius:12px; background:#fff;">
+          Loading…
+        </iframe>
+      </div>
 
-      <form id="giveawayForm" action="https://formspree.io/f/xpwjdaaw" method="POST">
-        <div class="field">
-          <label for="fullname">Full name</label>
-          <input id="fullname" type="text" name="full_name" placeholder="Your full name" required>
-        </div>
-
-        <div class="field">
-          <label for="email">Email address</label>
-          <input id="email" type="email" name="email" placeholder="Your email address" required>
-        </div>
-
-        <div class="field">
-          <label for="primary_platform">Main platform used for this entry</label>
-          <select id="primary_platform" name="primary_platform" required>
-            <option value="">Select platform</option>
-            <option value="Instagram">Instagram</option>
-            <option value="TikTok">TikTok</option>
-            <option value="X">X</option>
-            <option value="YouTube">YouTube</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="profilelink">Your main profile link</label>
-          <input id="profilelink" type="url" name="profile_link" placeholder="Paste the link to your main social profile" required>
-        </div>
-
-        <div class="field">
-          <label for="idea">Your mini-scene idea</label>
-          <textarea id="idea" name="hidden_scene_idea" placeholder="Describe the mini-scene idea you commented on the pinned video. Your idea may be selected and included inside the final artwork." required></textarea>
-        </div>
-
-        <div class="checkbox-group">
-          <label class="checkbox-item">
-            <input type="checkbox" name="step_follow" required>
-            <span>I followed Brickasso on my platform.</span>
-          </label>
-
-          <label class="checkbox-item">
-            <input type="checkbox" name="step_like" required>
-            <span>I liked the pinned video on my platform.</span>
-          </label>
-
-          <label class="checkbox-item">
-            <input type="checkbox" name="step_repost" required>
-            <span>I reposted the pinned video on my platform.</span>
-          </label>
-
-          <label class="checkbox-item">
-            <input type="checkbox" name="step_comment" required>
-            <span>I commented my mini-scene idea on the pinned video.</span>
-          </label>
-
-          <label class="checkbox-item">
-            <input type="checkbox" name="agreement" required>
-            <span>I understand that entries may be checked and invalid entries may be removed.</span>
-          </label>
-        </div>
-
-        <input type="hidden" name="_subject" value="New Brickasso Artwork Entry">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-        <button type="submit" class="btn" id="sendBtn">Submit Entry</button>
-        <p id="formStatus"></p>
-      </form>
+      <div class="form-embed">
+        <iframe
+          src="GOOGLE_FORM_EMBED_URL"
+          width="100%"
+          height="1650"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          loading="lazy">
+          Loading…
+        </iframe>
+      </div>
     </section>
   </main>
 
@@ -650,40 +524,6 @@
         if (href === here) a.setAttribute('aria-current','page');
       });
     })();
-
-    const form = document.getElementById('giveawayForm');
-    const statusEl = document.getElementById('formStatus');
-    const btn = document.getElementById('sendBtn');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.className = '';
-      statusEl.textContent = 'Sending...';
-      statusEl.style.display = 'block';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-
-        if (res.ok) {
-          statusEl.className = 'success';
-          statusEl.textContent = '✅ Thank you. Your entry has been submitted successfully.';
-          form.reset();
-        } else {
-          statusEl.className = 'error';
-          statusEl.textContent = '⚠️ Something went wrong. Please try again.';
-        }
-      } catch (err) {
-        statusEl.className = 'error';
-        statusEl.textContent = '⚠️ Network error. Please try again.';
-      } finally {
-        btn.disabled = false;
-      }
-    });
   </script>
 </body>
 </html>
