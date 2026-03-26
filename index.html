@@ -140,6 +140,18 @@
       color:#222;
     }
 
+    .selection-cta-wrap{
+      margin: 0 auto 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .selection-cta-wrap .cta{
+      font-size: 1.02rem;
+      padding: 16px 32px;
+    }
+
     .cta-group {
       display:flex;
       gap:14px;
@@ -161,7 +173,11 @@
       letter-spacing:.2px;
     }
 
-    .cta:hover { background-color: var(--brand); border-color: var(--brand); transform: translateY(-1px); }
+    .cta:hover {
+      background-color: var(--brand);
+      border-color: var(--brand);
+      transform: translateY(-1px);
+    }
 
     .cta.secondary{
       background: transparent;
@@ -233,22 +249,6 @@
       vertical-align: middle;
     }
 
-    .selection-cta-wrap{
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .selection-cta-wrap p{
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #222;
-      font-weight: 600;
-    }
-
     footer {
       margin-top: 80px;
       padding: 30px;
@@ -309,12 +309,14 @@
       }
 
       .selection-cta-wrap {
-        margin-top: 22px;
+        margin: 0 auto 24px;
         padding: 0 10px;
       }
 
-      .selection-cta-wrap p {
-        font-size: 0.98rem;
+      .selection-cta-wrap .cta{
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
       }
 
       .social-icons-footer {
@@ -362,10 +364,10 @@
       The works exist as unique objects, signed, catalogued and accompanied by a private certificate of authenticity.
     </p>
 
-<div class="selection-cta-wrap">
+    <div class="selection-cta-wrap">
       <a class="cta secondary" href="giveaway.html">Get Your Chance to Own Brickasso No. 12</a>
     </div>
-    
+
     <div class="cta-group">
       <a class="cta" href="gallery.html">Explore the Gallery</a>
       <a class="cta secondary" href="portfolio.html" title="Artist CV &amp; Highlights">View Portfolio</a>
