@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,11 +28,11 @@
   <meta name="twitter:description" content="One-of-one LEGO artworks, built by hand, numbered and certified. Discover the world of Brickasso®." />
   <meta name="twitter:image" content="https://brickasso.art/preview-social.jpg" />
   <meta name="twitter:image:alt" content="Brickasso® artworks by Albert Oprea, featuring the Beckham and Afghan Girl LEGO portraits" />
-  <meta name="twitter:site" content="@brickasso_art">
-  <meta name="twitter:creator" content="@brickasso_art">
+  <meta name="twitter:site" content="@brickasso_art" />
+  <meta name="twitter:creator" content="@brickasso_art" />
 
   <link rel="icon" href="/brickasso-icon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="/brickasso-icon.png">
+  <link rel="apple-touch-icon" href="/brickasso-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,89 +72,100 @@
       --paper-strong:rgba(255,255,255,.85);
       --border:rgba(0,0,0,.08);
     }
+
     *{box-sizing:border-box}
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-image: url('archi-big-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: var(--ink);
+
+    body{
+      margin:0;
+      padding:0;
+      font-family:'Montserrat', sans-serif;
+      background-image:url('archi-big-bg.jpg');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+      color:var(--ink);
     }
 
-    header {
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #ddd;
-      backdrop-filter: blur(6px);
+    header{
+      padding:10px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background-color:rgba(255,255,255,0.8);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid #ddd;
+      backdrop-filter:blur(6px);
     }
 
-    .logo { height: 50px; }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1em;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
+    .logo{
+      height:50px;
     }
 
-    nav { display: flex; }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
+    .menu-toggle{
+      display:none;
+      font-size:1em;
+      font-weight:bold;
+      background:none;
+      border:none;
+      cursor:pointer;
     }
 
-    nav a:hover { color: var(--brand); }
-    nav a[aria-current="page"]{ color: var(--brand); }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px 60px;
-      background-color: var(--paper);
+    nav{
+      display:flex;
     }
 
-    .hero h1 {
-      font-size: 2.6em;
-      margin-bottom: 16px;
-      font-weight: 700;
-      letter-spacing: .2px;
+    nav a{
+      margin-left:20px;
+      text-decoration:none;
+      color:#000;
+      font-weight:600;
+      transition:color 0.3s;
     }
 
-    .hero p {
-      font-size: 1.25em;
-      max-width: 760px;
-      margin: 0 auto 40px;
-      line-height: 1.75;
+    nav a:hover{
+      color:var(--brand);
+    }
+
+    nav a[aria-current="page"]{
+      color:var(--brand);
+    }
+
+    .hero{
+      text-align:center;
+      padding:100px 20px 60px;
+      background-color:var(--paper);
+    }
+
+    .hero h1{
+      font-size:2.6em;
+      margin-bottom:16px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .hero p{
+      font-size:1.25em;
+      max-width:760px;
+      margin:0 auto 40px;
+      line-height:1.75;
       color:#222;
     }
 
     .selection-cta-wrap{
-      margin: 0 auto 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin:0 auto 30px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
     .selection-cta-wrap .cta{
-      font-size: 1.02rem;
-      padding: 16px 32px;
+      font-size:1.02rem;
+      padding:16px 32px;
     }
 
-    .cta-group {
+    .cta-group{
       display:flex;
       gap:14px;
       justify-content:center;
@@ -160,182 +173,215 @@
       align-items:flex-start;
     }
 
-    .cta {
-      display: inline-block;
-      padding: 14px 28px;
-      background-color: #000;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 12px;
-      transition: background 0.3s, color .3s, border-color .3s, transform .15s ease;
-      border: 2px solid #000;
+    .cta{
+      display:inline-block;
+      padding:14px 28px;
+      background-color:#000;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border-radius:12px;
+      transition:background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      border:2px solid #000;
       letter-spacing:.2px;
     }
 
-    .cta:hover {
-      background-color: var(--brand);
-      border-color: var(--brand);
-      transform: translateY(-1px);
+    .cta:hover{
+      background-color:var(--brand);
+      border-color:var(--brand);
+      transform:translateY(-1px);
     }
 
     .cta.secondary{
-      background: transparent;
+      background:transparent;
       color:#000;
       border-color:#000;
     }
 
     .cta.secondary:hover{
-      background: var(--brand);
-      border-color: var(--brand);
+      background:var(--brand);
+      border-color:var(--brand);
       color:#fff;
     }
 
-    .paypal-hero {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+    .paypal-hero{
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
     }
 
-    .paypal-hero form {
-      display: inline-grid;
-      justify-items: center;
-      align-content: start;
-      gap: 0.55rem;
-      margin: 0;
+    .paypal-hero form{
+      display:inline-grid;
+      justify-items:center;
+      align-content:start;
+      gap:0.55rem;
+      margin:0;
     }
 
-    .paypal-hero-btn {
-      text-align: center;
-      border: 2px solid #000;
-      border-radius: 12px;
-      min-width: auto;
-      padding: 14px 28px;
-      height: auto;
-      font-weight: 700;
-      background: transparent;
-      color: #000;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      line-height: 1.25rem;
-      cursor: pointer;
-      transition: background 0.3s, color .3s, border-color .3s, transform .15s ease;
-      letter-spacing: .2px;
-      appearance: none;
-      -webkit-appearance: none;
+    .paypal-hero-btn{
+      text-align:center;
+      border:2px solid #000;
+      border-radius:12px;
+      min-width:auto;
+      padding:14px 28px;
+      height:auto;
+      font-weight:700;
+      background:transparent;
+      color:#000;
+      font-family:'Montserrat', sans-serif;
+      font-size:1rem;
+      line-height:1.25rem;
+      cursor:pointer;
+      transition:background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      letter-spacing:.2px;
+      appearance:none;
+      -webkit-appearance:none;
     }
 
-    .paypal-hero-btn:hover {
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #fff;
-      transform: translateY(-1px);
+    .paypal-hero-btn:hover{
+      background:var(--brand);
+      border-color:var(--brand);
+      color:#fff;
+      transform:translateY(-1px);
     }
 
-    .paypal-hero img.paypal-cards {
-      height: 20px;
-      width: auto;
+    .paypal-hero img.paypal-cards{
+      height:20px;
+      width:auto;
     }
 
-    .paypal-powered {
-      font-size: 0.72rem;
-      color: #444;
-      line-height: 1;
+    .paypal-powered{
+      font-size:0.72rem;
+      color:#444;
+      line-height:1;
     }
 
-    .paypal-powered img {
-      height: 0.8rem;
-      vertical-align: middle;
+    .paypal-powered img{
+      height:0.8rem;
+      vertical-align:middle;
     }
 
-    footer {
-      margin-top: 80px;
-      padding: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      background: transparent;
+    footer{
+      margin-top:80px;
+      padding:30px;
+      text-align:center;
+      font-size:0.9em;
+      color:#666;
+      background:transparent;
     }
 
-    .social-icons-footer { margin-bottom: 4px; }
-    .social-icons-footer a {
-      margin: 0 14px;
-      display: inline-block;
-      transition: transform 0.2s ease;
+    .social-icons-footer{
+      margin-bottom:4px;
     }
-    .social-icons-footer img {
-      height: 100px !important;
-      width: auto !important;
-      vertical-align: middle;
+
+    .social-icons-footer a{
+      margin:0 14px;
+      display:inline-block;
+      transition:transform 0.2s ease;
     }
-    .social-icons-footer a:hover { transform: translateY(-2px); }
 
-    .social-strip-mobile { display: none; }
+    .social-icons-footer img{
+      height:100px !important;
+      width:auto !important;
+      vertical-align:middle;
+    }
 
-    @media (max-width: 768px) {
-      header { flex-direction: row; justify-content: space-between; align-items: center; }
-      .menu-toggle { display: block; font-size: 1.2em; }
-      nav {
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        text-align: center;
-        z-index: 999;
-      }
-      nav.active { display: flex; }
+    .social-icons-footer a:hover{
+      transform:translateY(-2px);
+    }
 
-      .hero { padding: 60px 20px 40px; }
-      .hero h1 { font-size: 1.9em; margin-bottom: 14px; }
-      .hero p { font-size: 1.05em; padding: 0 10px; }
+    .social-strip-mobile{
+      display:none;
+    }
 
-      .paypal-hero {
-        width: 100%;
+    @media (max-width: 768px){
+      header{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
       }
 
-      .paypal-hero form {
-        width: 100%;
+      .menu-toggle{
+        display:block;
+        font-size:1.2em;
       }
 
-      .paypal-hero-btn {
-        width: 100%;
-        max-width: 320px;
+      nav{
+        display:none;
+        flex-direction:column;
+        gap:15px;
+        position:absolute;
+        top:70px;
+        right:0;
+        width:100%;
+        background-color:rgba(255, 255, 255, 0.95);
+        padding:20px;
+        text-align:center;
+        z-index:999;
       }
 
-      .selection-cta-wrap {
-        margin: 0 auto 24px;
-        padding: 0 10px;
+      nav.active{
+        display:flex;
+      }
+
+      .hero{
+        padding:60px 20px 40px;
+      }
+
+      .hero h1{
+        font-size:1.9em;
+        margin-bottom:14px;
+      }
+
+      .hero p{
+        font-size:1.05em;
+        padding:0 10px;
+      }
+
+      .paypal-hero{
+        width:100%;
+      }
+
+      .paypal-hero form{
+        width:100%;
+      }
+
+      .paypal-hero-btn{
+        width:100%;
+        max-width:320px;
+      }
+
+      .selection-cta-wrap{
+        margin:0 auto 24px;
+        padding:0 10px;
       }
 
       .selection-cta-wrap .cta{
-        width: 100%;
-        max-width: 420px;
-        text-align: center;
+        width:100%;
+        max-width:420px;
+        text-align:center;
       }
 
-      .social-icons-footer {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        gap: 0 !important;
-        margin-bottom: 10px !important;
-      }
-      .social-icons-footer a {
-        margin: 0 !important;
-      }
-      .social-icons-footer img {
-        width: 70px !important;
-        height: 70px !important;
+      .social-icons-footer{
+        display:flex !important;
+        justify-content:center;
+        align-items:center;
+        gap:0 !important;
+        margin-bottom:10px !important;
       }
 
-      footer {
-        padding: 40px 20px;
+      .social-icons-footer a{
+        margin:0 !important;
+      }
+
+      .social-icons-footer img{
+        width:70px !important;
+        height:70px !important;
+      }
+
+      footer{
+        padding:40px 20px;
       }
     }
   </style>
@@ -365,11 +411,11 @@
     </p>
 
     <div class="selection-cta-wrap">
-      <a class="cta secondary" href="giveaway.html">Get Your Chance to Own Brickasso No. 12</a>
+      <a class="cta" href="giveaway.html">Get Your Chance to Own Brickasso No. 12</a>
     </div>
 
     <div class="cta-group">
-      <a class="cta" href="gallery.html">Explore the Gallery</a>
+      <a class="cta secondary" href="gallery.html">Explore the Gallery</a>
       <a class="cta secondary" href="portfolio.html" title="Artist CV &amp; Highlights">View Portfolio</a>
 
       <div class="paypal-hero">
@@ -416,6 +462,7 @@
     function toggleMenu() {
       document.getElementById("mobile-menu").classList.toggle("active");
     }
+
     (function(){
       const here = location.pathname.split('/').pop() || 'index.html';
       const links = document.querySelectorAll('nav a');
