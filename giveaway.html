@@ -260,6 +260,38 @@
       background:#fff;
     }
 
+    .mobile-form-link{
+      display:none;
+      margin-top:20px;
+      text-align:center;
+    }
+
+    .mobile-form-note{
+      margin-top:12px;
+      font-size:.92em;
+      color:#555;
+      line-height:1.6;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:14px 28px;
+      background-color:#000;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border-radius:12px;
+      transition:background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      border:2px solid #000;
+      letter-spacing:.2px;
+    }
+
+    .cta:hover{
+      background-color:var(--brand);
+      border-color:var(--brand);
+      transform:translateY(-1px);
+    }
+
     footer{
       margin-top:80px;
       padding:30px;
@@ -350,8 +382,12 @@
         padding:20px;
       }
 
-      .form-embed iframe{
-        min-height:1800px;
+      .form-embed{
+        display:none;
+      }
+
+      .mobile-form-link{
+        display:block;
       }
 
       .social-icons-footer{
@@ -421,8 +457,8 @@
             <div class="social-rule-links">
               <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener">Instagram</a>
               <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener">TikTok</a>
-              <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
               <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener">YouTube</a>
+              <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
             </div>
           </li>
 
@@ -453,7 +489,7 @@
       <p class="lead">
         Submit your entry below. Make sure you completed all required steps on your platform.
       </p>
-    
+
       <div class="form-embed" style="margin-top:20px;">
         <iframe 
           src="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform?embedded=true" 
@@ -465,6 +501,15 @@
           style="border-radius:12px; background:#fff;">
           Loading…
         </iframe>
+      </div>
+
+      <div class="mobile-form-link">
+        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform" target="_blank" rel="noopener">
+          Complete the Form
+        </a>
+        <p class="mobile-form-note">
+          For a better mobile experience, the form opens in a separate page.
+        </p>
       </div>
     </section>
   </main>
