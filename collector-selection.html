@@ -4,27 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Brickasso No. 12 | Artwork Selection</title>
-  <meta name="description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea. Complete the actions on the pinned video on your platform and submit your selection here." />
+  <title>Brickasso No. 12 | Collector Selection</title>
+  <meta name="description" content="Brickasso No. 12. One collector will be selected to receive a one of one artwork by Albert Oprea. Submit your selection form and be considered." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Albert Oprea" />
   <meta name="theme-color" content="#ffffff" />
-  <link rel="canonical" href="https://brickasso.art/giveaway.html" />
+  <link rel="canonical" href="https://brickasso.art/collector-selection.html" />
 
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Brickasso®" />
-  <meta property="og:title" content="Brickasso No. 12 | Artwork Selection" />
-  <meta property="og:description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea." />
-  <meta property="og:url" content="https://brickasso.art/giveaway.html" />
+  <meta property="og:title" content="Brickasso No. 12 | Collector Selection" />
+  <meta property="og:description" content="One collector will be selected to receive Brickasso No. 12, a one of one artwork by Albert Oprea." />
+  <meta property="og:url" content="https://brickasso.art/collector-selection.html" />
   <meta property="og:image" content="https://brickasso.art/giveaway-art.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Brickasso No. 12 angel artwork concept" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Brickasso No. 12 | Artwork Selection" />
-  <meta name="twitter:description" content="Enter for a chance to receive a one-of-one Brickasso artwork by Albert Oprea." />
+  <meta name="twitter:title" content="Brickasso No. 12 | Collector Selection" />
+  <meta name="twitter:description" content="One collector will be selected to receive Brickasso No. 12, a one of one artwork by Albert Oprea." />
   <meta name="twitter:image" content="https://brickasso.art/giveaway-art.png" />
   <meta name="twitter:image:alt" content="Brickasso No. 12 angel artwork concept" />
   <meta name="twitter:site" content="@brickasso_art" />
@@ -105,19 +105,26 @@
 
     .hero{
       text-align:center;
-      padding:90px 20px 45px;
+      padding:95px 20px 50px;
       background-color:var(--paper);
     }
 
     .hero h1{
-      font-size:2.4em;
-      margin:0 0 14px;
+      font-size:2.5em;
+      margin:0 0 10px;
       font-weight:700;
       letter-spacing:.2px;
     }
 
+    .sub-title{
+      font-size:1.35em;
+      font-weight:700;
+      margin:0 0 20px;
+      color:#222;
+    }
+
     .hero p{
-      max-width:860px;
+      max-width:900px;
       margin:0 auto;
       font-size:1.08em;
       line-height:1.8;
@@ -260,6 +267,38 @@
       background:#fff;
     }
 
+    .mobile-form-link{
+      display:none;
+      margin-top:20px;
+      text-align:center;
+    }
+
+    .mobile-form-note{
+      margin-top:12px;
+      font-size:.92em;
+      color:#555;
+      line-height:1.6;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:14px 28px;
+      background-color:#000;
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border-radius:12px;
+      transition:background 0.3s, color .3s, border-color .3s, transform .15s ease;
+      border:2px solid #000;
+      letter-spacing:.2px;
+    }
+
+    .cta:hover{
+      background-color:var(--brand);
+      border-color:var(--brand);
+      transform:translateY(-1px);
+    }
+
     footer{
       margin-top:80px;
       padding:30px;
@@ -350,8 +389,12 @@
         padding:20px;
       }
 
-      .form-embed iframe{
-        min-height:1800px;
+      .form-embed{
+        display:none;
+      }
+
+      .mobile-form-link{
+        display:block;
       }
 
       .social-icons-footer{
@@ -390,15 +433,15 @@
       <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
       <a href="certificate.html" onclick="toggleMenu()">Certificate</a>
       <a href="contact.html" onclick="toggleMenu()">Contact</a>
-      <a href="giveaway.html" aria-current="page" onclick="toggleMenu()">Selection</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Brickasso No. 12 | Artwork Selection</h1>
+    <h1>Brickasso No. 12</h1>
+    <h2 class="sub-title">Collector Selection</h2>
     <p>
-      Enter for a chance to receive a one-of-one Brickasso artwork.
-      Complete the actions on the pinned video on your platform, then submit your selection below.
+      One collector will be selected to receive this one of one artwork.
+      To be considered, complete the required actions on your platform and submit your form below.
     </p>
   </section>
 
@@ -410,9 +453,10 @@
 
       <section class="card">
         <div class="badge">Brickasso No. 12</div>
-        <h2>How to participate</h2>
+        <h2>How to be considered</h2>
         <p class="lead">
-          This artwork will be developed in public during the creative process. One verified participant will receive the final piece.
+          To qualify for selection, please complete all required steps.
+          Only verified submissions will be reviewed.
         </p>
 
         <ul class="tasks">
@@ -421,63 +465,59 @@
             <div class="social-rule-links">
               <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener">Instagram</a>
               <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener">TikTok</a>
-              <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
               <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener">YouTube</a>
+              <a href="https://x.com/brickasso_art" target="_blank" rel="noopener">X</a>
             </div>
           </li>
 
-          <li><strong>2.</strong> Like the pinned video on your platform</li>
+          <li><strong>2.</strong> Like the main campaign video</li>
 
-          <li><strong>3.</strong> Repost the pinned video on your platform</li>
+          <li><strong>3.</strong> Share or repost the main campaign video</li>
 
           <li>
-            <strong>4.</strong> Comment your mini-scene idea on the pinned video.
-            Your idea may be selected and included in the final artwork.
+            <strong>4.</strong> Comment your mini scene idea on the campaign video.
+            Your idea may become part of the final artwork.
           </li>
 
-          <li><strong>5.</strong> Complete the selection form below</li>
+          <li><strong>5.</strong> Submit the selection form below</li>
         </ul>
 
         <div class="note-box">
-          Each participant starts with 1 valid entry. You can increase your chances with extra entries by joining on additional platforms. Maximum 4 entries per person.
+          Each verified submission will be reviewed after the campaign closes.
         </div>
 
         <div class="note-box">
-          Verified entries only. The winner will be selected from valid entries after the campaign closes.
+          One collector will be selected for Brickasso No. 12.
         </div>
       </section>
     </div>
 
     <section class="card form-card">
-      <h2>Complete your entry</h2>
+      <h2>Submit your selection form</h2>
       <p class="lead">
-        Submit your entry below. Make sure you completed all required steps on your platform.
+        Please submit your details only after completing all required steps on your chosen platform.
       </p>
-    
+
       <div class="form-embed" style="margin-top:20px;">
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform?embedded=true" 
-          width="100%" 
-          height="1600" 
-          frameborder="0" 
-          marginheight="0" 
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform?embedded=true"
+          width="100%"
+          height="1600"
+          frameborder="0"
+          marginheight="0"
           marginwidth="0"
           style="border-radius:12px; background:#fff;">
           Loading…
         </iframe>
       </div>
 
-      <div class="form-embed">
-        <iframe
-          src="GOOGLE_FORM_EMBED_URL"
-          width="100%"
-          height="1650"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          loading="lazy">
-          Loading…
-        </iframe>
+      <div class="mobile-form-link">
+        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeWODQhDTkgVRvuTPQR7MPJzSzoDxS_ZOBwjrqPiInWxLwyJQ/viewform" target="_blank" rel="noopener">
+          Complete the Form
+        </a>
+        <p class="mobile-form-note">
+          For a better mobile experience, the form opens in a separate page.
+        </p>
       </div>
     </section>
   </main>
