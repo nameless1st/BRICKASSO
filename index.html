@@ -93,6 +93,12 @@
       background:#0f1113;
     }
 
+    .background-wrap{
+      position:absolute;
+      inset:0;
+      z-index:1;
+    }
+
     .background{
       position:absolute;
       inset:0;
@@ -103,7 +109,7 @@
       display:block;
       z-index:1;
       filter:contrast(1.06) saturate(1.09) brightness(0.93);
-      animation: heroZoom 55s infinite alternate ease-in-out;
+      animation:heroZoom 55s infinite alternate ease-in-out;
       will-change: transform;
     }
 
@@ -131,7 +137,7 @@
         radial-gradient(circle at 65% 42%, rgba(255,255,255,0.04), transparent 28%),
         radial-gradient(circle at 52% 20%, rgba(255,255,255,0.03), transparent 18%);
       mix-blend-mode:screen;
-      animation: overlayFloat 16s ease-in-out infinite alternate;
+      animation:overlayFloat 16s ease-in-out infinite alternate;
     }
 
     @keyframes overlayFloat{
@@ -220,7 +226,7 @@
     .title-inner{
       position:relative;
       transform-style:preserve-3d;
-      animation: titleFloat 8s ease-in-out infinite;
+      animation:titleFloat 8s ease-in-out infinite;
       will-change:transform;
     }
 
@@ -250,7 +256,7 @@
         radial-gradient(circle at 48% 48%, rgba(255,255,255,0.05), transparent 40%);
       filter:blur(18px);
       opacity:.95;
-      animation: auraPulse 7s ease-in-out infinite;
+      animation:auraPulse 7s ease-in-out infinite;
       pointer-events:none;
     }
 
@@ -343,7 +349,7 @@
         0 35px 80px rgba(0,0,0,0.40),
         0 0 20px rgba(255,255,255,0.25),
         0 0 40px rgba(255,255,255,0.15);
-      animation: softGlow 5s ease-in-out infinite;
+      animation:softGlow 5s ease-in-out infinite;
     }
 
     .name{
@@ -359,7 +365,7 @@
         0 18px 40px rgba(0,0,0,0.55),
         0 35px 80px rgba(0,0,0,0.40),
         0 0 18px rgba(255,255,255,0.20);
-      animation: softGlow 6s ease-in-out infinite;
+      animation:softGlow 6s ease-in-out infinite;
     }
 
     .tag{
@@ -372,7 +378,7 @@
         0 3px 9px rgba(0,0,0,0.45),
         0 10px 25px rgba(0,0,0,0.32),
         0 0 12px rgba(255,255,255,0.12);
-      animation: softFade 6s ease-in-out infinite;
+      animation:softFade 6s ease-in-out infinite;
     }
 
     @keyframes softGlow{
@@ -438,7 +444,7 @@
         0 0 20px rgba(255,255,255,0.18);
       transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       opacity:0;
-      animation: fadeInUp 1.3s 1.35s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation:fadeInUp 1.3s 1.35s cubic-bezier(0.23, 1, 0.32, 1) forwards;
     }
 
     .gallery-cta::after{
@@ -479,12 +485,12 @@
 
     @keyframes fadeInUp {
       from {
-        opacity: 0;
-        transform: translateY(45px) scale(0.95);
+        opacity:0;
+        transform:translateY(45px) scale(0.95);
       }
       to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        opacity:1;
+        transform:translateY(0) scale(1);
       }
     }
 
@@ -565,26 +571,14 @@
 
       .title-block{
         left:50%;
-        top:30%;
+        top:calc(18% + 5mm);
         transform:translate(-50%,-50%);
         width:calc(100% - 40px);
         text-align:center;
       }
 
       .title-inner{
-        animation: titleFloatMobile 8s ease-in-out infinite;
-      }
-
-      @keyframes titleFloatMobile{
-        0%{
-          transform:translateY(0px);
-        }
-        50%{
-          transform:translateY(-5px);
-        }
-        100%{
-          transform:translateY(0px);
-        }
+        animation:none;
       }
 
       .text-line,
@@ -593,15 +587,23 @@
         text-align:center;
       }
 
-      .brand{ font-size:3.7rem; }
-      .name{ font-size:3.7rem; }
-      .tag{ font-size:1.02rem; }
+      .brand{ font-size:3.4rem; }
+      .name{ font-size:3.4rem; }
+      .tag{ font-size:1rem; }
 
-      .gallery-cta-wrap{ bottom:78px; }
-      .disclaimer{ white-space:normal; }
+      .gallery-cta-wrap{
+        bottom:110px;
+        width:100%;
+        padding:0 18px;
+      }
+
+      .disclaimer{
+        bottom:20px;
+        white-space:normal;
+      }
 
       .title-block:hover .title-inner{
-        transform:translateY(-2px);
+        transform:none;
       }
 
       .title-block:hover .brand,
@@ -609,50 +611,104 @@
       .title-block:hover .tag{
         transform:none;
       }
+
+      .background{
+        object-fit:cover;
+        object-position:center center;
+        animation:none;
+        transform:none;
+      }
     }
 
     @media (max-width: 768px){
+      body{
+        overflow:auto;
+      }
+
+      .scene{
+        min-height:100svh;
+        height:100svh;
+      }
+
+      .background{
+        width:100%;
+        height:100%;
+        min-height:100svh;
+        object-fit:cover;
+        object-position:center center;
+        animation:none;
+        transform:none;
+      }
+
+      .overlay{
+        background:
+          radial-gradient(circle at 50% 34%, transparent 24%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.55) 100%),
+          linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.06) 28%, rgba(0,0,0,0.34) 100%);
+      }
+
       .title-block{
-        top:28%;
+        top:calc(17% + 5mm);
+        left:50%;
+        transform:translate(-50%,-50%);
         width:calc(100% - 28px);
+        text-align:center;
+      }
+
+      .title-inner{
+        animation:none;
       }
 
       .brand{
-        font-size:3.02rem;
-        letter-spacing:-1px;
+        font-size:2.7rem;
+        letter-spacing:-0.8px;
+        line-height:0.95;
       }
 
       .name{
-        font-size:3.18rem;
-        margin:8px 0 12px;
-        letter-spacing:-0.6px;
+        font-size:2.95rem;
+        margin:4px 0 8px;
+        letter-spacing:-0.4px;
+        line-height:0.92;
       }
 
       .tag{
-        font-size:0.98rem;
+        font-size:0.95rem;
+        line-height:1.35;
+        max-width:92%;
+        margin:0 auto;
       }
 
       .gallery-cta-wrap{
-        bottom:68px;
+        bottom:92px;
         width:100%;
         padding:0 16px;
       }
 
       .gallery-cta{
-        font-size:14.5px;
-        padding:13px 36px;
+        font-size:14px;
+        padding:12px 30px;
       }
 
       .disclaimer{
-        bottom:16px;
-        font-size:10.5px;
+        bottom:14px;
+        width:calc(100% - 24px);
+        max-width:none;
+        white-space:normal;
+        font-size:10px;
+        line-height:1.35;
+        text-align:center;
       }
     }
   </style>
 </head>
 <body>
   <main class="scene">
-    <img src="white-horse-home.webp" alt="The White Horse by Brickasso®" class="background">
+    <picture class="background-wrap">
+      <source srcset="home-mobile.webp" media="(max-width: 768px)">
+      <source srcset="home-tablet.webp" media="(max-width: 1100px)">
+      <img src="home.webp" alt="The White Horse by Brickasso®" class="background">
+    </picture>
+
     <div class="overlay"></div>
 
     <nav class="top-nav" aria-label="Main">
@@ -666,9 +722,9 @@
       <a href="contact.html">Contact</a>
     </nav>
 
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">MENU</button>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open menu">MENU</button>
 
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile main">
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile main menu">
       <a href="index.html" class="active" onclick="toggleMobileMenu()">Home</a>
       <a href="gallery.html" onclick="toggleMobileMenu()">Gallery</a>
       <a href="about.html" onclick="toggleMobileMenu()">About</a>
@@ -688,7 +744,7 @@
           <h3 class="name">Albert Oprea</h3>
         </div>
         <div class="text-line center-mobile">
-          <p class="tag">One of one LEGO® artworks</p>
+          <p class="tag">One-of-one LEGO® artworks</p>
         </div>
       </div>
     </section>
@@ -698,7 +754,7 @@
     </div>
 
     <div class="disclaimer">
-      LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse Brickasso® artworks.
+      LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize or endorse Brickasso® artworks.
     </div>
   </main>
 
