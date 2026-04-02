@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brickasso® by Albert Oprea | One-of-One LEGO® Artworks</title>
-  <meta name="description" content="Official website of Brickasso® by Albert Oprea. Built by hand, signed, catalogued and certified." />
+  <title>Brickasso® | LEGO® Art by Albert Oprea</title>
+  <meta name="description" content="Official website of Brickasso® by Albert Oprea. One-of-one LEGO® artworks, built by hand, signed, catalogued and certified. Discover original portraits, collector works and sculptural LEGO® art." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Albert Oprea" />
   <meta name="theme-color" content="#0f1113" />
@@ -13,21 +13,21 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Brickasso®" />
-  <meta property="og:title" content="Brickasso® by Albert Oprea | One-of-One LEGO® Artworks" />
-  <meta property="og:description" content="Built by hand, signed, catalogued and certified. Discover original LEGO® artworks by Albert Oprea." />
+  <meta property="og:title" content="Brickasso® | LEGO® Art by Albert Oprea" />
+  <meta property="og:description" content="One-of-one LEGO® artworks by Albert Oprea, built by hand, signed, catalogued and certified. Discover the world of Brickasso®." />
   <meta property="og:url" content="https://brickasso.art/" />
   <meta property="og:image" content="https://brickasso.art/preview-social.jpg" />
   <meta property="og:image:secure_url" content="https://brickasso.art/preview-social.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Brickasso® by Albert Oprea, one-of-one LEGO® artworks" />
+  <meta property="og:image:alt" content="Brickasso® LEGO® artworks by Albert Oprea" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Brickasso® by Albert Oprea | One-of-One LEGO® Artworks" />
-  <meta name="twitter:description" content="Built by hand, signed, catalogued and certified. Discover original LEGO® artworks by Albert Oprea." />
+  <meta name="twitter:title" content="Brickasso® | LEGO® Art by Albert Oprea" />
+  <meta name="twitter:description" content="One-of-one LEGO® artworks by Albert Oprea, built by hand, signed, catalogued and certified." />
   <meta name="twitter:image" content="https://brickasso.art/preview-social.jpg" />
-  <meta name="twitter:image:alt" content="Brickasso® by Albert Oprea, one-of-one LEGO® artworks" />
+  <meta name="twitter:image:alt" content="Brickasso® LEGO® artworks by Albert Oprea" />
   <meta name="twitter:site" content="@brickasso_art" />
   <meta name="twitter:creator" content="@brickasso_art" />
 
@@ -109,13 +109,6 @@
       display:block;
       z-index:1;
       filter:contrast(1.06) saturate(1.09) brightness(0.93);
-      animation:heroZoom 55s infinite alternate ease-in-out;
-      will-change: transform;
-    }
-
-    @keyframes heroZoom {
-      0%   { transform: scale(1.08); }
-      100% { transform: scale(1); }
     }
 
     .overlay{
@@ -418,57 +411,107 @@
     .gallery-cta-wrap{
       position:absolute;
       left:50%;
-      bottom:88px;
+      bottom:36px;
       transform:translateX(-50%);
       z-index:9;
       text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:24px;
     }
 
     .gallery-cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-size:15px;
+      min-width:230px;
+      font-size:14px;
       font-weight:600;
       letter-spacing:2.5px;
       text-transform:uppercase;
-      color:#fff;
-      padding:15px 48px;
-      border:1.5px solid rgba(255,255,255,0.65);
-      background:rgba(255,255,255,0.04);
-      backdrop-filter:blur(12px);
-      border-radius:4px;
+      color:rgba(255,255,255,0.95);
+      padding:14px 42px;
+      border:1.2px solid rgba(255,255,255,0.46);
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(16px);
+      border-radius:999px;
       text-shadow:
-        0 3px 8px rgba(0,0,0,0.45),
-        0 10px 24px rgba(0,0,0,0.35),
-        0 0 20px rgba(255,255,255,0.18);
-      transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        0 3px 8px rgba(0,0,0,0.42),
+        0 10px 24px rgba(0,0,0,0.32),
+        0 0 14px rgba(255,255,255,0.10);
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      transition:
+        background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease;
       opacity:0;
       animation:fadeInUp 1.3s 1.35s cubic-bezier(0.23, 1, 0.32, 1) forwards;
     }
 
     .gallery-cta::after{
-      content:" →";
-      margin-left:10px;
-      font-size:18px;
-      transition:transform 0.4s ease;
+      content:"→";
+      margin-left:12px;
+      font-size:16px;
+      transition:transform 0.35s ease;
     }
 
     .gallery-cta:hover{
-      background:rgba(255,255,255,0.12);
-      border-color:#fff;
-      transform:translateY(-4px);
-      box-shadow:0 18px 40px rgba(255,255,255,0.22);
+      background:rgba(255,255,255,0.13);
+      border-color:rgba(255,255,255,0.92);
+      color:#fff;
+      transform:translateY(-6px) scale(1.01);
+      box-shadow:
+        0 18px 40px rgba(0,0,0,0.30),
+        0 0 28px rgba(255,255,255,0.17),
+        inset 0 1px 0 rgba(255,255,255,0.18);
     }
 
     .gallery-cta:hover::after{
       transform:translateX(6px);
     }
 
+    .social-bar{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:26px;
+      opacity:0;
+      animation:fadeInUp 1.3s 1.55s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    .social-bar a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        filter 0.35s ease;
+    }
+
+    .social-bar a:hover{
+      transform:translateY(-4px) scale(1.08);
+      filter:drop-shadow(0 6px 18px rgba(255,255,255,0.22));
+    }
+
+    .social-bar img{
+      width:42px;
+      height:42px;
+      display:block;
+      object-fit:contain;
+      opacity:0.96;
+    }
+
     .disclaimer{
       position:absolute;
       left:50%;
-      bottom:26px;
+      bottom:22px;
       transform:translateX(-50%);
       z-index:9;
       max-width:calc(100% - 40px);
@@ -483,12 +526,12 @@
       letter-spacing:0.45px;
     }
 
-    @keyframes fadeInUp {
-      from {
+    @keyframes fadeInUp{
+      from{
         opacity:0;
         transform:translateY(45px) scale(0.95);
       }
-      to {
+      to{
         opacity:1;
         transform:translateY(0) scale(1);
       }
@@ -558,16 +601,37 @@
         left:calc(22% - 2.4cm);
         width:min(500px, 36vw);
       }
-      .brand{ font-size:4.4rem; }
-      .name{ font-size:3.95rem; }
+
+      .brand{
+        font-size:4.4rem;
+      }
+
+      .name{
+        font-size:3.95rem;
+      }
     }
 
     @media (max-width: 1100px){
-      body{ overflow:auto; }
-      .scene{ height:auto; min-height:100svh; }
-      .background{ min-height:100svh; }
-      .top-nav{ display:none; }
-      .mobile-menu-btn{ display:block; }
+      body{
+        overflow:auto;
+      }
+
+      .scene{
+        height:auto;
+        min-height:100svh;
+      }
+
+      .background{
+        min-height:100svh;
+      }
+
+      .top-nav{
+        display:none;
+      }
+
+      .mobile-menu-btn{
+        display:block;
+      }
 
       .title-block{
         left:50%;
@@ -587,18 +651,40 @@
         text-align:center;
       }
 
-      .brand{ font-size:3.4rem; }
-      .name{ font-size:3.4rem; }
-      .tag{ font-size:1rem; }
+      .brand{
+        font-size:3.4rem;
+      }
+
+      .name{
+        font-size:3.4rem;
+      }
+
+      .tag{
+        font-size:1rem;
+      }
 
       .gallery-cta-wrap{
-        bottom:110px;
+        bottom:48px;
         width:100%;
         padding:0 18px;
+        gap:20px;
+      }
+
+      .gallery-cta{
+        min-width:220px;
+      }
+
+      .social-bar{
+        gap:22px;
+      }
+
+      .social-bar img{
+        width:40px;
+        height:40px;
       }
 
       .disclaimer{
-        bottom:20px;
+        bottom:16px;
         white-space:normal;
       }
 
@@ -679,18 +765,30 @@
       }
 
       .gallery-cta-wrap{
-        bottom:92px;
+        bottom:42px;
         width:100%;
         padding:0 16px;
+        gap:16px;
       }
 
       .gallery-cta{
-        font-size:14px;
-        padding:12px 30px;
+        min-width:200px;
+        font-size:12.5px;
+        padding:12px 28px;
+        letter-spacing:1.8px;
+      }
+
+      .social-bar{
+        gap:18px;
+      }
+
+      .social-bar img{
+        width:34px;
+        height:34px;
       }
 
       .disclaimer{
-        bottom:14px;
+        bottom:5px;
         width:calc(100% - 24px);
         max-width:none;
         white-space:normal;
@@ -750,7 +848,22 @@
     </section>
 
     <div class="gallery-cta-wrap">
-      <a href="gallery.html" class="gallery-cta">Enter Gallery</a>
+      <a href="gallery.html" class="gallery-cta">View Gallery</a>
+
+      <div class="social-bar">
+        <a href="https://instagram.com/brickasso.official" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="instagram-logo.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@brickasso.art" target="_blank" rel="noopener" aria-label="TikTok">
+          <img src="tiktok-logo.png" alt="TikTok">
+        </a>
+        <a href="https://www.youtube.com/@brickasso.official" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="youtube-logo.png" alt="YouTube">
+        </a>
+        <a href="https://x.com/brickasso_art" target="_blank" rel="noopener" aria-label="X">
+          <img src="x-logo.png" alt="X">
+        </a>
+      </div>
     </div>
 
     <div class="disclaimer">
